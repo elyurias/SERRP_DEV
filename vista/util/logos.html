@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Panel de control</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../css/Material/icon.css" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+		<script type="text/javascript" src="../componentesJs/jquery.min.js"></script>
+		<script type="text/javascript" src="../componentesJs/validate.js"></script>
+		<script type="text/javascript" src="../js/materialize.min.js"></script>
+		<script type="text/javascript" src="../js/administrador/menu.js"></script>
+	</head>	
+	<body onload='getDataTime();' onkeypress='getDataTime();' onclick='getDataTime();' onMouseMove='getDataTime();'>
+     <div class='grid-container'>
+					<div class='row'>
+						<div class='col xl12 l12 m12 s12'>
+								<div class='grid-container'>
+									<div class='center-align row'>
+									<div class='col xl3 l3 m6 s12'>
+											<center>
+												<a href='index.html'>
+													<img class='responsive-img' src='../img/teschalogo.jpg'>
+												</a>
+											</center>
+										</div>
+										<div class='col xl7 l5 m6 s12'>
+											<h3 class='flow-text blue-text lighten-1'>Panel principal: Docente</h3><br>
+										</div>
+										<div class='col xl2 l4 m12 s12'>
+											<a href='#' data-activates='slide-out' class='button-collapse waves-effect waves-light btn blue'>Menu</a>
+											<a href='#' onclick='closeSession();' class='waves-effect waves-light btn red'>Salir</a>
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col s12 blue lighten-3'><br></div>
+					</div>
+				</div>
+				 <ul id='slide-out' class='side-nav'>
+								<li>
+									<div class='user-view'>
+										<div class='background'>
+											<img src='../img/fondo.jpg'>
+										</div>
+										<a><spaw class='white-text name'>Nombre: Manuel Montolla Minessota </spaw></a>
+										<a><spaw class='white-text email'>Correo: tescha@edu.net</spaw></a>
+									</div>
+								</li>
+								<li>
+									<a>Registro de asesores</a>
+								</li>
+								<li>
+									<a>Registro de alumnos</a>
+								</li>
+								<li>
+									<a>Estadisticas</a>
+								</li>
+								<li>
+									<a>Configuracion</a>
+								</li>
+								<li>
+									<div class='divider'></div>
+								</li>
+								<li>
+									<a href='#' onclick='closeSession();'>Salir</a>
+								</li>
+							</ul>
+							<meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 19.20525, lng: -98.844889999999},
+          zoom: 18
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAy4_ziA1kwSZoKPQ545NNInvX-vPWv7XA&callback=initMap"
+    async defer></script>
+	</body>
+</html>
