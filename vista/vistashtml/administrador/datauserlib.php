@@ -1,7 +1,7 @@
 <?php
   class getContenidoAdmin{
     public function getAsesorD($regs){
-	  $menuSrtm = 1;
+	  $menuSrtm = 120;
       $msg = "
           <link rel='stylesheet' type='text/css' href='../js/datatable/aoi/datatables.min.css'/>
           <script type='text/javascript' src='../js/datatable/aoi/datatables.min.js'></script>
@@ -32,9 +32,18 @@
                   <td>".$row['Vcorreo_usuario']."</td>
                   <td>".$row['Csexo_usuario']."</td>
                   <td>
-					<a href='#' class='btn waves-effect waves-teal' onclick='qrData(".$row['id_usuario'].");'>Crear QR</a>
-				  </td>
-              </tr>";$menuSrtm = $menuSrtm + 1;
+                  	<a href='#' id='tol".$menuSrtm."ss' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='qrData(".$row['id_usuario'].");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
+   				  	<script>
+                    	$(document).ready(function(){
+                        	$('#tol".$menuSrtm."ss').tooltip({delay: 50});
+                        });
+                    </script>
+                  </td>
+                  <script>
+                  $('.dropdown".$menuSrtm."').dropdown();
+                  </script>
+              </tr>";
+        $menuSrtm = $menuSrtm + 1;
       }
       $msg.='</tbody><table>
       <script>
@@ -75,8 +84,13 @@
                   <td>".$row['Vcorreo_usuario']."</td>
                   <td>".$row['Csexo_usuario']."</td>
                   <td>
-					<a href='#' class='btn waves-effect waves-teal' onclick='qrData(".$row['id_usuario'].");'>Crear QR</a>
-				  </td>
+                  	<a href='#' id='tol".$menuSrtm."ss' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='qrData(".$row['id_usuario'].");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
+   				  	<script>
+                    	$(document).ready(function(){
+                        	$('#tol".$menuSrtm."ss').tooltip({delay: 50});
+                        });
+                    </script>
+                  </td>
               </tr>";$menuSrtm = $menuSrtm + 1;
       }
       $msg.='</tbody><table>
@@ -89,4 +103,21 @@
       return $msg;
     }
   }
+/*
+						<div style='position: relative;'>
+                        <div class='fixed-action-btn horizontal' style='display: inline-block; right: 19px;'>
+                          <a class='btn-floating btn-large'>
+                            <i class='mdi-social-notifications-none'></i>
+                          </a>
+                          <ul>
+                          <li><a class='btn-floating red'><i class='large mdi-editor-insert-chart'></i></a>
+                          </li>
+                          <li><a class='btn-floating yellow darken-1'><i class='large mdi-editor-format-quote'></i></a>
+                          </li>
+                          <li><a class='btn-floating green'><i class='large mdi-editor-publish'></i></a>
+                          </li>
+                          <li><a class='btn-floating blue'><i class='large mdi-editor-attach-file'></i></a>
+                          </li>
+                          </ul>
+                        </div>*/
 ?>

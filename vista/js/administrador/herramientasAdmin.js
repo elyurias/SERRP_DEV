@@ -8,9 +8,10 @@ function getgeneracion(inicio,tipo){
             if(inicio == 1){
                 $('#fores').html(data);    
             }
-            getTablaDataJS(tipo,1);
         }
-    );
+    ).done(function() {
+    	getTablaDataJS(tipo,1);
+  	});
 }
 function getTablaDataJS(tipo,part){
   var docTD = {accion:'noOperacion'}; 

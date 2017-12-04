@@ -1,5 +1,5 @@
 <?php
     class ruta{
-	    const ruta="/SERRP";
+	    const ruta="/SERRP_DEV";
     }
 ?>

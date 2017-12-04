@@ -15,6 +15,9 @@
                 case 4:
                     $t.="Administrador registrado<script>getTablaDataJS(3);</script>";
                 break;
+                case 10:
+                    $t.="Semestre activo requerido para registrar nuevos usuarios";
+                break;
             }
             $msg = '<div id="modalmer" class="modal">
     <div class="modal-content">
