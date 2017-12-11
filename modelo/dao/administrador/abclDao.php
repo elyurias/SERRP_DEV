@@ -25,5 +25,11 @@
 		    return 'SELECT addusuario(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) as statusreg;';
 		    // SELECT addusuario('2512STR', 'Eleuterio', 'Mendoza', 'Sandivar', 'sandivar@gmaiol.com', '551240006235', '2563256', 1, 1, 'M', 3, 0);
 		}
+      	static function sqlGetAdminData(){
+          return "SELECT * FROM getdataadmin;";
+        }
+      	static function sqlSetGeneracionN(){
+          return "SELECT * isperiodo_acc;";
+        }
 	}
 ?>

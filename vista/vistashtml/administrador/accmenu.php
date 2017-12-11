@@ -91,6 +91,8 @@
 				break;
 				case 2:
 				    $med.= "<ul id='slide-out' class='side-nav'>
+				     <script src='../js/docente/herramientasDocente.js'>
+			                         </script>
 								<li>
 									<div class='user-view'>
 										<div class='background'>
@@ -100,18 +102,23 @@
 										<a><spaw class='white-text email'>Correo: ".$data[0]['Vcorreo_usuario']."</spaw></a>
 									</div>
 								</li>
-								<li>
-									<a>Registro de asesores</a>
-								</li>
-								<li>
-									<a>Registro de alumnos</a>
-								</li>
-								<li>
-									<a>Estadisticas</a>
-								</li>
-								<li>
-									<a>Configuracion</a>
-								</li>
+								<li class='no-padding'>
+          							<ul class='collapsible collapsible-accordion'>
+            							<li class='bold'><a class='collapsible-header  waves-effect waves-teal'>Periodos</a>
+              								<div class='collapsible-body midata'>
+              								</div>
+           					 			</li>
+           					 		</ul>
+           					 	</li>
+           					 	<li>
+           					 		<a onclick='nowdata(123)'>Cosas cosas y mas cosas</a>
+           					 	</li>
+            <script>
+            getconfigMenu();
+            	$(document).ready(function(){
+            		$('.collapsible').collapsible();
+            	});
+            </script>
 								<li>
 									<div class='divider'></div>
 								</li>

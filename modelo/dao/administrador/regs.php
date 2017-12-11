@@ -15,12 +15,20 @@
 			$pR = conexion::getArraypP(adminABC::sqlGetAsesorData(), array($cg));
 			return $pR;
 		}
-        function getDataAlumno($cg){
+    	function getDataAlumno($cg){
 			$pR = conexion::getArraypP(adminABC::sqlGetAlumnoData(), array($cg));
+			return $pR;
+		}
+		function getDataAdmin(){
+			$pR = conexion::getArraypP(adminABC::sqlGetAdminData(), array());
 			return $pR;
 		}
 		function getEspecialidad(){
 			$pRE = conexion::getArraypP(adminABC::sqlGetEspecialidad(), array());
+			return $pRE;
+		}
+      	function getDataUsuario($id){
+			$pRE = conexion::getArraypP(adminABC::sqlGetData(), array($id));
 			return $pRE;
 		}
 		function setUsuario($modulo){
@@ -31,5 +39,9 @@
 		    $pRE = conexion::getArraypP(adminABC::sqlGetGeneracion(),array());
 		    return $pRE;
 		}
+      	function isPg(){
+          	$pRE = conexion::getArraypP(adminABC::sqlSetGeneracionN(),array());
+		    return $pRE;
+        }
 	}
 ?>

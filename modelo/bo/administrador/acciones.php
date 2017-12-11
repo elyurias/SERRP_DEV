@@ -28,6 +28,11 @@
 			$vt = $this->vistaT->getAsesorD($tableD);
 			return $vt;
 		}
+		function getAdminTData(){
+			$tableD = $this->tablaA->getDataAdmin();
+			$vt = $this->vistaT->getAdminD($tableD);
+			return $vt;
+		}
 		function getAlumnoTData($gen){
 	        $tableD = $this->tablaA->getDataAlumno($gen);
 			$vt = $this->vistaT->getAlumnoD($tableD);
@@ -56,10 +61,35 @@
 			$vf = $this->vistaF->getRegistroUsuarioAdmn(1,$especialidad,1,array());
 			return $vf;
 		}
+      	// Apartado de actualizacion (&actualiza)
+      	function getActualizaAsesorData($modulo){
+			$especialidad = $this->tablaA->getEspecialidad();
+          	$dataUsuario = $this->tablaA->getDataUsuario($modulo->DNI);
+			$vf = $this->vistaF->getRegistroUsuarioAdmn(2,$especialidad,2,$dataUsuario);
+			return $vf;
+		}
+		function getActualizaAlumnoData($modulo){
+			$especialidad = $this->tablaA->getEspecialidad();
+          	$dataUsuario = $this->tablaA->getDataUsuario($modulo->DNI);
+			$vf = $this->vistaF->getRegistroUsuarioAdmn(2,$especialidad,3,$dataUsuario);
+			return $vf;
+		}
+		function getActualizaAdministradorData($modulo){
+			$especialidad = $this->tablaA->getEspecialidad();
+			$dataUsuario = $this->tablaA->getDataUsuario($modulo->DNI);
+          	$vf = $this->vistaF->getRegistroUsuarioAdmn(2,$especialidad,1,$dataUsuario);
+			return $vf;
+		}
+      	// Apartado de actualizacion (&actualiza)
 		function setUsuario($modulo){
 		    $regtst = $this->tablaA->setUsuario($modulo);
 		    $vf = $this->vistaF->getMsgEstadoRegistro($regtst[0]);
 		    return $vf;
 		}
+      	function getPeriodo(){
+            $regtst = $this->tablaA->isPg();
+          	$vf = $this->vistaF->isPPeriodo($regtst[0]);
+          	return $vf;
+        }
 	}
 ?>

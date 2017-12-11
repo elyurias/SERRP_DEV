@@ -18,6 +18,12 @@
 		case 'tablaalumno':
 			$resal = $bo->getAlumnoTData($_REQUEST['gen']);
 		break;
+		case 'tablaadmin':
+			$resal = $bo->getAdminTData();
+		break;
+       	case 'loadGp':
+			$resal = $bo->getPeriodo();
+		break;
 		case 'formadmin':
 			$resal = $bo->getFormularioAdministradorData();
 		break;
@@ -45,6 +51,18 @@
 		        $obj->limite = 0;
 		    }
 		    $resal = $bo->setUsuario(array($obj->DNI,$obj->nombre,$obj->paterno,$obj->materno,$obj->email,$obj->tel1,$obj->tel2,$obj->estado,$obj->especialidad,$obj->sexo,$obj->tipo,$obj->limite));
+		break;
+       	case 'updadmin':
+       		$obj->DNI = $_REQUEST['id'];
+			$resal = $bo->getActualizaAdministradorData($obj);
+		break;
+		case 'upddocente':
+       		$obj->DNI = $_REQUEST['id'];
+			$resal = $bo->getActualizaAsesorData($obj);
+		break;
+		case 'updalumno':
+       		$obj->DNI = $_REQUEST['id'];
+			$resal = $bo->getActualizaAlumnoData($obj);
 		break;
 		case 'getgen':
 			$resal = $bo->getDataGeneracion();

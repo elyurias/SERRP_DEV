@@ -5,8 +5,10 @@ function getgeneracion(inicio,tipo){
             '../../controlador/administrador/datacontroll.php',
             {accion:'getgen'},
             function(data){
-            if(inicio == 1){
-                $('#fores').html(data);    
+            if(tipo != 3){
+                if(inicio == 1){
+                	$('#fores').html(data);    
+            	}
             }
         }
     ).done(function() {
@@ -51,8 +53,26 @@ function getFormularioRegistro(tipo){
         }
     );
 }
-function registroUsuario(){
-   
+function getFormularioActualiza(tipo,idP){
+    var docTD;
+    switch(tipo){
+        case 1:
+        	docTD = {accion: 'updadmin',id:idP}
+            break;
+        case 2:
+            docTD = {accion: 'upddocente',id:idP}
+            break;
+        case 3:
+            docTD = {accion: 'updalumno',id:idP}
+            break;
+    }
+    $.post(
+        '../../controlador/administrador/datacontroll.php',
+        docTD,
+        function(data){
+            $('#forms_d').html(data);
+        }
+    );
 }
 function qrData(id){
 	var link = document.location.href;
@@ -62,36 +82,26 @@ function qrData(id){
 	$('#qr').qrcode({
     // render method: 'canvas', 'image' or 'div'
     render: 'canvas',
-
     // version range somewhere in 1 .. 40
     minVersion: 1,
     maxVersion: 40,
-
     // error correction level: 'L', 'M', 'Q' or 'H'
     ecLevel: 'H',
-
     // offset in pixel if drawn onto existing canvas
     left: 0,
     top: 0,
-
     // size in pixel
     size: 260,
-
     // code color or image element
     fill: '#38903d',
-
     // background color or image element, null for transparent background
     background: null,
-
     // content
     text: reference,
-
     // corner radius relative to module width: 0.0 .. 0.5
     radius: 0.2,
-
     // quiet zone in modules
     quiet: 0,
-
     // modes
     // 0: normal
     // 1: label strip
@@ -99,15 +109,12 @@ function qrData(id){
     // 3: image strip
     // 4: image box
     mode: 2,
-
     mSize: 0.1,
     mPosX: 0.5,
     mPosY: 0.5,
-
     label: 'tescha.com',
     fontname: 'sans',
-    fontcolor: '#f6ef39',
-
+    fontcolor: '#755a05de',
     image: null
     });
 	$('#modal1').modal('open');
