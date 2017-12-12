@@ -1,4 +1,21 @@
 var datav;//getgeneracion(1,1);
+function getformModUser(id_datab,tipo){
+    var docTD = {accion:'noOperacion'}; 
+  	if(tipo == 1){
+     	docTD = {accion:'updadmin',id:id_datab};
+  	}else if(tipo == 2){
+    	docTD = {accion:'upddocente',id:id_datab};
+  	}else if(tipo == 3){
+   	 	docTD = {accion:'updalumno',id:id_datab};
+  	}
+  	$.post(
+    	'../../controlador/administrador/datacontroll.php',
+    	docTD,
+    	function(data){
+    		  $('#fores').html(data);
+    		}
+  	);
+}
 function getgeneracion(inicio,tipo){
      datav = tipo;
      $.post(
@@ -16,6 +33,8 @@ function getgeneracion(inicio,tipo){
   	});
 }
 function getTablaDataJS(tipo,part){
+  var cadenaLol = "<div class='indeterminate'></div>";
+  $('.progress').html(cadenaLol);
   var docTD = {accion:'noOperacion'}; 
   if(tipo == 1){
      docTD = {accion:'tablaasesor',parte:part,gen:$('#idgen').val()};
@@ -28,6 +47,7 @@ function getTablaDataJS(tipo,part){
     '../../controlador/administrador/datacontroll.php',
     docTD,
     function(data){
+      $('.progress').html('<div class="complete"></div>');
       $('#tableS').html(data);
     }
   );

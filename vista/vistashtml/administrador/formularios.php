@@ -2,7 +2,7 @@
 	class accFormularios{
 	    public function getMsgEstadoRegistro($datareg){
             $t = "";
-                         switch($datareg['statusreg']){
+            switch($datareg['statusreg']){
                 case 1:
                     $t.="Asesor registrado<script>getTablaDataJS(1);</script>";
                 break;
@@ -37,6 +37,7 @@
             return $msg;
         }
 		public function getRegistroUsuarioAdmn($nivel, $especialidad, $tipo, $data){
+          	$tituloT = "";
 		    $mmo = "";
 		    $herramientaE = "";
 		    $herrmatico = "";
@@ -57,7 +58,7 @@
 		    switch($nivel){
 		        case 1:
 		            // registrar
-              		$Accion = "<button id='reg' class='btn waves-effect waves-light right submit' type='submit' onclick='registroUsuario()' name='action'>Registrar</button><br>":
+              		$Accion = "<button id='reg' class='btn waves-effect waves-light right submit' type='submit' onclick='registroUsuario()' name='action'>Registrar</button><br>";
 		            $herrmatico = "registro";
               		$cadenaConfDNI = "<div class='col s12 m3 l3 xl3'>
 						<div class='input-field'>
@@ -241,17 +242,19 @@
 		    return $msg;
 		}
 		public function getSelectGenData($arrayData){
-		    $msg = "<h5>Lista de generacion</h5><select id=idgen onchange='getTablaDataJS(datav,3);'>
+          	$tituloRMS = '';
+		    $msg = "<div class='container'><h5>Lista de generacion</h5><select id=idgen onchange='getTablaDataJS(datav,3);'>
                     ";
                  foreach($arrayData as $row){
                     $mojon = "";
                     if($row['Iestado_cg']==1){
-                         $mojon = "selected";
+                        $tituloRMS = 'Período activo'; 
+                      	$mojon = "selected";
                     }
-         $msg.="<option value=".$row['id_cg']." ".$mojon.">".$row['Vnombre_cg']."</option>";
+         $msg.="<option value=".$row['id_cg']." ".$mojon.">".$row['Vnombre_cg']." -- ".$tituloRMS."</option>";
       }
       $msg.="
-      </select>
+      </select></div>
       <script>
         $('#idgen').material_select();
       </script>";

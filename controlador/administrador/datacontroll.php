@@ -1,4 +1,5 @@
 <?php
+	 error_reporting(E_ALL);
 	 require_once "../../ruta.php";
 	 require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/vista/vistashtml/administrador/accmenu.php";
 	 require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/modelo/bo/administrador/acciones.php";

@@ -33,9 +33,19 @@
 											<h3 class='flow-text blue-text lighten-1'>Panel principal: ".$cadena."</h3>
 										</div>
 										<div class='col xl2 l4 m12 s12 center-align'>
-											<a href='#' data-activates='slide-out' id='menu' class='button-collapse waves-effect waves-light btn btn-floating green'><i class='material-icons'>menu</i></a>
-											<a href='#' onclick='closeSession();' class='waves-effect waves-light btn btn-floating red'><i class='material-icons'>exit_to_app</i></a>
-										</div>
+											<a href='#' data-position='left' data-delay='50' data-tooltip='Menu de usuario' data-activates='slide-out' id='menu' class='button-collapse tooltipped waves-effect waves-light btn btn-floating green'><i class='material-icons'>menu</i></a>
+											<a href='#' data-position='left' data-delay='50' data-tooltip='Salir del sistema' onclick='closeSession();' class='rm_dataSalir waves-effect tooltipped waves-light btn btn-floating red'><i class='material-icons'>exit_to_app</i></a>
+   				  							<script>
+                    							$(document).ready(function(){
+                        							$('#menu').tooltip({delay: 50});
+                        						});
+                    						</script>
+   				  							<script>
+                    							$(document).ready(function(){
+                        							$('.rm_dataSalir').tooltip({delay: 50});
+                        						});
+                    						</script>
+                                        </div>
 									</div>
 								</div>
 						</div>
@@ -139,9 +149,4 @@
 	
 		}
 	}
-	
-	/*
-					<p>Nombre: ".$data[0]['Vnombre_usuario'].' '.$data[0]['Vpaterno_usuario'].' '.$data[0]['Vmaterno_usuario'].' '."
-							<br>Correo: ".$data[0]['Vcorreo_usuario']."</p>
-	 * */
 ?>
