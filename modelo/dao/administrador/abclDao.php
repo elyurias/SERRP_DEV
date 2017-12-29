@@ -30,5 +30,8 @@
       	static function sqlSetGeneracionN(){
           return "SELECT * isperiodo_acc;";
         }
+      	static function sqlSetDataUsuarioMod(){
+          return "SELECT mod_usuario(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        } 
 	}
 ?>

@@ -55,10 +55,29 @@
           $especialidadF = "";
           $sexoF = "";
           $maxminF = "";
+          switch($tipo){
+		        case 1:
+		            $mmo = "Administrador";
+		            break;
+		        case 2:
+		            $mmo = "Docente";
+		            $herramientaE = "
+		                <div class='col s12 m12 l12 xl12' required>
+						    <div class='input-field'>
+							    <input type='number' id='maxmi' name='maxmi' value=".$maxminF." class='validate' required>
+							    <label for='maxmi' data-error='Se require un numero valido' data-success='Numero valido'>Limite de asesorados</label>
+						    </div>
+					    </div>
+		            ";
+		            break;
+		        case 3:
+		            $mmo = "Alumno";
+		            break;
+		    }
 		    switch($nivel){
 		        case 1:
 		            // registrar
-              		$Accion = "<button id='reg' class='btn waves-effect waves-light right submit' type='submit' onclick='registroUsuario()' name='action'>Registrar</button><br>";
+              		$Accion = "<button id='reg' class='btn waves-effect waves-light right submit' type='submit' name='action'>Registrar</button><br>";
 		            $herrmatico = "registro";
               		$cadenaConfDNI = "<div class='col s12 m3 l3 xl3'>
 						<div class='input-field'>
@@ -87,26 +106,11 @@
                                 <div class='errorTxt7'></div>
                             </div>
                     </div>";
-              		$rmb = "";
-              		$cadenaConfEsp = "<div class='col s12 m6 l6 xl6' required>
-                        <label for='idesp'>Especialidad</label>
-                            <select class='error browser-default' id='idesp' name='idesp' data-error='.errorTxt8' required>
-                          ";
-            				foreach($especialidad as $row){
-                				$rmb.="
-                     					<option value='".$row['id_especialidad']."'>".$row['Vnombre_especialidad']."</option>
-                				";
-            				}
-            		$rmb.="
-                        </select>
-                         <div class='input-field'>
-                                <div class='errorTxt8'></div>
-                         </div>
-                    </div>";
-              		$cadenaConfEsp.=$rmb;
+              		$tituloDesc = "<h4>Registrar nuevo ".$mmo."</h4><h5>El registro de nuevos usuarios solo afecta al periodo actual activo, el registro es automatico</h5>";
 		        break;
 		        case 2:
 		            // actualizar
+              		$Accion = "<button id='reg' class='btn waves-effect waves-light right submit' type='submit' name='action'>Actualizar</button><br>";
               		$DNIF = $data[0]['VidentiQR_usuario'];
           			$nombreF = $data[0]['Vnombre_usuario'];
           			$paternoF = $data[0]['Vpaterno_usuario'];
@@ -133,7 +137,13 @@
                     }else{
                       $req_f ="selected";
                     }
-              		$cadenaConfSex = "<div class='col s12 m6 l6 xl6' required>
+              		$cadenaConfSex = "
+                    	<script>
+                        	$(document).ready(function() {
+    							Materialize.updateTextFields();
+  							});
+                        </script>
+                    	<div class='col s12 m6 l6 xl6' required>
                         <label for='sexo'>Sexo *</label>
                             <select class='error browser-default' id='sexo' name='sexo' data-error='.errorTxt63' required>
                             <option value='M' ".$req_d.">Masculino</option>
@@ -143,33 +153,37 @@
                                <div class='errorTxt63'></div>
                             </div>
                     </div>";
-              	
+                $herramientaE = '';
+              	$tituloDesc = "<h4>Actualizar usuario: ".$mmo."</h4><h5></h5>";
 		        break;
 		    }
-		    switch($tipo){
-		        case 1:
-		            $mmo = "Administrador";
-		            break;
-		        case 2:
-		            $mmo = "Docente";
-		            $herramientaE = "
-		                <div class='col s12 m12 l12 xl12' required>
-						    <div class='input-field'>
-							    <input type='number' id='maxmi' name='maxmi' value=".$maxminF." class='validate' required>
-							    <label for='maxmi' data-error='Se require un numero valido' data-success='Numero valido'>Limite de asesorados</label>
-						    </div>
-					    </div>
-		            ";
-		            break;
-		        case 3:
-		            $mmo = "Alumno";
-		            break;
-		    }
+          $rmb = "";
+              		$cadenaConfEsp = "<div class='col s12 m6 l6 xl6' required>
+                        <label for='idesp'>Especialidad</label>
+                            <select class='error browser-default' id='idesp' name='idesp' data-error='.errorTxt8' required>
+                          ";
+            				foreach($especialidad as $row){
+                              	$mensajeDir = '';
+                              	if(sizeof($data) > 0){
+                                  if($data['id_especialidad'] == $row['id_especialidad']){
+                                    $mensajeDir = 'selected';
+                                  }
+                                }
+                				$rmb.="
+                     					<option value='".$row['id_especialidad']."' ".$mensajeDir.">".$row['Vnombre_especialidad']."</option>
+                				";
+            				}
+            		$rmb.="
+                        </select>
+                         <div class='input-field'>
+                                <div class='errorTxt8'></div>
+                         </div>
+                    </div>";
+              		$cadenaConfEsp.=$rmb;
 		    $msg = "
 		    <div id='modal3' class='modal'>
     <div class='modal-content'>
-      <h4>Registrar nuevo ".$mmo."</h4>
-      <h5>El registro de nuevos usuarios solo afecta al periodo actual activo, el registro es automatico</h5>
+			".$tituloDesc."
 		    <form action='#' method='POST' id='formValidate' onsubmit='return false;'>
 			<div class='grid-container'>
 				<input type='hidden' name='accion' value='".$herrmatico."' required>

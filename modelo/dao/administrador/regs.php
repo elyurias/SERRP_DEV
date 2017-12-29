@@ -39,6 +39,10 @@
 		    $pRE = conexion::getArraypP(adminABC::sqlGetGeneracion(),array());
 		    return $pRE;
 		}
+      	function setDataUsuario($mod){
+		    $pRE = conexion::getArraypP(adminABC::sqlSetDataUsuarioMod(),$mod);
+		    return $pRE;
+		}
       	function isPg(){
           	$pRE = conexion::getArraypP(adminABC::sqlSetGeneracionN(),array());
 		    return $pRE;

@@ -76,20 +76,27 @@
 										<a><spaw class='white-text email'>Correo: ".$data[0]['Vcorreo_usuario']."</spaw></a>
 									</div>
 								</li>
-								<li>
-									<a href='#' onclick='getgeneracion(1,3);'>Registro de administradores</a>
-								</li>
-								<li>
-									<a href='#' onclick='getgeneracion(1,1);'>Registro de asesores</a>
-								</li>
-								<li>
-									<a href='#' onclick='getgeneracion(1,2);'>Registro de alumnos</a>
-								</li>
-								<li>
-									<a>Estadisticas</a>
-								</li>
-								<li>
-									<a>Configuracion</a>
+                                <li class='no-padding'>
+          							<ul class='collapsible collapsible-accordion'>
+            							<li class='bold'><a class='collapsible-header  waves-effect waves-teal'>Registro de usuarios</a>
+              								<div class='collapsible-body'>
+                                            	<ul>
+                                                	<li>
+														<a href='#' onclick='getgeneracion(1,3);'>Registro de administradores</a>
+													</li>
+													<li>
+														<a href='#' onclick='getgeneracion(1,1);'>Registro de asesores</a>
+													</li>
+													<li>
+														<a href='#' onclick='getgeneracion(1,2);'>Registro de alumnos</a>
+													</li>
+                                                </ul>
+              								</div>
+           					 			</li>
+           					 		</ul>
+           					 	</li>
+                                <li>
+									<a href='#'>Estadística</a>
 								</li>
 								<li>
 									<div class='divider'></div>
@@ -97,7 +104,14 @@
 								<li>
 									<a href='#' onclick='closeSession();'>Salir</a>
 								</li>
-							</ul>";
+							</ul>
+                            <script>
+            					$(document).ready(function(){
+            						$('.collapsible').collapsible();
+                                    //$('.collapsible2').collapsible();
+            					});
+            				</script>
+                            ";
 				break;
 				case 2:
 				    $med.= "<ul id='slide-out' class='side-nav'>

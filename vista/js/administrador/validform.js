@@ -75,6 +75,7 @@
                     $('#formValidate').serialize(),
                     function(data){
                         $("#msgtos").html(data);
+                        console.log(data);
                     }
             );
         }

@@ -53,6 +53,18 @@
 		    }
 		    $resal = $bo->setUsuario(array($obj->DNI,$obj->nombre,$obj->paterno,$obj->materno,$obj->email,$obj->tel1,$obj->tel2,$obj->estado,$obj->especialidad,$obj->sexo,$obj->tipo,$obj->limite));
 		break;
+        case 'actualizar':
+       		$obj->DNI = $_REQUEST['id'];
+		    $obj->nombre = $_REQUEST['nombre'];
+		    $obj->paterno = $_REQUEST['paterno'];
+		    $obj->materno = $_REQUEST['materno'];
+		    $obj->email = $_REQUEST['email'];
+		    $obj->tel1 = $_REQUEST['telc'];
+		    $obj->tel2 = $_REQUEST['telh'];
+		    $obj->especialidad = $_REQUEST['idesp'];
+		    $obj->sexo = $_REQUEST['sexo'];
+       		$resal = $bo->modUsuario($obj);
+       	break;
        	case 'updadmin':
        		$obj->DNI = $_REQUEST['id'];
 			$resal = $bo->getActualizaAdministradorData($obj);

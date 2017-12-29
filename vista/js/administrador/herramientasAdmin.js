@@ -12,7 +12,7 @@ function getformModUser(id_datab,tipo){
     	'../../controlador/administrador/datacontroll.php',
     	docTD,
     	function(data){
-    		  $('#fores').html(data);
+    		  $('#updfores').html(data);
     		}
   	);
 }

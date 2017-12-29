@@ -80,6 +80,9 @@
           	$vf = $this->vistaF->getRegistroUsuarioAdmn(2,$especialidad,1,$dataUsuario);
 			return $vf;
 		}
+      	function modUsuario($modClass){
+          
+        }
       	// Apartado de actualizacion (&actualiza)
 		function setUsuario($modulo){
 		    $regtst = $this->tablaA->setUsuario($modulo);

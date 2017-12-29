@@ -31,9 +31,13 @@
                   <td>".$row['Csexo_usuario']."</td>
                   <td>
                   	<a href='#' id='tol".$menuSrtm."ss' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='qrData(".$row['id_usuario'].");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
-   				  	<script>
+   				  	<a href='#' id='tol".$menuSrtm."ssUpd' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='getformModUser(".$row['VidentiQR_usuario'].",2)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>
+                    	Modificar
+                    </a>
+                    <script>
                     	$(document).ready(function(){
                         	$('#tol".$menuSrtm."ss').tooltip({delay: 50});
+                            $('#tol".$menuSrtm."ssUpd').tooltip({delay: 50});
                         });
                     </script>
                   </td>
@@ -83,9 +87,13 @@
                   <td>".$row['Csexo_usuario']."</td>
                   <td>
                   	<a href='#' id='tol".$menuSrtm."ss' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='qrData(".$row['id_usuario'].");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
-   				  	<script>
+   				  	<a href='#' id='tol".$menuSrtm."ssUpd' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='getformModUser(".$row['VidentiQR_usuario'].",3)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>
+                    	Modificar
+                    </a>
+                    <script>
                     	$(document).ready(function(){
                         	$('#tol".$menuSrtm."ss').tooltip({delay: 50});
+                            $('#tol".$menuSrtm."ssUpd').tooltip({delay: 50});
                         });
                     </script>
                   </td>
