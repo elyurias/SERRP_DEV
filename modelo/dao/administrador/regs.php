@@ -46,6 +46,14 @@
       	function isPg(){
           	$pRE = conexion::getArraypP(adminABC::sqlSetGeneracionN(),array());
 		    return $pRE;
-        }
+	      }
+	 function getProfesoresSolicitudGrap($opcion){
+		$pRE = conexion::getArraypP(adminABC::sqlGetSolProfesor($opcion),array());
+		return $pRE;
+	 }
+	 function getProfesoresFinalGrap($opciones){
+	    $pRE = conexion::getArraypP(adminABC::sqlGetFinProfesor($opciones),array());
+	    return $pRE;
+	 }
 	}
 ?>

@@ -172,10 +172,13 @@
     }
     public function getFormParamEstadistica(){    
 $data = <<<EOT
+    <script src = '../componentesJs/Chart.min.js'>
+    </script>
     <form onsubmit='return false;' id='dataEstadistica'>
+	<input type='hidden' name='accion' id='accion' value='Grafico' />
 	<div class='row'>
 	  <div class='col s12 m3'>
-	  <select name='genero' id='gennero'>
+	  <select name='genero' id='genero'>
 	    <option value="1">General</option>
 	    <option value="2">Femenino</option>
 	    <option value="3">Masculino</option>
@@ -183,7 +186,7 @@ $data = <<<EOT
 	  <label>Genero</label>
 	</div>
 	<div class='col s12 m9'>
-	<select name='campo' id='datacampo'>
+	<select name='campo' id='campo'>
 	    <option value="1">Alumnos [Finalizaron residencias profesionales 4 meses]</option>
 	    <option value="2">Alumnos [Finalizaron residencias profesionales mas de 4 meses]</option>
 	    <option value="3">Alumnos [No finalizaron residencias profesionales]</option>
@@ -194,10 +197,19 @@ $data = <<<EOT
 	  </div>
       <script>
 	$(document).ready(function(){
-	  $('#gennero').material_select();
-	  $('#datacampo').material_select();
+	  $('#genero').material_select();
+	  $('#campo').material_select();
+	  graficoData();
+	  $('#genero').change(function(){
+	    graficoData();
+	  });
+	  $('#campo').change(function(){
+	    graficoData();
+	  });
+	  
 	});
       </script>
+      <div id='graficocont'></div>
       </div>
     </form>
 EOT;
@@ -224,6 +236,61 @@ return $data;
       </p>
 EOT;
       return $dataS;
+    }
+    public function getGraficoPSolicitud($modulo,$titulo){
+      //return var_dump($modulo);
+      
+      $label = "[";
+      $data = "[";
+      for($i=0;$i<SIZEOF($modulo)-1;$i++) {
+      	$label.= "'ID: ".$modulo[$i]['VidentiQR_usuario']." Nombre: ".$modulo[$i]['Vnombre_usuario']." ".$modulo[$i]['Vpaterno_usuario']."',";
+	$data.= "'".$modulo[$i]['numSolicitud']."',";
+      }
+      $label.= "'".$modulo[$i]['Vnombre_usuario']." ".$modulo[$i]['Vpaterno_usuario']." ".$modulo[$i]['Vmaterno_usuario']."']";
+      $data.= "'".$modulo[SIZEOF($modulo)-1]['numSolicitud']."']";
+      $cadenalid = <<<EOT
+<canvas id="ChartData" width="undefined" height="undefined"></canvas>
+<script>
+var ctx = document.getElementById("ChartData");
+var ChartData = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: $label,
+        datasets: [{
+            label: '$titulo',
+            data: $data,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
+EOT;
+      return $cadenalid;
     }
   }
 ?>

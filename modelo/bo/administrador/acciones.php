@@ -120,5 +120,41 @@
 		    $postData = $this->vistaT->getInfoIntro();
 		    return $postData;
 		}
+		function getGraficoPSolicitud($modulo){
+		  $regulacionCampo = '';
+		  switch ($modulo->generoGrafico) {
+		  	case 1:
+			  $regulacionCampo = '';
+		  	break;
+		  	case 2:
+			  $regulacionCampo = "WHERE Csexo_usuario = 'F'";
+		  	break;
+		  	case 3:
+			  $regulacionCampo = "WHERE Csexo_usuario = 'M'";
+		  	break;
+		  }
+		  $postData = '';
+		  $Vgrafico = '';
+		  switch($modulo->campoGrafico){
+			case 1:
+			  return  '';
+		  	break;
+		  	case 2:
+			  return "WHERE Csexo_usuario = 'F'";
+		  	break;
+		  	case 3:
+			  return "WHERE Csexo_usuario = 'M'";
+		  	break;
+		  	case 4:
+			  $postData = $this->tablaA->getProfesoresSolicitudGrap($regulacionCampo);
+			  $Vgrafico = $this->vistaT->getGraficoPSolicitud($postData,'# Solicitudes enviadas');
+		  	break;
+		  	case 5://getProfesoresFinalGrap
+			  $postData = $this->tablaA->getProfesoresFinalGrap($regulacionCampo);
+			  $Vgrafico = $this->vistaT->getGraficoPSolicitud($postData,'# Alumnos que concluyo recidencias profesionales');
+		  	break;
+		  }
+		  return $Vgrafico;
+		}
 	}
 ?>

@@ -167,3 +167,12 @@ function estadisticaData(nivelGenero,campoArea){
       rellenarCampoHTML('#tableS',data);
   });
 }
+function graficoData(){
+  $.post(
+    '../../controlador/administrador/datacontroll.php',
+    $('#dataEstadistica').serialize(),
+    function(data){
+      rellenarCampoHTML('#graficocont',data);
+    }
+  );
+}

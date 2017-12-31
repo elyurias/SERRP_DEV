@@ -19,7 +19,7 @@
 			return "SELECT * FROM getespecialidad;";
 		}
 		static function sqlGetGeneracion(){
-			return "SELECT * FROM getperiodo;";
+			return "SELECT * FROM getperiodo order by(Vnombre_cg);";
 		}
 		static function sqlSetUsuario(){
 		    return 'SELECT addusuario(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) as statusreg;';
@@ -35,6 +35,12 @@
         } 
         static function sqlGetPeriodoActivo(){
 	  return "SELECT get_periodo_actual() as periodoActivo;";
+        }
+        static function sqlGetSolProfesor($opciones){
+	  return "SELECT * FROM get_profesores_solicitados ".$opciones.";";
+        }
+        static function sqlGetFinProfesor($opciones){
+	  return "SELECT * FROM get_profesores_alm_finaliza ".$opciones.";";
         }
 	}
 ?>

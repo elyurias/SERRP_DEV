@@ -12,7 +12,7 @@
 		var $estado;
 		var $limite;
 		var $email;
-		private $data;
+		public $data;
 		public function __set($name, $value){
 			$this->data[$name]=$value;
 		}

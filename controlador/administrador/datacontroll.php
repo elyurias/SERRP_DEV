@@ -89,6 +89,11 @@
 		case 'contenidointro':
 		    $resal = $bo->getContenidoIntro();
 		break;
+		case 'Grafico':
+		    $obj->generoGrafico = $_REQUEST['genero'];
+		    $obj->campoGrafico = $_REQUEST['campo'];
+		    $resal = $bo->getGraficoPSolicitud($obj);
+		break;
 	}
 	print($resal);
 ?>
