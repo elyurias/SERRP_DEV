@@ -31,7 +31,10 @@
           return "SELECT * isperiodo_acc;";
         }
       	static function sqlSetDataUsuarioMod(){
-          return "SELECT mod_usuario(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+          return "SELECT mod_usuario(?, ?, ?, ?, ?, ?, ?, ?, ?) as statusActualiza;";
         } 
+        static function sqlGetPeriodoActivo(){
+	  return "SELECT get_periodo_actual() as periodoActivo;";
+        }
 	}
 ?>

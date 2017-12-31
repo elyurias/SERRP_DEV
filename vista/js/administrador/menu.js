@@ -31,6 +31,8 @@ function menu(data){
 	switch(data.trim()){
 		case 'siSess':
 			encabezado({accion:'encabezado'});
+			getpiepaginaData();
+			getdataintro();
 			return 1;
 		break;
 		case 'siVali':
@@ -40,10 +42,14 @@ function menu(data){
 			var link = document.location.href;
 			setTimeout(function(){window.location = link.substring(0,link.indexOf('?'));},1000);
 			encabezado({accion:'encabezado'});
+			getpiepaginaData();
+			getdataintro();
 			return 2;
 		break;
 		case 'soSess':
 			encabezado({accion:'encabezado'});
+			getpiepaginaData();
+			getdataintro();
 			return 3;
 		break;
 		case 'ltend':
@@ -86,4 +92,21 @@ var timeS;
 function getDataTime(){
 	clearTimeout(timeS);
 	timeS = setTimeout(function(){ve({accion:'ltend'});},n);
+}
+function getpiepaginaData(){
+  $.post('../../controlador/administrador/datacontroll.php',
+	 {accion:'piedepagina'},
+    function(data){
+      $('#footerlier').html(data);
+  });
+}
+function getdataintro(){
+  $('#fores').html('<div></div>');
+  $('#forms_d').html('<div></div>');
+  $('#tableS').html('<div></div>');
+    $.post('../../controlador/administrador/datacontroll.php',
+	 {accion:'contenidointro'},
+    function(data){
+      $('#contenidoIntro').html(data);
+  });
 }

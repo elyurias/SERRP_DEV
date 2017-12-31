@@ -1,6 +1,6 @@
 <?php
 	class accVista{
-		public function getEncabezado($data){
+		public function getEncabezado($data,$periodo){
 		    $cadena = "NULL";
 		    switch($data[0]['Itipo_usuario']){
 		        case 1:
@@ -21,16 +21,15 @@
 					<div class='row'>
 						<div class='col xl12 l12 m12 s12'>
 								<div class='grid-container'>
-									<div class='center-align row'>
+									<div class='row'>
 									<div class='col xl3 l3 m6 s12'>
 											<center>
-												<a href='index.html'>
-													<img id='logo' class='responsive-img center-align' src='../img/teschalogo.jpg'>
-												</a>
+												<img id='logo' class='responsive-img center-align' src='../img/teschalogo.jpg' onclick='getdataintro();'>
 											</center>
 										</div>
-										<div class='col xl7 l5 m6 s12 center-align'>
+										<div class='col xl7 l5 m6 s12'>
 											<h3 class='flow-text blue-text lighten-1'>Panel principal: ".$cadena."</h3>
+											<h7 class='blue-text lighten-1'>".$periodo[0]['periodoActivo']."</h7>
 										</div>
 										<div class='col xl2 l4 m12 s12 center-align'>
 											<a href='#' data-position='left' data-delay='50' data-tooltip='Menu de usuario' data-activates='slide-out' id='menu' class='button-collapse tooltipped waves-effect waves-light btn btn-floating green'><i class='material-icons'>menu</i></a>
@@ -76,6 +75,9 @@
 										<a><spaw class='white-text email'>Correo: ".$data[0]['Vcorreo_usuario']."</spaw></a>
 									</div>
 								</li>
+								<li>
+								      <a href='#' id='modgeneracion'>Periodo de RP</a>
+								</li>
                                 <li class='no-padding'>
           							<ul class='collapsible collapsible-accordion'>
             							<li class='bold'><a class='collapsible-header  waves-effect waves-teal'>Registro de usuarios</a>
@@ -96,7 +98,10 @@
            					 		</ul>
            					 	</li>
                                 <li>
-									<a href='#'>Estadística</a>
+									<a href='#' onclick='getformularioData();'>Estadística</a>
+								</li>
+								<li>
+								      <a href='#' id='basedata'>Base de datos</a>
 								</li>
 								<li>
 									<div class='divider'></div>
@@ -159,8 +164,18 @@
 			}
 			return $med;
 		}
-	    public function getPiePagina($modo,$detalle){
-	
-		}
+public function getPiePagina($modo,$detalle){
+$dataMog = <<<EOT
+  <footer class="page-footer blue lighten-3">
+    <div class="footer-copyright">
+      <div class="container">
+        <span>Copyright � 2018 <a class="black-text text-lighten-4" href="http://www.tescha.com" target="_blank">Tescha</a> All rights reserved.</span>
+        <span class="right"> Dise;ado y desarrollado por <a class="black-text text-lighten-4" href="#">Tescha ISC 4101</a></span>
+        </div>
+    </div>
+  </footer>
+EOT;
+return $dataMog;
+}
 	}
 ?>

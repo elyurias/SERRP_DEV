@@ -54,7 +54,7 @@
 		    $resal = $bo->setUsuario(array($obj->DNI,$obj->nombre,$obj->paterno,$obj->materno,$obj->email,$obj->tel1,$obj->tel2,$obj->estado,$obj->especialidad,$obj->sexo,$obj->tipo,$obj->limite));
 		break;
         case 'actualizar':
-       		$obj->DNI = $_REQUEST['id'];
+		    $obj->DNI = $_REQUEST['id'];
 		    $obj->nombre = $_REQUEST['nombre'];
 		    $obj->paterno = $_REQUEST['paterno'];
 		    $obj->materno = $_REQUEST['materno'];
@@ -79,6 +79,15 @@
 		break;
 		case 'getgen':
 			$resal = $bo->getDataGeneracion();
+		break;
+		case 'Festadistica':
+		    $resal = $bo->getFormularioEstadistica();
+		break;
+		case 'piedepagina':
+		    $resal = $bo->getPiedePagina();
+		break;
+		case 'contenidointro':
+		    $resal = $bo->getContenidoIntro();
 		break;
 	}
 	print($resal);

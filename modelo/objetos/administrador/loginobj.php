@@ -22,5 +22,18 @@
 				return null;
 			}
 		}
+		public function returnDataUpdUsuarioArray(){
+		    return array(
+			$this->nombre, 
+			$this->paterno,
+			$this->materno,
+			$this->email, 
+			$this->tel1, 
+			$this->tel2,
+			$this->especialidad,
+			$this->sexo,
+			$this->DNI
+		    );
+		}
 	}
 ?>

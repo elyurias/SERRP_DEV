@@ -4,23 +4,27 @@
 	require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/modelo/dao/administrador/regs.php";
 	require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/vista/vistashtml/administrador/datauserlib.php";
 	require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/vista/vistashtml/administrador/formularios.php";
+	require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/vista/vistashtml/administrador/msgModal.php";
 	class boacciones{
 		private $vista;
 		private $vistaT;
 		private $vistaF;
 		private $dao;
 		private $tablaA;
+		private $mensajes;
 		function __construct(){
 			$this->vista = new accVista();
 			$this->vistaT = new getContenidoAdmin();
 			$this->vistaF = new accFormularios();
 			$this->dao = new daousuario(); //nueva instancia
 			$this->tablaA = new daoregs();
+			$this->mensajes = new msgModal();
 		}
 		function getEncabezadoData($modulo){
+			$periodoAct = $this->getPeriodoActivoLinea();
 			$encabezado = $this->dao->getDataUsuario($modulo);
 			$pdata = $this->dao->getDataUsuario($modulo);
-			$vencabezado = $this->vista->getEncabezado($encabezado);
+			$vencabezado = $this->vista->getEncabezado($encabezado,$periodoAct);
 			return $vencabezado;
 		}
 		function getAsesorTData($gen){
@@ -80,19 +84,41 @@
           	$vf = $this->vistaF->getRegistroUsuarioAdmn(2,$especialidad,1,$dataUsuario);
 			return $vf;
 		}
-      	function modUsuario($modClass){
-          
-        }
+		function modUsuario($modClass){
+		   $datav = $this->tablaA->setDataUsuario($modClass->returnDataUpdUsuarioArray());
+		   $estadoResultadoActualizar = $datav[0]['statusActualiza'];
+		   if($estadoResultadoActualizar == 0){
+		      return $this->mensajes->getModalMsg('Usuario actualizado','Los campos de datos del usuario, se han actualizado');
+		   }else{
+		      return $this->mensajes->getModalMsg('Usuario actualizado','El usuario no existe');
+		   }
+		}
       	// Apartado de actualizacion (&actualiza)
 		function setUsuario($modulo){
 		    $regtst = $this->tablaA->setUsuario($modulo);
 		    $vf = $this->vistaF->getMsgEstadoRegistro($regtst[0]);
 		    return $vf;
 		}
-      	function getPeriodo(){
-            $regtst = $this->tablaA->isPg();
-          	$vf = $this->vistaF->isPPeriodo($regtst[0]);
-          	return $vf;
-        }
+		function getPeriodo(){
+		    $regtst = $this->tablaA->isPg();
+		    $vf = $this->vistaF->isPPeriodo($regtst[0]);
+		    return $vf;
+		}
+		function getPeriodoActivoLinea(){
+			$postLin = $this->dao->getPeriodoActivo();
+			return $postLin;
+		}
+		function getFormularioEstadistica(){
+		    $postData = $this->vistaT->getFormParamEstadistica();
+		    return $postData;
+		}
+		function getPiedePagina(){
+		    $postData = $this->vista->getPiePagina(array(),array());
+		    return $postData;
+		}
+		function getContenidoIntro(){
+		    $postData = $this->vistaT->getInfoIntro();
+		    return $postData;
+		}
 	}
 ?>

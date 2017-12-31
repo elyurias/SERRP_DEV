@@ -75,7 +75,10 @@
                     $('#formValidate').serialize(),
                     function(data){
                         $("#msgtos").html(data);
-                        console.log(data);
+			$('#modal1').modal();
+			$('#modal1').modal('open');
+			$('#modal3').modal('close');
+			getTablaDataJS(datav,1);
                     }
             );
         }

@@ -30,7 +30,8 @@ function getgeneracion(inicio,tipo){
         }
     ).done(function() {
     	getTablaDataJS(tipo,1);
-  	});
+    });
+    $('#contenidoIntro').html('<div></div>');
 }
 function getTablaDataJS(tipo,part){
   var cadenaLol = "<div class='indeterminate'></div>";
@@ -41,6 +42,7 @@ function getTablaDataJS(tipo,part){
   }else if(tipo == 2){
     docTD = {accion:'tablaalumno',parte:part,gen:$('#idgen').val()};
   }else if(tipo == 3){
+    limpiarCamposHTML('#fores');
     docTD = {accion:'tablaadmin',parte:part,gen:$('#idgen').val()};
   }
   $.post(
@@ -48,6 +50,7 @@ function getTablaDataJS(tipo,part){
     docTD,
     function(data){
       $('.progress').html('<div class="complete"></div>');
+      $('#contenidoIntro').html('<div></div>');
       $('#tableS').html(data);
     }
   );
@@ -138,4 +141,29 @@ function qrData(id){
     image: null
     });
 	$('#modal1').modal('open');
+}
+function limpiarCamposHTML(identificador){
+  $(identificador).html('<div></div>');
+}
+function rellenarCampoHTML(identificador,valor){
+  $(identificador).html(valor);
+}
+function getformularioData(){
+  limpiarCamposHTML('#fores');
+  limpiarCamposHTML('#forms_d');
+  limpiarCamposHTML('#tableS');
+  $.post('../../controlador/administrador/datacontroll.php',
+	 {accion:'Festadistica'},
+    function(data){
+      $('#contenidoIntro').html('<div></div>');
+      rellenarCampoHTML('#tableS',data);
+  });
+}
+function estadisticaData(nivelGenero,campoArea){
+  $.post('../../controlador/administrador/datacontroll.php',
+	 {accion:'estadistica',genero:nivelGenero,area:campoArea},
+    function(data){
+      $('#contenidoIntro').html('<div></div>');
+      rellenarCampoHTML('#tableS',data);
+  });
 }

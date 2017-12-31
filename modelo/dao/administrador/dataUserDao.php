@@ -16,5 +16,9 @@
 			$pR = conexion::getArraypP(adminABC::sqlGetData(), $datosArray);
 			return $pR;
 		}
+		function getPeriodoActivo(){
+			$pP = conexion::getArraypP(adminABC::sqlGetPeriodoActivo(),array());
+			return $pP;
+		}
 	}
 ?>

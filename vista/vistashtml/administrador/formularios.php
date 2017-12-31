@@ -127,6 +127,7 @@
              		 $cadenaConfDNI = "<div class='col s12 m3 l3 xl3'>
 						<div class='card-panel hoverable'>
 							<label>ID: ".$DNIF."</label> 
+							<input type='hidden' name='id' value='".$DNIF."' required>
                             <input type='hidden' name='id_usuario'>
 						</div>
 					</div>";
