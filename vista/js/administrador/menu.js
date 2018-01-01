@@ -53,14 +53,14 @@ function menu(data){
 			return 3;
 		break;
 		case 'ltend':
-			$('#msgData').html("<div id='modal1' class='modal modal-fix-footer'><div class='modal-content'><h4>Mensaje del Sistema</h4><p>Sesion expirada</p></div></div>");
+			$('#msgData').html("<div id='modal1' class='modal modal-fix-footer'><div class='modal-content'><h4>Mensaje del Sistema</h4><p>Tu sesi&oacute;n ha expirado</p></div></div>");
 			$('#modal1').modal();
 			$('#modal1').modal('open');
 			res_url();
 			return 4;
 		break;
 		case 'logout':
-			$('#msgData').html("<div id='modal1' class='modal modal-fix-footer'><div class='modal-content'><h4>Mensaje del Sistema</h4><p>Sesion cerrada</p></div></div>");
+			$('#msgData').html("<div id='modal1' class='modal modal-fix-footer'><div class='modal-content'><h4>Mensaje del Sistema</h4><p>Sesi&oacute;n cerrada</p></div></div>");
 			$('#modal1').modal();
 			$('#modal1').modal('open');
 			res_url();
@@ -87,7 +87,7 @@ function getParam(){
 		return data;
 	}
 }
-var n = 300000;
+var n = 300000;				//Asignacion de caducidad de tiempo de sesiones, esta variable esta delimitada a 5 minutos
 var timeS;
 function getDataTime(){
 	clearTimeout(timeS);

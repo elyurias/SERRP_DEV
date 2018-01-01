@@ -28,13 +28,14 @@
 											</center>
 										</div>
 										<div class='col xl7 l5 m6 s12'>
-											<h3 class='flow-text blue-text lighten-1'>Panel principal: ".$cadena."</h3>
+											<h3 class='flow-text blue-text lighten-1'>Sistema de Entrega y Revision de Avances de Residencias Profesionales.</h3>
+											<h6 class='flow-text blue-text lighten-1'>Panel principal: ".$cadena."</h6>
 											<h7 class='blue-text lighten-1'>".$periodo[0]['periodoActivo']."</h7>
 										</div>
 										<div class='col xl2 l4 m12 s12 center-align'>
-											<a href='#' data-position='left' data-delay='50' data-tooltip='Menu de usuario' data-activates='slide-out' id='menu' class='button-collapse tooltipped waves-effect waves-light btn btn-floating green'><i class='material-icons'>menu</i></a>
-											<a href='#' data-position='left' data-delay='50' data-tooltip='Salir del sistema' onclick='closeSession();' class='rm_dataSalir waves-effect tooltipped waves-light btn btn-floating red'><i class='material-icons'>exit_to_app</i></a>
-   				  							<script>
+											<a href='#' data-position='left' data-delay='50' data-tooltip='Men&uacute; de usuario' data-activates='slide-out' id='menu' class='button-collapse tooltipped valign-wrapper waves-effect waves-light btn btn-floating green'><i class='material-icons'>menu</i></a>
+											<a href='#' data-position='left' data-delay='50' data-tooltip='Salir del sistema' onclick='closeSession();' class='rm_dataSalir waves-effect tooltipped waves-light valign-wrapper btn btn-floating red'><i class='material-icons'>exit_to_app</i></a>
+   				  				<script>
                     							$(document).ready(function(){
                         							$('#menu').tooltip({delay: 50});
                         						});
@@ -50,7 +51,7 @@
 						</div>
 					</div>
 					<div class='row'>
-						<div class='col s12 blue lighten-3'><br></div>
+						<div class='col s12 blue lighten-3'><div class='divider'></div></div>
 					</div>
 					<script>
 						 $('.button-collapse').sideNav();
@@ -166,11 +167,11 @@
 		}
 public function getPiePagina($modo,$detalle){
 $dataMog = <<<EOT
-  <footer class="page-footer blue lighten-3">
+  <footer class="page-footer blue lighten-4">
     <div class="footer-copyright">
       <div class="container">
-        <span>Copyright © 2018 <a class="black-text text-lighten-4" href="http://www.tescha.com" target="_blank">Tescha</a> All rights reserved.</span>
-        <span class="right"> Dise;ado y desarrollado por <a class="black-text text-lighten-4" href="#">Tescha ISC 4101</a></span>
+        <span class="black-text text-lighten-4">TESCHA 2018 <a class="black-text text-lighten-4" href="http://www.tescha.com" target="_blank"> Tescha</a> SERARP</span>
+        <span class="right black-text text-lighten-4"> Dise&ntilde;ado y desarrollado por <a class="black-text text-lighten-4" href="#">Tescha Ingenier&iacute;a en Sistemas Computacionales, Grupo 4851</a></span>
         </div>
     </div>
   </footer>

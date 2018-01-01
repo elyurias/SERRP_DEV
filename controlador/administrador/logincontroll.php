@@ -24,11 +24,11 @@
 					$formulario->DNI = $_REQUEST['DNI'];
 					$r = $bo->consultaSession($formulario);
 					$e = $bo->consultaStatus($formulario);
-					if($r == 'noRegs'){
-							$resal = msgModal::getErrorMsg('Usuario no registrado, pongase en contacto con el administrador');
+					if($r[0]['tipo'] == -1){
+						$resal = msgModal::getErrorMsg('Usuario no registrado, p&oacute;ngase en contacto con el administrador');
 					}else{
 						if(!$e){
-							$resal = msgModal::getErrorMsg('Usuario no activo, pongase en contacto con el administrador');
+							$resal = msgModal::getErrorMsg('Usuario no activo, p&oacute;ngase en contacto con el administrador');
 						}else{
 							$se->setDNI($_REQUEST['DNI']);
 							$se->setTipo($r[0]['tipo']);
@@ -36,7 +36,7 @@
 						}
 					}
 				}else{
-					$resal = msgModal::getErrorMsg('Usuario no valido, pongase en contacto con el administrador');
+					$resal = msgModal::getErrorMsg('Usuario no valido, p&oacute;ngase en contacto con el administrador');
 				}
 			}
 		break;

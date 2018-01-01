@@ -218,21 +218,25 @@ return $data;
     public function getInfoIntro(){
       $dataS = <<<EOT
       <h5>Residencia Profesional</h5>
-      <p>Es una estrategia educativa con valor curricular que permite al estudiante, a&uacute;n estando en proceso de formación, incorporarse profesionalmente en el sector productivo de bienes y/o servicios, a través de la aplicación práctica de un modelo o el desarrollo de un proyecto definido de trabajo profesional, que le permitan convertir teorías en prácticas y le proporcionen experiencia real, asesorado tanto por profesores del Tecnológico como por el personal de la Empresa o Institución donde se desarrolle la Residencia.</p>
+      <p>Es una estrategia educativa con valor curricular que permite al estudiante, a&uacute;n 
+      estando en proceso de formaci&oacute;n, incorporarse profesionalmente en el sector productivo 
+      de bienes y/o servicios, a trav&eacute;s de la aplicaci&oacute;n pr&aacute;ctica de un modelo o el desarrollo de un proyecto
+      definido de trabajo profesional, que le permitan convertir teor&iacute;as en pr&aacute;cticas y le proporcionen experiencia real,
+      asesorado tanto por profesores del Tecnol&oacute;gico como por el personal de la Empresa o Instituci&oacute;n donde se desarrolle la Residencia.</p>
       <p>Beneficios que obtienen los alumnos con las Residencias Profesionales:</p>
       <p>
 <li>Retroalimentar y desarrollar conocimientos al participar en un proceso de aprendizaje/trabajo en que se aplican los conocimientos a la vez que se adquieren experiencias</li>
-<li>Interactuar con profesionistas experimentados de los que se va a aprender más.</li>
-<li>Conocer y manejar tecnología, métodos, sistemas y procedimientos de trabajos actualizados y acordes con su profesión.</li>
-<li>Ser un profesionista competitivo, identificado con la realidad y la problemática a la que se tendrá que enfrentar.</li>
-<li>Disponer de una alternativa más para obtener el título profesional.</li>
+<li>Interactuar con profesionistas experimentados de los que se va a aprender m&aacute;s.</li>
+<li>Conocer y manejar tecnolog&iacute;a, m&eacute;todos, sistemas y procedimientos de trabajos actualizados y acordes con su profesi&oacute;n.</li>
+<li>Ser un profesionista competitivo, identificado con la realidad y la problem&aacute;tica a la que se tendr&aacute; que enfrentar.</li>
+<li>Disponer de una alternativa m&aacute;s para obtener el t&iacute;tulo profesional.</li>
       </p>
       <p>
       Requisitos para realizar las Residencias Profesionales:
-<li>Haber aprobado el 80% de los créditos de su carrera.</li>
-<li>Estar inscrito actualmente en el Instituto Haber seleccionado su tema de proyecto y que éste debidamente avalado por la academia.</li>
-<li>Disponer de constancia de su situación académica emitida por el Departamento de Control Escolar.</li>
-<legend>Nota: Es indispensable que la Academia autorice el Anteproyecto de lo contrario no podrán iniciar las Residencias Profesionales.</legend>
+<li>Haber aprobado el 80% de los cr&eacute;ditos de su carrera.</li>
+<li>Estar inscrito actualmente en el Instituto Haber seleccionado su tema de proyecto y que &eacute;ste debidamente avalado por la academia.</li>
+<li>Disponer de constancia de su situaci&oacute;n acad&eacute;mica emitida por el Departamento de Control Escolar.</li>
+<legend>Nota: Es indispensable que la Academia autorice el Anteproyecto de lo contrario no podr&aacute;n iniciar las Residencias Profesionales.</legend>
       </p>
 EOT;
       return $dataS;

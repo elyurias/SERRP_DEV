@@ -10,11 +10,7 @@
 		}
 		function consultaSession($modulo){
 			$data = $this->dao->getSessionAdministrador($modulo);
-			if($data[0]['tipo'] == -1){
-				return 'noRegs';
-			}else{
-				return $data;
-			}
+			return $data;
 		}
 		function consultaStatus($modulo){
 			$data = $this->dao->getSessionStatus($modulo);
