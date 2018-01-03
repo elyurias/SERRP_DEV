@@ -252,7 +252,42 @@ EOT;
       }
       $label.= "'".$modulo[$i]['Vnombre_usuario']." ".$modulo[$i]['Vpaterno_usuario']." ".$modulo[$i]['Vmaterno_usuario']."']";
       $data.= "'".$modulo[SIZEOF($modulo)-1]['numSolicitud']."']";
-      $cadenalid = <<<EOT
+      $cadenalid = $this->getCadenaGrafico($label,$titulo,$data,sizeof($modulo));
+      return $cadenalid;
+    }
+    public function getGraficoPFinalizado($modulo,$dataTitulo){
+      /*return var_dump($postData);*/
+      $label = "[";
+      $data = "[";
+      for($i=0;$i<SIZEOF($modulo)-1;$i++) {
+      	$label.= "'Periodo: ".$modulo[$i]['Vnombre_cg']."',";
+	$data.= "'".$modulo[$i]['Contador']."',";
+      }
+      $label.= "'".$modulo[$i]['Vnombre_cg']."']";
+      $data.= "'".$modulo[SIZEOF($modulo)-1]['Contador']."']";
+      $cadenalid = $this->getCadenaGrafico($label,$dataTitulo,$data,sizeof($modulo));
+      return $cadenalid;    
+    }
+    public function getCadenaGrafico($label,$titulo,$data,$tamArrayList){
+    $colores = [
+		'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+    ];
+    $cadenaColors = '';
+    for($i=0;$i<$tamArrayList-1;$i++) {
+    	$cadenaColors.= "'".$colores[mt_rand(0, count($colores) - 1)]."',";
+    }
+    $cadenaColors.= "'".$colores[mt_rand(0, count($colores) - 1)]."'";
+$cadenalid = <<<EOT
+<style>
+canvas{
+  height:500px !important;
+}
+</style>
 <canvas id="ChartData" width="undefined" height="undefined"></canvas>
 <script>
 var ctx = document.getElementById("ChartData");
@@ -264,20 +299,7 @@ var ChartData = new Chart(ctx, {
             label: '$titulo',
             data: $data,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                $cadenaColors
             ],
             borderWidth: 1
         }]
@@ -289,12 +311,13 @@ var ChartData = new Chart(ctx, {
                     beginAtZero:true
                 }
             }]
-        }
+        },
+        responsive: true
     }
 });
 </script>
 EOT;
-      return $cadenalid;
+return $cadenalid;
     }
   }
 ?>

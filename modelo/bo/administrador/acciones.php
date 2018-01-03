@@ -139,22 +139,44 @@
 			case 1:
 			  if($modulo->generoGrafico == 1){
 			     $postData = $this->tablaA->getProfesoresAlumnosFinalGrap(1);
-			     $Vgrafico = var_dump($postData);
+			     $Vgrafico = $this->vistaT->getGraficoPFinalizado($postData,'# Alumnos finalizando');
 			  }
 			  if($modulo->generoGrafico == 2){
 			     $postData = $this->tablaA->getProfesoresAlumnosFinalGrap(3);
-			     $Vgrafico = var_dump($postData);
+			     $Vgrafico = $this->vistaT->getGraficoPFinalizado($postData,'# Alumnos finalizado');
 			  }
 			  if($modulo->generoGrafico == 3){
 			     $postData = $this->tablaA->getProfesoresAlumnosFinalGrap(4);
-			     $Vgrafico = var_dump($postData);
+			     $Vgrafico = $this->vistaT->getGraficoPFinalizado($postData,'# Alumnos finalizado');
 			  }
 		  	break;
 		  	case 2:
-			  return "WHERE Csexo_usuario = 'F'";
+			  if($modulo->generoGrafico == 1){
+			     $postData = $this->tablaA->getProfesoresAlumnosFinalGrap(2);
+			     $Vgrafico = $this->vistaT->getGraficoPFinalizado($postData,'# Alumnos finalizando');
+			  }
+			  if($modulo->generoGrafico == 2){
+			     $postData = $this->tablaA->getProfesoresAlumnosFinalGrap(5);
+			     $Vgrafico = $this->vistaT->getGraficoPFinalizado($postData,'# Alumnos finalizado');
+			  }
+			  if($modulo->generoGrafico == 3){
+			     $postData = $this->tablaA->getProfesoresAlumnosFinalGrap(6);
+			     $Vgrafico = $this->vistaT->getGraficoPFinalizado($postData,'# Alumnos finalizado');
+			  }
 		  	break;
 		  	case 3:
-			  return "WHERE Csexo_usuario = 'M'";
+			   if($modulo->generoGrafico == 1){
+			     $postData = $this->tablaA->getProfesoresAlumnosFinalGrap(7);
+			     $Vgrafico = $this->vistaT->getGraficoPFinalizado($postData,'# Alumnos');
+			  }
+			  if($modulo->generoGrafico == 2){
+			     $postData = $this->tablaA->getProfesoresAlumnosFinalGrap(8);
+			     $Vgrafico = $this->vistaT->getGraficoPFinalizado($postData,'# Alumnos');
+			  }
+			  if($modulo->generoGrafico == 3){
+			     $postData = $this->tablaA->getProfesoresAlumnosFinalGrap(9);
+			     $Vgrafico = $this->vistaT->getGraficoPFinalizado($postData,'# Alumnos');
+			  }
 		  	break;
 		  	case 4:
 			  $postData = $this->tablaA->getProfesoresSolicitudGrap($regulacionCampo);

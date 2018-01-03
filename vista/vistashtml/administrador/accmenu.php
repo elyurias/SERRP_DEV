@@ -22,17 +22,17 @@
 						<div class='col xl12 l12 m12 s12'>
 								<div class='grid-container'>
 									<div class='row'>
-									<div class='col xl3 l3 m6 s12'>
+										<div class='col xl3 l3 m5 s12'>
 											<center>
-												<img id='logo' class='responsive-img center-align' src='../img/teschalogo.jpg' onclick='getdataintro();'>
+												<img id='logo' class='center-align' width='80%' height='80%' src='../img/teschalogo.jpg' onclick='getdataintro();'>
 											</center>
 										</div>
-										<div class='col xl7 l5 m6 s12'>
-											<h3 class='flow-text blue-text lighten-1'>Sistema de Entrega y Revision de Avances de Residencias Profesionales.</h3>
-											<h6 class='flow-text blue-text lighten-1'>Panel principal: ".$cadena."</h6>
+										<div class='col xl7 l9 m7 s12'>
+											<h7 class='flow-text blue-text lighten-1'>Sistema de Entrega y Revision de Avances de Residencias Profesionales.</h7>
+											<h7 class='flow-text blue-text lighten-1'>Panel principal: ".$cadena."</h7><br>
 											<h7 class='blue-text lighten-1'>".$periodo[0]['periodoActivo']."</h7>
 										</div>
-										<div class='col xl2 l4 m12 s12 center-align'>
+										<div class='col xl2 l12 m12 s12 center-align'>
 											<a href='#' data-position='left' data-delay='50' data-tooltip='Men&uacute; de usuario' data-activates='slide-out' id='menu' class='button-collapse tooltipped valign-wrapper waves-effect waves-light btn btn-floating green'><i class='material-icons'>menu</i></a>
 											<a href='#' data-position='left' data-delay='50' data-tooltip='Salir del sistema' onclick='closeSession();' class='rm_dataSalir waves-effect tooltipped waves-light valign-wrapper btn btn-floating red'><i class='material-icons'>exit_to_app</i></a>
    				  				<script>

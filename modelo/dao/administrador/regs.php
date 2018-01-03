@@ -79,5 +79,25 @@
 	    }
 	    return $pRE;
 	 }
+	 function GETrespaldoDB(){
+	    $pRE = conexion::respaldoDB();
+	    return $pRE;
+	 }
+	 function GETlogs_enableTable(){
+	    $pRE = conexion::logs_enableTable();
+	    return $pRE;
+	 }
+	 function GETlogs_disableTable(){
+	    $pRE = conexion::logs_disableTable();
+	    return $pRE;
+	 }
+	 function GETlogs_show(){
+	    $pRE = conexion::logs_show();
+	    return $pRE;
+	 }
+	 function GETlogs_truncate(){
+	    $pRE = conexion::logs_truncate();
+	    return $pRE;
+	 }
 	}
 ?>

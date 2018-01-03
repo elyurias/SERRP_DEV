@@ -43,6 +43,8 @@
 	  return "SELECT * FROM get_profesores_alm_finaliza ".$opciones.";";
         }
         
+        
+        
         static function sqlGetFin4MesProfesor(){
 	  return "SELECT * FROM get_alumnos_y_docentes_4_meses_finalizado;";
         }
