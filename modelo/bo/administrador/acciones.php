@@ -137,7 +137,18 @@
 		  $Vgrafico = '';
 		  switch($modulo->campoGrafico){
 			case 1:
-			  return  '';
+			  if($modulo->generoGrafico == 1){
+			     $postData = $this->tablaA->getProfesoresAlumnosFinalGrap(1);
+			     $Vgrafico = var_dump($postData);
+			  }
+			  if($modulo->generoGrafico == 2){
+			     $postData = $this->tablaA->getProfesoresAlumnosFinalGrap(3);
+			     $Vgrafico = var_dump($postData);
+			  }
+			  if($modulo->generoGrafico == 3){
+			     $postData = $this->tablaA->getProfesoresAlumnosFinalGrap(4);
+			     $Vgrafico = var_dump($postData);
+			  }
 		  	break;
 		  	case 2:
 			  return "WHERE Csexo_usuario = 'F'";

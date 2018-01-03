@@ -20,7 +20,7 @@ class conexion {
 	}
     public static function respaldoDB(){
 	$archivoRec = self::$bd.".sql";
-	$command = "mysqldump --host=".self::$host." --user=".self::$user." --password=".self::$pwd." -R -c --add-drop-table --add-drop-database --opt ".self::$bd." > ".$archivoRec."";
+	$command = "mysqldump --host=".self::$host." --user=".self::$user." --password=".self::$pwd." --add-drop-database --events --routines --triggers --databases ".self::$bd." > ".$archivoRec."";
 	system($command,$output);
 	return $output;
     }

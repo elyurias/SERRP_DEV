@@ -42,5 +42,36 @@
         static function sqlGetFinProfesor($opciones){
 	  return "SELECT * FROM get_profesores_alm_finaliza ".$opciones.";";
         }
-	}
+        
+        static function sqlGetFin4MesProfesor(){
+	  return "SELECT * FROM get_alumnos_y_docentes_4_meses_finalizado;";
+        }
+        static function sqlGetFin6MesProfesor(){
+	  return "SELECT * FROM get_alumnos_y_docentes_6_meses_finalizado;";
+        }
+        
+        static function sqlGetFin4MesProfesorMasculino(){
+	  return "SELECT * FROM get_alumnos_y_docentes_4_meses_finalizado_Masculino;";
+        }
+        static function sqlGetFin4MesProfesorFemenino(){
+	  return "SELECT * FROM get_alumnos_y_docentes_4_meses_finalizado_Femenino;";
+        }
+        
+        static function sqlGetFin6MesProfesorMasculino(){
+	  return "SELECT * FROM get_alumnos_y_docentes_6_meses_finalizado_Masculino;";
+        }
+        static function sqlGetFin6MesProfesorFemenino(){
+	  return "SELECT * FROM get_alumnos_y_docentes_6_meses_finalizado_Femenino;";
+        }
+        /*
+        SELECT * FROM get_alumnos_y_docentes_4_meses_finalizado;
+	SELECT * FROM get_alumnos_y_docentes_6_meses_finalizado;
+
+	SELECT * FROM get_alumnos_y_docentes_4_meses_finalizado_Masculino;
+	SELECT * FROM get_alumnos_y_docentes_4_meses_finalizado_Femenino;
+
+	SELECT * FROM get_alumnos_y_docentes_6_meses_finalizado_Masculino;
+	SELECT * FROM get_alumnos_y_docentes_6_meses_finalizado_Femenino;
+        */
+    }
 ?>

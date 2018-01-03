@@ -55,5 +55,29 @@
 	    $pRE = conexion::getArraypP(adminABC::sqlGetFinProfesor($opciones),array());
 	    return $pRE;
 	 }
+	 function getProfesoresAlumnosFinalGrap($opcion){
+	  $pRE = '';
+	    switch ($opcion) {
+	    	case 1:
+		  $pRE = conexion::getArraypP(adminABC::sqlGetFin4MesProfesor(),array());
+	    	break;
+	    	case 2:
+		  $pRE = conexion::getArraypP(adminABC::sqlGetFin6MesProfesor(),array());
+	    	break;
+	    	case 3:
+		  $pRE = conexion::getArraypP(adminABC::sqlGetFin4MesProfesorMasculino(),array());
+	    	break;
+	    	case 4:
+		  $pRE = conexion::getArraypP(adminABC::sqlGetFin4MesProfesorFemenino(),array());
+	    	break;
+	    	case 5:
+		  $pRE = conexion::getArraypP(adminABC::sqlGetFin6MesProfesorMasculino(),array());
+	    	break;
+	    	case 6:
+		  $pRE = conexion::getArraypP(adminABC::sqlGetFin6MesProfesorFemenino(),array());
+	    	break;
+	    }
+	    return $pRE;
+	 }
 	}
 ?>
