@@ -76,7 +76,7 @@ CREATE TABLE `asesor_alumno` (
   KEY `fk_asesor_alumno_1_idx` (`id_alumno`),
   CONSTRAINT `asesor_alumno_ibfk_2` FOREIGN KEY (`id_asesor`) REFERENCES `asesor_data` (`id_asesor`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_asesor_alumno_1` FOREIGN KEY (`id_alumno`) REFERENCES `alumno_data` (`id_alumno`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,7 +85,7 @@ CREATE TABLE `asesor_alumno` (
 
 LOCK TABLES `asesor_alumno` WRITE;
 /*!40000 ALTER TABLE `asesor_alumno` DISABLE KEYS */;
-INSERT INTO `asesor_alumno` VALUES (1,6,NULL,'2017-06-01','2017-08-01',100,1,1,6),(2,6,NULL,'2017-06-01','2017-08-01',100,1,2,6),(3,1,NULL,NULL,NULL,100,1,3,4),(4,6,NULL,'2017-06-01','2017-12-01',100,1,4,5),(5,1,NULL,NULL,NULL,100,1,5,6),(6,0,NULL,NULL,NULL,100,1,5,6),(10,6,NULL,'2017-06-01','2017-12-01',100,1,12,10),(11,3,NULL,'2017-06-01','2017-12-01',100,1,13,10),(12,3,NULL,'2017-06-01','2017-08-01',100,1,14,9),(16,6,'2018-01-02','2017-06-08','2018-01-01',0,1,62,27),(17,6,'2018-01-02','2017-01-01','2017-03-01',100,1,18,27),(18,9,'2017-06-01','2017-06-01','2017-10-01',12,1,90,29),(19,9,'2017-06-01','2017-06-01','2017-10-01',15,1,91,29),(20,9,'2017-06-01','2017-06-01','2017-10-01',18,1,92,29),(21,9,'2017-06-01','2017-06-01','2017-10-01',12,1,93,29),(22,9,'2017-06-01','2017-06-01','2017-10-01',66,1,94,29);
+INSERT INTO `asesor_alumno` VALUES (1,6,NULL,'2017-06-01','2017-08-01',100,1,1,6),(2,6,NULL,'2017-06-01','2017-08-01',100,1,2,6),(3,1,NULL,NULL,NULL,100,1,3,4),(4,6,NULL,'2017-06-01','2017-12-01',100,1,4,5),(5,1,NULL,NULL,NULL,100,1,5,6),(6,0,NULL,NULL,NULL,100,1,5,6),(10,6,NULL,'2017-06-01','2017-12-01',100,1,12,10),(11,3,NULL,'2017-06-01','2017-12-01',100,1,13,10),(12,3,NULL,'2017-06-01','2017-08-01',100,1,14,9),(16,6,'2018-01-02','2017-06-08','2018-01-01',0,1,62,27),(17,6,'2018-01-02','2017-01-01','2017-03-01',100,1,18,27),(18,9,'2017-06-01','2017-06-01','2017-10-01',12,1,90,29),(19,9,'2017-06-01','2017-06-01','2017-10-01',15,1,91,29),(20,9,'2017-06-01','2017-06-01','2017-10-01',18,1,92,29),(21,9,'2017-06-01','2017-06-01','2017-10-01',12,1,93,29),(22,9,'2017-06-01','2017-06-01','2017-10-01',66,1,94,29),(23,9,'2017-06-01','2017-06-01','2017-10-01',23,1,126,29);
 /*!40000 ALTER TABLE `asesor_alumno` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -370,6 +370,48 @@ DROP TABLE IF EXISTS `get_alumnos_y_docentes_6_meses_finalizado_Masculino`;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 /*!50001 CREATE TABLE `get_alumnos_y_docentes_6_meses_finalizado_Masculino` (
+  `Vnombre_cg` tinyint NOT NULL,
+  `Contador` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `get_no_finalizo_data`
+--
+
+DROP TABLE IF EXISTS `get_no_finalizo_data`;
+/*!50001 DROP VIEW IF EXISTS `get_no_finalizo_data`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `get_no_finalizo_data` (
+  `Vnombre_cg` tinyint NOT NULL,
+  `Contador` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `get_no_finalizo_data_femenino`
+--
+
+DROP TABLE IF EXISTS `get_no_finalizo_data_femenino`;
+/*!50001 DROP VIEW IF EXISTS `get_no_finalizo_data_femenino`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `get_no_finalizo_data_femenino` (
+  `Vnombre_cg` tinyint NOT NULL,
+  `Contador` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `get_no_finalizo_data_masculino`
+--
+
+DROP TABLE IF EXISTS `get_no_finalizo_data_masculino`;
+/*!50001 DROP VIEW IF EXISTS `get_no_finalizo_data_masculino`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `get_no_finalizo_data_masculino` (
   `Vnombre_cg` tinyint NOT NULL,
   `Contador` tinyint NOT NULL
 ) ENGINE=MyISAM */;
@@ -1072,6 +1114,63 @@ USE `serrp_dev`;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `get_no_finalizo_data`
+--
+
+/*!50001 DROP TABLE IF EXISTS `get_no_finalizo_data`*/;
+/*!50001 DROP VIEW IF EXISTS `get_no_finalizo_data`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `get_no_finalizo_data` AS select `cg`.`Vnombre_cg` AS `Vnombre_cg`,count(`cg`.`Vnombre_cg`) AS `Contador` from (((`asesor_alumno` `aa` join `alumno_data` `ad` on((`aa`.`id_alumno` = `ad`.`id_alumno`))) join `cgeneracion` `cg` on((`ad`.`id_cg` = `cg`.`id_cg`))) join `usuario` `u` on((`u`.`VidentiQR_usuario` = `ad`.`id_usuario`))) where (`aa`.`Iestado_pa` = 9) group by `cg`.`Vnombre_cg` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `get_no_finalizo_data_femenino`
+--
+
+/*!50001 DROP TABLE IF EXISTS `get_no_finalizo_data_femenino`*/;
+/*!50001 DROP VIEW IF EXISTS `get_no_finalizo_data_femenino`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `get_no_finalizo_data_femenino` AS select `cg`.`Vnombre_cg` AS `Vnombre_cg`,count(`cg`.`Vnombre_cg`) AS `Contador` from (((`asesor_alumno` `aa` join `alumno_data` `ad` on((`aa`.`id_alumno` = `ad`.`id_alumno`))) join `cgeneracion` `cg` on((`ad`.`id_cg` = `cg`.`id_cg`))) join `usuario` `u` on((`u`.`VidentiQR_usuario` = `ad`.`id_usuario`))) where ((`aa`.`Iestado_pa` = 9) and (`u`.`Csexo_usuario` = 'F')) group by `cg`.`Vnombre_cg` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `get_no_finalizo_data_masculino`
+--
+
+/*!50001 DROP TABLE IF EXISTS `get_no_finalizo_data_masculino`*/;
+/*!50001 DROP VIEW IF EXISTS `get_no_finalizo_data_masculino`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `get_no_finalizo_data_masculino` AS select `cg`.`Vnombre_cg` AS `Vnombre_cg`,count(`cg`.`Vnombre_cg`) AS `Contador` from (((`asesor_alumno` `aa` join `alumno_data` `ad` on((`aa`.`id_alumno` = `ad`.`id_alumno`))) join `cgeneracion` `cg` on((`ad`.`id_cg` = `cg`.`id_cg`))) join `usuario` `u` on((`u`.`VidentiQR_usuario` = `ad`.`id_usuario`))) where ((`aa`.`Iestado_pa` = 9) and (`u`.`Csexo_usuario` = 'M')) group by `cg`.`Vnombre_cg` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `get_profesores_alm_finaliza`
 --
 
@@ -1251,4 +1350,4 @@ USE `serrp_dev`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-03 17:15:15
+-- Dump completed on 2018-01-04  0:53:31
