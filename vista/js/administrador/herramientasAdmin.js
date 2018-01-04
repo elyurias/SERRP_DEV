@@ -225,3 +225,5 @@ function optdatalogs(tipo){
     }
   );
 }
+console.log('Por defecto, todos los registros están deshabilitados o escritos en archivos. El registro general de consultas y el registro lento de consultas también se pueden escribir en tablas especiales en la base de datos mysql.');
+

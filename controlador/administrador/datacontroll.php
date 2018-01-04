@@ -103,6 +103,18 @@
 		case 'respaldodebasededatos':
 		    $resal = $bo->crearRespaldoDB();
 		break;
+		case 'iniciarLogs':
+		    $resal = $bo->iniciarLogsDB();
+		break;
+		case 'detenerLogs':
+		    $resal = $bo->detenerLogsDB();
+		break;
+		case 'limpiarLogs':
+		    $resal = $bo->limpiarLogsDB();
+		break;
+		case 'mostrarLogs':
+		    $resal = $bo->mostrarLogsDB();
+		break;
 	}
 	print($resal);
 ?>

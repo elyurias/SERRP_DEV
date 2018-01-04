@@ -15,7 +15,7 @@
 		    }
 		    $med = "";
 			$med = "
-			<script src='../js/administrador/herramientasAdmin.js'>
+			<script src='../js/administrador/herramientasAdmin.js' charset='UTF-8'>
 			</script>
 			<div class='grid-container'>
 					<div class='row'>

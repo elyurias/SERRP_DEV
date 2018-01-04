@@ -201,5 +201,51 @@
 		    $formData = $this->tablaA->GETrespaldoDB();
 		    return $formData;
 		}
+		function iniciarLogsDB(){
+		    $formData = $this->tablaA->GETlogs_enableTable();
+		    return $this->mensajes->getModalMsg('Iniciando el registro de logs en MariaDB','
+		    La siguiente operaci&oacute;n habilitara las funciones necesarias para plasmar los logs en la base de datos, la tabla correspondiente sigue creciendo respecto a la cantidad de operaciones que se realizan en el sistema, se recomienda deshabilitarla, o en este caso detener el registro de procesos.
+		    <br>Por defecto, todos los registros est&aacute;n deshabilitados o escritos en archivos. El registro general de consultas y el registro lento de consultas tambi&eacute;n se pueden escribir en tablas especiales en la base de datos mysql.
+		    <script>
+		    $(document).ready(function(){
+		    $("#modal1").modal();
+		    $("#modal1").modal("open");
+		    });
+		    </script>
+		    ');
+		}
+		function detenerLogsDB(){
+		    $formData = $this->tablaA->GETlogs_disableTable();
+		    return $this->mensajes->getModalMsg('Deteniendo el registro de logs en MariaDB','
+		    La siguiente operaci&oacute;n detendra las funciones necesarias para plasmar los logs en la base de datos.
+		    <br>
+		    Por defecto, todos los registros est&aacute;n deshabilitados o escritos en archivos. El registro general de consultas y el registro lento de consultas tambi&eacute;n se pueden escribir en tablas especiales en la base de datos mysql.
+		    <script>
+		    $(document).ready(function(){
+		    $("#modal1").modal();
+		    $("#modal1").modal("open");
+		    });
+		    </script>
+		    ');
+		}
+		function limpiarLogsDB(){
+		    $formData = $this->tablaA->GETlogs_truncate();
+		    return $this->mensajes->getModalMsg('Limpiando el registro de logs en MariaDB','
+		    La siguiente operaci&oacute;n eliminara todos los registros de logs en la base de datos.
+		    <br>
+		    Por defecto, todos los registros est&aacute;n deshabilitados o escritos en archivos. El registro general de consultas y el registro lento de consultas tambi&eacute;n se pueden escribir en tablas especiales en la base de datos mysql.
+		    <script>
+		    $(document).ready(function(){
+		    $("#modal1").modal();
+		    $("#modal1").modal("open");
+		    });
+		    </script>
+		    ');
+		}
+		function mostrarLogsDB(){
+		    $formData = $this->tablaA->GETlogs_show();
+		    $dataRes = $this->vistaT->getTablaLogsData($formData);
+		    return $dataRes;
+		}
 	}
 ?>

@@ -30,14 +30,16 @@ class conexion {
     public static function logs_enableTable(){
 	$gl = self::getArraypP("SET GLOBAL log_output = 'TABLE';");
 	$gg = self::getArraypP("SET GLOBAL general_log = 'ON';");
+	//$sq = self::getArraypP("SET GLOBAL slow_query_log = 'ON';");
 	return $gg;
     }
     public static function logs_disableTable(){
 	$gg = self::getArraypP("SET GLOBAL general_log = 'OFF';");
+	//$sq = self::getArraypP("SET GLOBAL slow_query_log = 'OFF';");
 	return $gg;
     }
     public static function logs_show(){
-	$gg = self::getArraypP("SELECT * FROM mysql.general_log;");
+	$gg = self::getArraypP("SELECT * FROM mysql.general_log ORDER BY(general_log.event_time) DESC;");
 	return $gg;
     }
     public static function logs_truncate(){

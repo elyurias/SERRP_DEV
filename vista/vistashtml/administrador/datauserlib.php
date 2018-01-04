@@ -363,5 +363,45 @@ EOT;
 EOT;
       return $dataForm;
     }
+    function getTablaLogsData($regs){
+      $msg ="
+          <link rel='stylesheet' type='text/css' href='../js/datatable/aoi/datatables.min.css'/>
+          <script type='text/javascript' src='../js/datatable/aoi/datatables.min.js'></script>
+      <h5>Logs</h5>
+      <table id='regs' class='mdl-data-table responsive-table' cellspacing='0'>
+      <thead>
+        <tr>
+          <th>Tiempo de ejecuci&oacute;n del evento</th>
+          <th>Host de usuario</th>
+          <th>ID de procesor</th>
+          <th>Servidor ID</th>
+          <th>Tipo de comando</th>
+          <th>Descripci&oacute;n</th>
+        </tr>
+      </thead><tbody>
+";
+      foreach($regs as $row){
+        $msg.="
+	      <tr>
+                  <td>".$row['event_time']."</td>
+                  <td>".$row['user_host']."</td>
+                  <td>".$row['thread_id']."</td>
+                  <td>".$row['server_id']."</td>
+                  <td>".$row['command_type']."</td>
+                  <td>".$row['argument']."</td>
+              </tr>";
+      }
+      $msg.="
+      </tbody><table>
+      <script>
+        $(document).ready(function() {
+          $('#regs').DataTable( {
+	      'order': [[ 0, 'desc' ]]
+	  });
+        });
+      </script>
+";
+      return $msg;
+    }
   }
 ?>
