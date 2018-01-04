@@ -189,5 +189,17 @@
 		  }
 		  return $Vgrafico;
 		}
+		function getBaseDatosForm(){
+		    $formData = $this->vistaT->getformularioViewDB();
+		    return $formData;
+		}
+		function getBaseDatosLog(){
+		    $formData = $this->vistaT->getBaseDatosViewLog();
+		    return $formData;
+		}
+		function crearRespaldoDB(){
+		    $formData = $this->tablaA->GETrespaldoDB();
+		    return $formData;
+		}
 	}
 ?>

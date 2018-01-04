@@ -94,6 +94,15 @@
 		    $obj->campoGrafico = $_REQUEST['campo'];
 		    $resal = $bo->getGraficoPSolicitud($obj);
 		break;
+		case 'getformdatabase':
+		    $resal = $bo->getBaseDatosForm();
+		break;
+		case 'getlogdatabase':
+		    $resal = $bo->getBaseDatosLog();
+		break;
+		case 'respaldodebasededatos':
+		    $resal = $bo->crearRespaldoDB();
+		break;
 	}
 	print($resal);
 ?>

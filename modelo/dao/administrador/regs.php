@@ -76,6 +76,17 @@
 	    	case 6:
 		  $pRE = conexion::getArraypP(adminABC::sqlGetFin6MesProfesorFemenino(),array());
 	    	break;
+	    	
+	    	case 7:
+		  $pRE = conexion::getArraypP(adminABC::sqlGetNoFin(),array());
+	    	break;
+	    	case 8:
+		  $pRE = conexion::getArraypP(adminABC::sqlGetNoFinFemenino(),array());
+	    	break;
+	    	case 9:
+		  $pRE = conexion::getArraypP(adminABC::sqlGetNoFinMasculino(),array());
+	    	break;
+	    	
 	    }
 	    return $pRE;
 	 }

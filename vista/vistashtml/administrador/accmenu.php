@@ -76,9 +76,6 @@
 										<a><spaw class='white-text email'>Correo: ".$data[0]['Vcorreo_usuario']."</spaw></a>
 									</div>
 								</li>
-								<li>
-								      <a href='#' id='modgeneracion'>Periodo de RP</a>
-								</li>
                                 <li class='no-padding'>
           							<ul class='collapsible collapsible-accordion'>
             							<li class='bold'><a class='collapsible-header  waves-effect waves-teal'>Registro de usuarios</a>
@@ -97,12 +94,30 @@
               								</div>
            					 			</li>
            					 		</ul>
-           					 	</li>
-                                <li>
-									<a href='#' onclick='getformularioData();'>Estadística</a>
+								</li>
+								
+								<li class='no-padding'>
+								      <ul class='collapsibleDatabase collapsible-accordion'>
+									<li class='bold'>
+									  <a class='collapsible-header  waves-effect waves-teal'>Base de datos</a>
+									    <div class='collapsible-body'>
+									     <ul>
+										<li>
+										    <a  href='#' onclick='get_data_base(1);'>Respaldo</a>
+										</li>
+										<li>
+										    <a  href='#' onclick='get_data_base(2);'>Logs</a>
+										</li>
+									    </ul>
+									  </div>
+           					 			</li>
+								      </ul>
 								</li>
 								<li>
-								      <a href='#' id='basedata'>Base de datos</a>
+								      <a href='#' id='modgeneracion'>Periodo de RP</a>
+								</li>
+								<li>
+									<a href='#' onclick='getformularioData();'>Estadística</a>
 								</li>
 								<li>
 									<div class='divider'></div>
@@ -113,8 +128,8 @@
 							</ul>
                             <script>
             					$(document).ready(function(){
+							$('.collapsibleDatabase').collapsible();
             						$('.collapsible').collapsible();
-                                    //$('.collapsible2').collapsible();
             					});
             				</script>
                             ";

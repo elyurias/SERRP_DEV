@@ -176,3 +176,52 @@ function graficoData(){
     }
   );
 }
+function limpiarTodosLosCamposHTML(){
+  limpiarCamposHTML('#fores');
+  limpiarCamposHTML('#forms_d');
+  limpiarCamposHTML('#tableS');
+  limpiarCamposHTML('#contenidoIntro');
+}
+function get_data_base(tipo){
+  limpiarTodosLosCamposHTML();
+  var docOperacion = {accion:'exit'};
+  switch(tipo){
+    case 1:
+      docOperacion = {accion:'getformdatabase'};
+    break;
+    case 2:
+      docOperacion = {accion:'getlogdatabase'};
+    break;
+  }
+  $.post(
+    '../../controlador/administrador/datacontroll.php',
+    docOperacion,
+    function(data){
+      rellenarCampoHTML('#tableS',data);
+    }
+  );
+}
+function optdatalogs(tipo){
+  var docOperacion = {accion:'exit'};
+  switch(tipo){
+    case 1:
+      docOperacion = {accion:'iniciarLogs'};
+    break;
+    case 2:
+      docOperacion = {accion:'detenerLogs'};
+    break;
+    case 3:
+      docOperacion = {accion:'limpiarLogs'};
+    break;
+    case 4:
+      docOperacion = {accion:'mostrarLogs'};
+    break;
+  }
+  $.post(
+    '../../controlador/administrador/datacontroll.php',
+    docOperacion,
+    function(data){
+      rellenarCampoHTML('#tablaDataLogs',data);
+    }
+  );
+}

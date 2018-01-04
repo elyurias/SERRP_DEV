@@ -65,7 +65,21 @@
         static function sqlGetFin6MesProfesorFemenino(){
 	  return "SELECT * FROM get_alumnos_y_docentes_6_meses_finalizado_Femenino;";
         }
+        static function sqlGetNoFin(){
+	  return "SELECT * FROM get_no_finalizo_data;";
+        }
+        static function sqlGetNoFinFemenino(){
+	  return "SELECT * FROM get_no_finalizo_data_masculino;";
+        }
+        static function sqlGetNoFinMasculino(){
+	  return "SELECT * FROM get_no_finalizo_data_femenino;";
+        }
         /*
+        
+        SELECT * FROM get_no_finalizo_data;
+	SELECT * FROM get_no_finalizo_data_masculino;
+	SELECT * FROM get_no_finalizo_data_femenino;
+
         SELECT * FROM get_alumnos_y_docentes_4_meses_finalizado;
 	SELECT * FROM get_alumnos_y_docentes_6_meses_finalizado;
 

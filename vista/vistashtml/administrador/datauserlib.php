@@ -45,7 +45,7 @@
                     ".$valueDim."
                     <script>
                     	$(document).ready(function(){
-                        	$('#tol".$menuSrtm."ss').tooltip({delay: 50});
+			    $('#tol".$menuSrtm."ss').tooltip({delay: 50});
                             $('#tol".$menuSrtm."ssUpd').tooltip({delay: 50});
                             $('#tol".$menuSrtm."ssUpds').tooltip({delay: 50});
                         });
@@ -285,7 +285,7 @@ EOT;
 $cadenalid = <<<EOT
 <style>
 canvas{
-  height:500px !important;
+  height:300px !important;
 }
 </style>
 <canvas id="ChartData" width="undefined" height="undefined"></canvas>
@@ -318,6 +318,50 @@ var ChartData = new Chart(ctx, {
 </script>
 EOT;
 return $cadenalid;
+    }
+    function getformularioViewDB(){
+      $dataForm = <<<EOT
+      jfalsdkflksdfsdf
+EOT;
+      return $dataForm;
+    }
+    function getBaseDatosViewLog(){
+      $dataForm = <<<EOT
+      <div class='row center-align'>
+	<div class='col s12 m3'>
+	  <a onclick='optdatalogs(1);' id='iniciarLogs' class='center-align tooltipped waves-effect waves-light btn' data-position='top' data-delay='50' data-tooltip='Iniciar lectura de logs de MariaDB en el Servidor'>
+	    Iniciar logs
+	  </a>
+	</div>
+	<div class='col s12 m3'>
+	  <a onclick='optdatalogs(2);' id='detenerLogs' class='center-align tooltipped waves-effect waves-light btn' data-position='top' data-delay='50' data-tooltip='Detener lectura de logs de MariaDB en el Servidor'>
+	    Detener logs
+	  </a>
+	</div>
+	<div class='col s12 m3'>
+	  <a onclick='optdatalogs(3);' id='limpiarLogs' class='center-align tooltipped waves-effect waves-light btn' data-position='top' data-delay='50' data-tooltip='Limpiar logs de MariaDB en el Servidor'>
+	    Limpiar logs
+	  </a>
+	</div>
+	<div class='col s12 m3'>
+	  <a onclick='optdatalogs(4);' id='mostrarLogs' class='center-align tooltipped waves-effect waves-light btn' data-position='top' data-delay='50' data-tooltip='Mostrar logs de MariaDB en el Servidor'>
+	   Mostrar logs
+	  </a>
+	</div>
+      </div>
+      <div class='row'>
+	<div id='tablaDataLogs'></div>
+      </div>
+      <script>
+         $(document).ready(function(){
+	    $('#iniciarLogs').tooltip({delay: 50});
+	    $('#detenerLogs').tooltip({delay: 50});
+	    $('#limpiarLogs').tooltip({delay: 50});
+	    $('#mostrarLogs').tooltip({delay: 50});
+         });
+      </script>
+EOT;
+      return $dataForm;
     }
   }
 ?>
