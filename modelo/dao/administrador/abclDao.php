@@ -31,7 +31,7 @@
           return "SELECT * isperiodo_acc;";
         }
       	static function sqlSetDataUsuarioMod(){
-          return "SELECT mod_usuario(?, ?, ?, ?, ?, ?, ?, ?, ?) as statusActualiza;";
+          return "SELECT mod_usuario(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) as statusActualiza;";
         } 
         static function sqlGetPeriodoActivo(){
 	  return "SELECT get_periodo_actual() as periodoActivo;";
@@ -74,20 +74,14 @@
         static function sqlGetNoFinMasculino(){
 	  return "SELECT * FROM get_no_finalizo_data_femenino;";
         }
-        /*
-        
-        SELECT * FROM get_no_finalizo_data;
-	SELECT * FROM get_no_finalizo_data_masculino;
-	SELECT * FROM get_no_finalizo_data_femenino;
-
-        SELECT * FROM get_alumnos_y_docentes_4_meses_finalizado;
-	SELECT * FROM get_alumnos_y_docentes_6_meses_finalizado;
-
-	SELECT * FROM get_alumnos_y_docentes_4_meses_finalizado_Masculino;
-	SELECT * FROM get_alumnos_y_docentes_4_meses_finalizado_Femenino;
-
-	SELECT * FROM get_alumnos_y_docentes_6_meses_finalizado_Masculino;
-	SELECT * FROM get_alumnos_y_docentes_6_meses_finalizado_Femenino;
-        */
+        static function sqlSetLimitUser(){
+	  return "SELECT add_upd_periodo_actual_asesor(?, ?, ?, ?) as statusActualiza;";
+        }
+        static function sqlGetDocentePeriodo(){
+	  return "SELECT docente_periodo_actual(?) as statusActualiza;";
+        }
+        static function sqlGetAlumnoPeriodo(){
+	  return "SELECT alumno_periodo_actual(?) as statusActualiza;";
+        }
     }
 ?>

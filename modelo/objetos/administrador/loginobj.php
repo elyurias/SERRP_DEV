@@ -32,7 +32,8 @@
 			$this->tel2,
 			$this->especialidad,
 			$this->sexo,
-			$this->DNI
+			$this->DNI,
+			$this->estado
 		    );
 		}
 	}

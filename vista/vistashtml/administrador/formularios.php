@@ -66,8 +66,8 @@
 						    <div class='input-field'>
 							    <input type='number' id='maxmi' name='maxmi' value=".$maxminF." class='validate' required>
 							    <label for='maxmi' data-error='Se require un numero valido' data-success='Numero valido'>Limite de asesorados</label>
-						    </div>
-					    </div>
+				    </div>
+				</div>
 		            ";
 		            break;
 		        case 3:
@@ -120,11 +120,9 @@
           			$tel2F = $data[0]['VtelefonoH_usuario'];
           			$especialidadF = $data[0]['id_especialidad'];
           			$sexoF = $data[0]['Csexo_usuario'];
-		            $herrmatico = "actualizar";
-              		if($tipo == 2){
-		                $maxminF = $data[0]['Ilimite_asesor'];
-		            }
-             		 $cadenaConfDNI = "<div class='col s12 m3 l3 xl3'>
+          			$estadoF = $data[0]['Iestado_usuario'];
+				$herrmatico = "actualizar";
+				$cadenaConfDNI = "<div class='col s12 m3 l3 xl3'>
 						<div class='card-panel hoverable'>
 							<label>ID: ".$DNIF."</label> 
 							<input type='hidden' name='id' value='".$DNIF."' required>
@@ -156,7 +154,28 @@
                     </div>";
                 $herramientaE = '';
               	$tituloDesc = "<h4>Actualizar usuario: ".$mmo."</h4><h5></h5>";
-		        break;
+		$req_d = '';
+              	$req_f = '';
+              	if($estadoF == 1){
+                      $req_d ="selected";
+                }else{
+                      $req_f ="selected";
+                }
+              	$cadenaConfEst = "<div class='col s12 m12 l12 xl12'>
+                        <label for='estado'>Estado del usuario</label>
+                            <select class='error browser-default' id='estado' name='estado' data-error='.errorTxt7' required>
+                                <option value='1' $req_d >Activo</option>
+                                <option value='0' $req_f >Inactivo</option>
+                            </select>
+                            <div class='input-field'>
+                                <div class='errorTxt7'></div>
+                            </div>
+                    </div>";
+                if($tipo==1)
+                {
+		  $cadenaConfEst = "";
+                }    
+		break;
 		    }
           $rmb = "";
               		$cadenaConfEsp = "<div class='col s12 m6 l6 xl6' required>
@@ -274,6 +293,35 @@
         $('#idgen').material_select();
       </script>";
       return $msg;
+		}
+		public function getFormModLimitAsesorados($limitAsesorado,$ID_asesor,$texto){
+		$msg = <<<CADENA_CONSTRUCT
+		<div id='modal1ModLimit' class='modal modal-fix-footer'>
+		  <div class='modal-content'>
+		    <h5>
+		      Actualizar numero l&iacute;mite de asesorados para el asesor con el ID de registro en el periodo seleccionado: $ID_asesor 
+		    </h5>
+		    <form id='formMaxLimit'>
+		    $texto
+		    <p>
+			<div>
+			  <div class='input-field'>
+			    <label for='maxlimit'>Limite de asesorados</label>
+			      <input id='maxlimit' name='maxlimit' type='number' value='$limitAsesorado' data-error='.errorTxtLog' required>
+			      <div class='errorTxtLog'></div>
+			  </div>
+			</div>
+			<input type='hidden' name='id_asesor' value='$ID_asesor' required>
+			<input type='hidden' name='accion' value='actualizarlimite' required>
+		       <button class="btn waves-effect waves-light" type="submit" name="action">Actualizar<i class="material-icons right">send</i></button>
+		     </form>
+		    </p>
+		    </div>
+		    <script src='../js/administrador/form.js' charset='UTF-8'>
+		    </script>
+		</div>
+CADENA_CONSTRUCT;
+		return $msg;
 		}
 	}
 ?>

@@ -17,6 +17,7 @@
 			$med = "
 			<script src='../js/administrador/herramientasAdmin.js' charset='UTF-8'>
 			</script>
+			<header>
 			<div class='grid-container'>
 					<div class='row'>
 						<div class='col xl12 l12 m12 s12'>
@@ -62,10 +63,11 @@
 					</script>
   				</div>
 	
-				</div>
+				</div></header>
 				 ";
 				 switch($data[0]['Itipo_usuario']){
 				case 1:
+					$med.='';
 					$med.= "<ul id='slide-out' class='side-nav'>
 								<li>
 									<div class='user-view'>
@@ -171,6 +173,7 @@
 									<a href='#' onclick='closeSession();'>Salir</a>
 								</li>
 							</ul>";
+				
 				break;
 				case 3: 
 				break;

@@ -63,6 +63,7 @@
 		    $obj->tel2 = $_REQUEST['telh'];
 		    $obj->especialidad = $_REQUEST['idesp'];
 		    $obj->sexo = $_REQUEST['sexo'];
+		    $obj->estado = $_REQUEST['estado'];
        		$resal = $bo->modUsuario($obj);
        	break;
        	case 'updadmin':
@@ -94,6 +95,30 @@
 		    $obj->campoGrafico = $_REQUEST['campo'];
 		    $resal = $bo->getGraficoPSolicitud($obj);
 		break;
+		// LIMITE CAMBIO
+		case 'formlimitasesor':
+		    $obj->id_asesor_data = $_REQUEST['id_asesor'];
+		    $obj->limit_data = $_REQUEST['limit'];
+		    $obj->tipo_operacion = $_REQUEST['tipo_operacion'];
+		    //$resal = var_dump($obj->id_asesor_data,$obj->limit_data,$obj->tipo_operacion);
+		    $resal = $bo->mostrarLimiteAsesor($obj);
+		break;
+		case 'actualizarlimite':
+		    $obj->id_asesor_data = $_REQUEST['id_asesor'];
+		    $obj->limit_data = $_REQUEST['maxlimit'];
+		    $obj->tipo_operacion = $_REQUEST['tipo_operacion'];
+		    $resal = $bo->actualizarRegistroAsesor($obj);
+		break;
+		
+		case 'formregasesor':
+		    $obj->id_asesor_data = $_REQUEST['id_asesor'];
+		    $obj->limit_data = $_REQUEST['maxlimit'];
+		    $obj->tipo_operacion = $_REQUEST['tipo_operacion'];
+		    $resal = var_dump($obj->id_asesor_data,$obj->limit_data,$obj->tipo_operacion);
+		    $resal = $bo->mostrarLimiteAsesor($obj);
+		break;
+		
+		// LOGS y DATABASE
 		case 'getformdatabase':
 		    $resal = $bo->getBaseDatosForm();
 		break;

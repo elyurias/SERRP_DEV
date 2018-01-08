@@ -247,5 +247,123 @@
 		    $dataRes = $this->vistaT->getTablaLogsData($formData);
 		    return $dataRes;
 		}
+		// limite asesor cambio
+		function actualizarLimiteAsesor($classData){
+		  if($classData->tipo_operacion == 1){
+		    $dataRes = $this->tablaA->getActualizaModLimitAsesorados($classData->limit_data,$classData->id_asesor_data);
+		    return $this->mensajes->getModalMsg('Control y Registro del l&iacute;mite de alumnos por asesor','
+		    <br>
+		    '.$this->statusAsesor($dataRes).'UNO
+		    <script>
+		    $(document).ready(function(){
+		    $("#modal1").modal();
+		    $("#modal1").modal("open");
+		    });
+		    </script>
+		    ');
+		  }else{
+		  $dataRes = $this->tablaA->getActualizaUpdLimitAsesorados($classData->limit_data,$classData->id_asesor_data);
+		    return $this->mensajes->getModalMsg('Control y Registro del l&iacute;mite de alumnos por asesor','
+		    <br>
+		    '.$this->statusAsesor($dataRes).'DOS
+		    <script>
+		    $(document).ready(function(){
+		    $("#modal1").modal();
+		    $("#modal1").modal("open");
+		    });
+		    </script>
+		   
+		    ');
+		  }
+		}
+		function mostrarLimiteAsesor($classData){
+		    if($classData->tipo_operacion==1){
+		      $dataRes = $this->vistaF->getFormModLimitAsesorados($classData->limit_data,$classData->id_asesor_data,
+			"El cambio de l&iacute;mite en el n&uacute;mero de alumnos que puede aceptar el docente, 
+			no afectar&aacute; la relaci&oacute;n existente con las previas solicitudes enviadas y aceptadas por los alumnos.
+			<input type='hidden' value=1 name='tipo_operacion'/>
+			"
+		      );
+		    }else{
+		      $linea = $this->tablaA->get_es_ta_re_gis_tra_do($classData->id_asesor_data);
+		      if($linea == 0){
+			$dataRes = $this->vistaF->getFormModLimitAsesorados($classData->limit_data,$classData->id_asesor_data,
+			  "El cambio de l&iacute;mite en el n&uacute;mero de alumnos que puede aceptar el docente, 
+			  se actualizara y registrara el docente al nuevo periodo actual, tomando como referencia el periodo seleccionado
+			  <input type='hidden' value=2 name='tipo_operacion'/>
+			  "
+			);
+		      }else{
+		      $dataRes = $this->mensajes->getModalMsg('Estado de registro, el usuario ya esta registrado','
+			  El docente ya esta registrado en el periodo actual.
+			  <script>
+			    $(document).ready(function(){
+				$("#modal1").modal();
+				$("#modal1").modal("open");
+			    });
+			  </script>
+		    ');
+		      }
+		    }
+		    return $dataRes;
+		}
+		 /* '\n	
+		    1 Registrar en el periodo actual\n    \n    
+		    2 Actualizar limite del usuario en el periodo actual\n	\n    
+		    ________________________________________________\n
+		    \n    
+		    1 No esta registrado,\n    \n    
+		    2 Ya esta registrado en el periodo actual\n    \n    
+		    3 Registrado en el periodo actual [con limite]\n \n    
+		    4  Actualizar limite de asesor\n'*/
+		function statusAsesor($id){
+		  switch ($id) {
+		  	case 1:
+			  return 'El usuario se ha registrado en el periodo activo de Residencias Profesionales';
+		  	break;
+		  	case 2:
+			  return 'El usuario ya se encuentra registrado en el periodo activo de Residencias Profesionales';
+		  	break;
+		  	case 3:
+			  return 'Se ha registrado el asesor en el periodo activo de Residencias Profesionales, agregando el l&iacute;mite de asesorados.';		  	
+		  	break;
+		  	case 4:
+			  return 'Se ha actualizado el l&iacute;mite m&aacute;ximo del docente en el periodo seleccionado';
+		  	break;
+		  }
+		  return 'NOT_OP_SELECTED_ERROR_1';
+		}
+		
+		function actualizarRegistroAsesor($classData){
+		    if($classData->tipo_operacion==2){
+		      $dataRes = $this->tablaA->getActualizaRegAsesor($classData->limit_data,$classData->id_asesor_data);
+		    }else{
+		      $dataRes = $this->tablaA->getActualizaUpdLimitAsesorados($classData->limit_data,$classData->id_asesor_data);
+		    }
+		    $mensajeModuloDir =  $this->mensajes->getModalMsg11D('Control y Registro del l&iacute;mite de alumnos por asesor','
+		    '.$this->statusAsesor($dataRes).'
+		    <script>
+		    $(document).ready(function(){
+		    $("#modal232").modal();
+		    $("#modal232").modal("open");
+		    console.log("'.$dataRes.'");
+		    });
+		    </script>
+		    ');
+		    return $mensajeModuloDir;
+		}
+		
+		function formregasesor($classReg){
+		    $dataRes = $this->tablaA->getActualizaRegAsesor($classData->limit_data,$classData->id_asesor_data);
+		    return $this->mensajes->getModalMsg11D('Control y Registro del l&iacute;mite de alumnos por asesor','
+		    '.$this->statusAsesor($dataRes).'
+		    <script>
+		    $(document).ready(function(){
+		    $("#modal232").modal();
+		    $("#modal232").modal("open");
+		    });
+		    </script>
+		    ');
+		}
 	}
 ?>

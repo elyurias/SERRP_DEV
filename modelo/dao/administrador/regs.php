@@ -90,6 +90,18 @@
 	    }
 	    return $pRE;
 	 }
+	 function getActualizaModLimitAsesorados($limite,$id_asesor){
+	    $pRE = conexion::getArraypP(adminABC::sqlSetLimitUser(),array(2,$id_asesor,$id_asesor,$limite));
+	    return $pRE[0]['statusActualiza'];
+	 }
+	 function getActualizaUpdLimitAsesorados($limite,$id_asesor){
+	    $pRE = conexion::getArraypP(adminABC::sqlSetLimitUser(),array(2,$id_asesor,$id_asesor,$limite));
+	    return $pRE[0]['statusActualiza'];
+	 }
+	 function getActualizaRegAsesor($limite,$id_asesor){
+	    $pRE = conexion::getArraypP(adminABC::sqlSetLimitUser(),array(1,$id_asesor,$id_asesor,$limite));
+	    return $pRE[0]['statusActualiza'];
+	 }
 	 function GETrespaldoDB(){
 	    $pRE = conexion::respaldoDB();
 	    return $pRE;
@@ -109,6 +121,14 @@
 	 function GETlogs_truncate(){
 	    $pRE = conexion::logs_truncate();
 	    return $pRE;
+	 }
+	 function get_es_ta_re_gis_tra_do($id_asesor){
+	    $pRE = conexion::getArraypP(adminABC::sqlGetDocentePeriodo(),array($id_asesor));
+	    return $pRE[0]['statusActualiza'];
+	 }
+	 function get_es_ta_re_gis_tra_do_a_lu_m_no($VidentiQR){
+	    $pRE = conexion::getArraypP(adminABC::sqlGetAlumnoPeriodo(),array($VidentiQR));
+	    return $pRE[0]['statusActualiza'];
 	 }
 	}
 ?>

@@ -225,5 +225,54 @@ function optdatalogs(tipo){
     }
   );
 }
-console.log('Por defecto, todos los registros están deshabilitados o escritos en archivos. El registro general de consultas y el registro lento de consultas también se pueden escribir en tablas especiales en la base de datos mysql.');
-
+class docente{
+  formlimite(limit, id_asesor){
+    this.limit = limit;
+    this.id_asesor = id_asesor;
+    this.limpiarCampoHTMLDataID('msgtosDos');
+    this.callControll(
+      {
+	accion:'formlimitasesor',
+	limit:this.limit,
+	id_asesor:this.id_asesor,
+	tipo_operacion:1
+      },
+      '../../controlador/administrador/datacontroll.php',
+      '#msgtosDos'
+    );
+  }
+  regNuevoUsuario(limit, id_asesor){
+    this.limit = limit;
+    this.id_asesor = id_asesor;
+    this.limpiarCampoHTMLDataID('msgtosTres');
+    this.callControll(
+      {
+	accion:'formlimitasesor',
+	limit:this.limit,
+	id_asesor:this.id_asesor,
+	tipo_operacion:2
+      },
+      '../../controlador/administrador/datacontroll.php',
+      '#msgtosTres'
+    );
+  }
+  regNuevoUsuarioAlumn(id_alumno){
+    this.id_alumno = id_alumno;
+    this.limpiarCampoHTMLDataID('msgtosTres');
+    this.callControll(
+      {
+	accion:'registrarAlumnoNuevoPeriodo',
+	id_alumno:this.id_alumno
+      },
+      '../../controlador/administrador/datacontroll.php',
+      '#msgtosTres'
+    );
+  }
+  limpiarCampoHTMLDataID(id){
+    document.getElementById(id).innerHTML="";
+  }
+  callControll(json,url,estHTML){
+    $.post(url,json,function(data){$(estHTML).html(data);});
+  }
+}
+var dataClassDocente = new docente();
