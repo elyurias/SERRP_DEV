@@ -201,7 +201,7 @@
                     </div>";
               		$cadenaConfEsp.=$rmb;
 		    $msg = "
-		    <div id='modal3' class='modal'>
+		    <div id='modal3".$nivel."' class='modal'>
     <div class='modal-content'>
 			".$tituloDesc."
 		    <form action='#' method='POST' id='formValidate' onsubmit='return false;'>
@@ -269,8 +269,8 @@
 		    </form>
 		    <script src='../js/administrador/validform.js'></script>
 		    <script>
-		    $('#modal3').modal();
-		    $('#modal3').modal('open');
+		    $('#modal3".$nivel."').modal();
+		    $('#modal3".$nivel."').modal('open');
 		    </script>
 		    ";
 		    return $msg;

@@ -17,3 +17,19 @@ function nowdata(id){
 		}
 	);
 }
+function getasesorados(id_asesor_data){
+	$.post(
+		'../../controlador/docente/docentecontroll.php',
+		{
+		  accion:'getdocentesasesor',
+		  id_asesor:id_asesor_data
+		},
+		function(data){
+		  rellenarTablaS(data)
+		}
+	);
+}
+function rellenarTablaS(data){
+  $('#contenidoIntro').html('<div></div>');
+  $('#tableS').html(data);
+}

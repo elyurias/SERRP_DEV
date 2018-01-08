@@ -66,7 +66,7 @@
 		    $obj->estado = $_REQUEST['estado'];
        		$resal = $bo->modUsuario($obj);
        	break;
-       	case 'updadmin':
+		case 'updadmin':
        		$obj->DNI = $_REQUEST['id'];
 			$resal = $bo->getActualizaAdministradorData($obj);
 		break;

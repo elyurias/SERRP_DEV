@@ -1,5 +1,6 @@
 var datav;//getgeneracion(1,1);
 function getformModUser(id_datab,tipo){
+    limpiarCamposHTML('#updfores');
     var docTD = {accion:'noOperacion'}; 
   	if(tipo == 1){
      	docTD = {accion:'updadmin',id:id_datab};
@@ -56,6 +57,8 @@ function getTablaDataJS(tipo,part){
   );
 }
 function getFormularioRegistro(tipo){
+  limpiarCamposHTML('#fores_d');
+  limpiarCamposHTML('#updfores');
     var docTD;
     switch(tipo){
         case 1:
@@ -77,6 +80,7 @@ function getFormularioRegistro(tipo){
     );
 }
 function getFormularioActualiza(tipo,idP){
+  limpiarCamposHTML('#forms_d');
     var docTD;
     switch(tipo){
         case 1:
@@ -279,6 +283,18 @@ class docente{
       '../../controlador/administrador/datacontroll.php',
       '#msgtosTres'
     );
+  }
+  get_respaldo_db(){
+    if(confirm('Desea crear un respaldo de la base de datos?')==1){
+    this.callControll(
+      {
+	accion:'respaldodebasededatos'
+      },
+      '../../controlador/administrador/datacontroll.php',
+      ''
+    );
+    $('#respaw_db').html("<br><a href='../../controlador/administrador/serrp_dev.sql' target='_blank' class='center-align tooltipped waves-effect waves-light btn' data-position='top' data-delay='50' data-tooltip='Descargar respaldo de base de datos'>Descargar respaldo</a>");
+    }
   }
   limpiarCampoHTMLDataID(id){
     document.getElementById(id).innerHTML="<div></div>";

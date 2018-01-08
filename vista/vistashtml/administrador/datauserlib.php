@@ -183,7 +183,7 @@ EOT;
                   <td>".$row['Vcorreo_usuario']."</td>
                   <td>".$row['Csexo_usuario']."</td>
                   <td>
-                  	<a href='#' id='tol".$menuSrtm."ss' class='btn waves-effect waves-light indigo tooltipped' onclick='qrData(".$row['id_usuario'].");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
+                  	<a href='#' id='tol".$menuSrtm."ss' class='btn waves-effect waves-light indigo tooltipped' onclick='qrData(".$row['VidentiQR_usuario'].");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
                     <!--<a href='#' id='tol".$menuSrtm."ssUpd' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='getformModUser(".$row['VidentiQR_usuario'].",1)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>
                     	Modificar
                     </a>-->
@@ -356,7 +356,17 @@ return $cadenalid;
     }
     function getformularioViewDB(){
       $dataForm = <<<EOT
-      jfalsdkflksdfsdf
+      <a onclick='dataClassDocente.get_respaldo_db();' id='iniciarDatos' class='center-align tooltipped waves-effect waves-light btn' data-position='top' data-delay='50' data-tooltip='Crear respaldo de base de datos'>
+	Crear respaldo de base de datos
+      </a>
+      <div id='respaw_db'>
+
+      </div>
+      <script>
+         $(document).ready(function(){
+	    $('#iniciarDatos').tooltip({delay: 50});
+         });
+      </script>
 EOT;
       return $dataForm;
     }

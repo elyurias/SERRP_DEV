@@ -14,5 +14,10 @@
 			$vf = $this->vistadoc->getMenuDocenteFinal($resP,$resS);
 			return $vf;
 		}
+		public function getDataDoc($classMod){
+			$resP = $this->daodoc->getalumnosdocente($classMod->id_asesor);
+			$vf = $this->vistadoc->getAsesoradosFinal($resP);
+			return $vf;
+		}
 	}
 ?>

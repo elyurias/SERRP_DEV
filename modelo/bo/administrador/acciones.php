@@ -82,16 +82,16 @@
 		function getActualizaAdministradorData($modulo){
 			$especialidad = $this->tablaA->getEspecialidad();
 			$dataUsuario = $this->tablaA->getDataUsuario($modulo->DNI);
-          	$vf = $this->vistaF->getRegistroUsuarioAdmn(2,$especialidad,1,$dataUsuario);
+			$vf = $this->vistaF->getRegistroUsuarioAdmn(2,$especialidad,1,$dataUsuario);
 			return $vf;
 		}
 		function modUsuario($modClass){
 		   $datav = $this->tablaA->setDataUsuario($modClass->returnDataUpdUsuarioArray());
 		   $estadoResultadoActualizar = $datav[0]['statusActualiza'];
 		   if($estadoResultadoActualizar == 0){
-		      return $this->mensajes->getModalMsg('Usuario actualizado','Los campos de datos del usuario, se han actualizado');
+		      return $this->mensajes->getModalMsgUPD('Usuario actualizado','Los campos de datos del usuario, se han actualizado');
 		   }else{
-		      return $this->mensajes->getModalMsg('Usuario actualizado','El usuario no existe');
+		      return $this->mensajes->getModalMsgUPD('Usuario actualizado','El usuario no existe');
 		   }
 		}
       	// Apartado de actualizacion (&actualiza)
@@ -204,41 +204,41 @@
 		}
 		function iniciarLogsDB(){
 		    $formData = $this->tablaA->GETlogs_enableTable();
-		    return $this->mensajes->getModalMsg('Iniciando el registro de logs en MariaDB','
+		    return $this->mensajes->getModalMsg11DD2('Iniciando el registro de logs en MariaDB','
 		    La siguiente operaci&oacute;n habilitara las funciones necesarias para plasmar los logs en la base de datos, la tabla correspondiente sigue creciendo respecto a la cantidad de operaciones que se realizan en el sistema, se recomienda deshabilitarla, o en este caso detener el registro de procesos.
 		    <br>Por defecto, todos los registros est&aacute;n deshabilitados o escritos en archivos. El registro general de consultas y el registro lento de consultas tambi&eacute;n se pueden escribir en tablas especiales en la base de datos mysql.
 		    <script>
 		    $(document).ready(function(){
-		    $("#modal1").modal();
-		    $("#modal1").modal("open");
+		    $("#modal1JAMON").modal();
+		    $("#modal1JAMON").modal("open");
 		    });
 		    </script>
 		    ');
 		}
 		function detenerLogsDB(){
 		    $formData = $this->tablaA->GETlogs_disableTable();
-		    return $this->mensajes->getModalMsg('Deteniendo el registro de logs en MariaDB','
+		    return $this->mensajes->getModalMsg11DD2('Deteniendo el registro de logs en MariaDB','
 		    La siguiente operaci&oacute;n detendra las funciones necesarias para plasmar los logs en la base de datos.
 		    <br>
 		    Por defecto, todos los registros est&aacute;n deshabilitados o escritos en archivos. El registro general de consultas y el registro lento de consultas tambi&eacute;n se pueden escribir en tablas especiales en la base de datos mysql.
 		    <script>
 		    $(document).ready(function(){
-		    $("#modal1").modal();
-		    $("#modal1").modal("open");
+		    $("#modal1JAMON").modal();
+		    $("#modal1JAMON").modal("open");
 		    });
 		    </script>
 		    ');
 		}
 		function limpiarLogsDB(){
 		    $formData = $this->tablaA->GETlogs_truncate();
-		    return $this->mensajes->getModalMsg('Limpiando el registro de logs en MariaDB','
+		    return $this->mensajes->getModalMsg11DD2('Limpiando el registro de logs en MariaDB','
 		    La siguiente operaci&oacute;n eliminara todos los registros de logs en la base de datos.
 		    <br>
 		    Por defecto, todos los registros est&aacute;n deshabilitados o escritos en archivos. El registro general de consultas y el registro lento de consultas tambi&eacute;n se pueden escribir en tablas especiales en la base de datos mysql.
 		    <script>
 		    $(document).ready(function(){
-		    $("#modal1").modal();
-		    $("#modal1").modal("open");
+		    $("#modal1JAMON").modal();
+		    $("#modal1JAMON").modal("open");
 		    });
 		    </script>
 		    ');

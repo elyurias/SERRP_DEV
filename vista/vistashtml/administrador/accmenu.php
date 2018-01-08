@@ -31,7 +31,7 @@
 										<div class='col xl7 l9 m7 s12'>
 											<h7 class='flow-text blue-text lighten-1'>Sistema de Entrega y Revision de Avances de Residencias Profesionales.</h7>
 											<h7 class='flow-text blue-text lighten-1'>Panel principal: ".$cadena."</h7><br>
-											<h7 class='blue-text lighten-1'>".$periodo[0]['periodoActivo']."</h7>
+											<h6 class='blue-text lighten-1'>".$periodo[0]['periodoActivo']."</h6>
 										</div>
 										<div class='col xl2 l12 m12 s12 center-align'>
 											<a href='#' data-position='left' data-delay='50' data-tooltip='Men&uacute; de usuario' data-activates='slide-out' id='menu' class='button-collapse tooltipped valign-wrapper waves-effect waves-light btn btn-floating green'><i class='material-icons'>menu</i></a>

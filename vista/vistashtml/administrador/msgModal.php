@@ -27,6 +27,28 @@
 						</div>
 					</div>";
 		}
+		
+		static function getModalMsgUPD($msg,$comm){
+			return "
+			
+			<div id='modalREGRES1' class='modal modal-fix-footer'>
+						<div class='modal-content'>
+							<h4>".$msg."</h4>
+							<p>".$comm."</p>
+						</div>
+						<div class='modal-footer'>
+							<a href='#' class='modal-action modal-close waves-effect waves-blue btn-flat'>OK</a>
+						</div>
+					</div>
+			 <script>
+		    $(document).ready(function(){
+		    $('#modalREGRES1').modal();
+		    $('#modalREGRES1').modal('open');
+		    });
+		    </script>		
+			";
+		}
+		
 		static function getModalMsg11D($msg,$comm){
 			return "
 			
@@ -50,6 +72,19 @@
 						</div>
 						<div class='modal-footer' id='jamanajamanajamana'>
 							".$boton."
+						</div>
+					</div>";
+		}
+		static function getModalMsg11DD2($msg,$comm){
+			return "
+			
+			<div id='modal1JAMON' class='modal modal-fix-footer'>
+						<div class='modal-content'>
+							<h4>".$msg."</h4>
+							<p>".$comm."</p>
+						</div>
+						<div class='modal-footer' id='jamanajamanajamana'>
+							<a href='#' class='modal-action modal-close waves-effect waves-blue btn-flat'>OK</a>
 						</div>
 					</div>";
 		}

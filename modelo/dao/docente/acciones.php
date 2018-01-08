@@ -15,5 +15,9 @@
 			$pR = array('Configurar');
 			return $pR;
 		}
+		function getalumnosdocente($id_asesor){
+		    $pR = conexion::getArraypP(sqlPartDoc::SqlGetAlumnosGeneracion(), array($id_asesor));
+		    return $pR;
+		}
 	}
 ?>
