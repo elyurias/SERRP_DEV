@@ -83,5 +83,8 @@
         static function sqlGetAlumnoPeriodo(){
 	  return "SELECT alumno_periodo_actual(?) as statusActualiza;";
         }
+        static function sqlSetAlumnoPeriodo(){
+	  return "SELECT reg_alumno_periodo_actual_existente(?) as statusActualiza;";
+        }
     }
 ?>

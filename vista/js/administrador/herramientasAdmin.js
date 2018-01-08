@@ -262,14 +262,26 @@ class docente{
     this.callControll(
       {
 	accion:'registrarAlumnoNuevoPeriodo',
-	id_alumno:this.id_alumno
+	id_alumno_data:this.id_alumno
+      },
+      '../../controlador/administrador/datacontroll.php',
+      '#msgtosTres'
+    );
+  }
+  regUpdUsuarioAlumn(valorDataid_alumno){
+    this.id_alumno = valorDataid_alumno;
+    this.limpiarCampoHTMLDataID('msgtosTres');
+    this.callControll(
+      {
+	accion:'regalumnodatadocdoslinea',
+	id_alumno_data:this.id_alumno
       },
       '../../controlador/administrador/datacontroll.php',
       '#msgtosTres'
     );
   }
   limpiarCampoHTMLDataID(id){
-    document.getElementById(id).innerHTML="";
+    document.getElementById(id).innerHTML="<div></div>";
   }
   callControll(json,url,estHTML){
     $.post(url,json,function(data){$(estHTML).html(data);});

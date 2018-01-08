@@ -118,6 +118,14 @@
 		    $resal = $bo->mostrarLimiteAsesor($obj);
 		break;
 		
+		case 'registrarAlumnoNuevoPeriodo':
+		    $obj->id_alumno_data = $_REQUEST['id_alumno_data'];
+		    $resal = $bo->getStatusRegistroalumnoPeriodoActual($obj);
+		break;
+		case 'regalumnodatadocdoslinea':
+		    $obj->id_alumno_data = $_REQUEST['id_alumno_data'];
+		    $resal = $bo->getRegRegistroalumnoPeriodoActual($obj);
+		break;
 		// LOGS y DATABASE
 		case 'getformdatabase':
 		    $resal = $bo->getBaseDatosForm();
@@ -139,7 +147,7 @@
 		break;
 		case 'mostrarLogs':
 		    $resal = $bo->mostrarLogsDB();
-		break;
+		break;		
 	}
 	print($resal);
 ?>

@@ -130,5 +130,9 @@
 	    $pRE = conexion::getArraypP(adminABC::sqlGetAlumnoPeriodo(),array($VidentiQR));
 	    return $pRE[0]['statusActualiza'];
 	 }
+	 function get_es_ta_re_gis_tra_do_a_lu_m_no_periodo($VidentiQR){
+	    $pRE = conexion::getArraypP(adminABC::sqlSetAlumnoPeriodo(),array($VidentiQR));
+	    return $pRE[0]['statusActualiza'];
+	 }
 	}
 ?>

@@ -1,4 +1,5 @@
 <?php
+	//require_once '../../../ruta.php';
 	require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/vista/vistashtml/administrador/accmenu.php";
 	require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/modelo/dao/administrador/dataUserDao.php";
 	require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/modelo/dao/administrador/regs.php";
@@ -352,18 +353,73 @@
 		    ');
 		    return $mensajeModuloDir;
 		}
+		function getStatusRegistroalumnoPeriodoActual($classReg){
+		    $statusVal = $this->tablaA->get_es_ta_re_gis_tra_do_a_lu_m_no($classReg->id_alumno_data);
+		    if($statusVal == 1){
+		      $mensajeModuloDir =  $this->mensajes->getModalMsg11D('Control y Registro de alumnos','
+			  El alumno ya esta registrado en el periodo actual.
+			 <script>
+			  $(document).ready(function(){
+			  $("#modal232").modal();
+			  $("#modal232").modal("open");
+			  console.log("'.$dataRes.'");});
+			 </script>');
+		    }else{
+		      $id_data_alumno = $classReg->id_alumno_data;
+		      $nvalData = '
+		      
+		      <div class="valign-wrapper">
+		      
+		      <button 
+		      
+		      onclick = 
+			"dataClassDocente.regUpdUsuarioAlumn('.$id_data_alumno.');" 
+		      
+		      class=
+			"btn waves-effect waves-teal blue center modal-action modal-close"
+		      >
+		      
+		      Registrar en el periodo actual
+		      
+		      </button>
+		      
+		      </div>';
+		      
+		      $mensajeModuloDir =  $this->mensajes->getModalMsg11DD('Control y Registro de alumnos','
+			  El alumno no esta registrado en el periodo actual, Desea registrar al alumno en el periodo actual?
+			 <script>
+			  $(document).ready(function(){
+			  $("#modal232").modal();
+			  $("#modal232").modal("open");
+			  });
+			 </script>',$nvalData);
+		    }
+		    return $mensajeModuloDir;
+		}
 		
-		function formregasesor($classReg){
-		    $dataRes = $this->tablaA->getActualizaRegAsesor($classData->limit_data,$classData->id_asesor_data);
-		    return $this->mensajes->getModalMsg11D('Control y Registro del l&iacute;mite de alumnos por asesor','
-		    '.$this->statusAsesor($dataRes).'
-		    <script>
-		    $(document).ready(function(){
-		    $("#modal232").modal();
-		    $("#modal232").modal("open");
-		    });
-		    </script>
-		    ');
+
+		function getRegRegistroalumnoPeriodoActual($classReg){
+		    $statusVal = $this->tablaA->get_es_ta_re_gis_tra_do_a_lu_m_no_periodo($classReg->id_alumno_data);
+		    if($statusVal == 1){
+		      $mensajeModuloDir =  $this->mensajes->getModalMsg11D('Control y Registro del l&iacute;mite de alumnos','
+			  El alumno ya esta registrado en el periodo actual.
+			 <script>
+			  $(document).ready(function(){
+			  $("#modal232").modal();
+			  $("#modal232").modal("open");
+			  console.log("'.$dataRes.'");});
+			 </script>');
+		    }else{
+		      $mensajeModuloDir =  $this->mensajes->getModalMsg11D('Control y Registro del l&iacute;mite de alumnos','
+			  El alumno ha sido registrado en el periodo actual
+			  <script>
+			  $(document).ready(function(){
+			  $("#modal232").modal();
+			  $("#modal232").modal("open");
+			  console.log("'.$dataRes.'");});
+			 </script>');
+		    }
+		    return $mensajeModuloDir;
 		}
 	}
 ?>

@@ -3,8 +3,13 @@
     public function getAsesorD($regs){
       $menuSrtm = 120;
       $msg = "
-          <link rel='stylesheet' type='text/css' href='../js/datatable/aoi/datatables.min.css'/>
-          <script type='text/javascript' src='../js/datatable/aoi/datatables.min.js'></script>
+          
+         <link rel='stylesheet' type='text/css' href='../js/datatable/aoi/datatables.min.css'/>
+         <script type='text/javascript' src='../js/datatable/aoi/datatables.min.js'></script>
+          
+          <link rel='stylesheet' type='text/css' href='../js/datatable/aoi/Responsive-2.2.0/css/responsive.dataTables.css'/>
+         <script type='text/javascript' src='../js/datatable/aoi/Responsive-2.2.0/js/dataTables.responsive.js'></script>
+          
           <script src='../js/jqueryqrcode.js'></script>
       <h3>Docentes</h3>
       
@@ -12,7 +17,8 @@
 
       
       <div id='componentes'></div>
-      <table id='regs' class='mdl-data-table responsive-table' cellspacing='0'>
+      <div class='nulds'>
+      <table id='regs' class='responsive-table'>
       <thead>
         <tr>
           <th>QR Identificador</th>
@@ -21,7 +27,11 @@
           <th>Telefono Hogar</th>
           <th>Email</th>
           <th>Genero</th>
-          <th>Acciones</th>
+          <th>Limite de asesorados</th>
+          <th>Codigo QR</th>
+	  <th>Modificar</th>
+	  <th>Cambiar</th>
+	  <th>Registrar</th>
         </tr>
       </thead><tbody>";
       foreach($regs as $row){
@@ -44,13 +54,20 @@ EOT;
                   <td>".$row['VtelefonoH_usuario']."</td>
                   <td>".$row['Vcorreo_usuario']."</td>
                   <td>".$row['Csexo_usuario']."</td>
+                  <td>".$row['Ilimite_asesor']."</td>
                   <td>
-		     <a href='#' id='tol".$menuSrtm."ss' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='qrData(".$row['id_usuario'].");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
-		     <a href='#' id='tol".$menuSrtm."ssUpd' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='getformModUser(".$row['VidentiQR_usuario'].",2)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>Modificar</a>
-		     <a href='#' id='tol".$menuSrtm."ss2' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='dataClassDocente.formlimite(".$row['Ilimite_asesor'].",".$row['id_asesor'].");' data-position='left' data-delay='50' data-tooltip='Cambiar limite del asesor en el periodo seleccionado'>Cambiar Limite</a>
-		     <a href='#' id='tol".$menuSrtm."ss3' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='dataClassDocente.regNuevoUsuario(".$row['Ilimite_asesor'].",".$row['VidentiQR_usuario'].");' data-position='left' data-delay='50' data-tooltip='Registrar al periodo actual activo'>Registrar al periodo activo</a>
-		     
-		     <script>
+		     <a href='#' id='tol".$menuSrtm."ss' class='btn waves-effect waves-light indigo tooltipped' onclick='qrData(".$row['id_usuario'].");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
+		  </td>
+		  <td>
+		     <a href='#' id='tol".$menuSrtm."ssUpd' class='btn waves-effect waves-light blue tooltipped' onclick='getformModUser(".$row['VidentiQR_usuario'].",2)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>Modificar</a>
+		  </td>
+		  <td>
+		    <a href='#' id='tol".$menuSrtm."ss2' class='btn waves-effect waves-light  deep-purple tooltipped' onclick='dataClassDocente.formlimite(".$row['Ilimite_asesor'].",".$row['id_asesor'].");' data-position='left' data-delay='50' data-tooltip='Cambiar limite del asesor en el periodo seleccionado'>Cambiar Limite</a>
+		  </td>
+		  <td>
+		     <a href='#' id='tol".$menuSrtm."ss3' class='btn waves-effect waves-light teal tooltipped' onclick='dataClassDocente.regNuevoUsuario(".$row['Ilimite_asesor'].",".$row['VidentiQR_usuario'].");' data-position='left' data-delay='50' data-tooltip='Registrar al periodo actual activo'>Registrar</a>
+                  </td>
+                 <script>
                     	$(document).ready(function(){
 			    
 			    $('#tol".$menuSrtm."ss').tooltip({delay: 50});
@@ -62,18 +79,19 @@ EOT;
                             
                             $('#select".$menuSrtm."').material_select();
                         });
-                    </script>
-                  </td>
+                  </script>
                   <script>
                   $('.dropdown".$menuSrtm."').dropdown();
                   </script>
               </tr>";
         $menuSrtm = $menuSrtm + 1;
       }
-      $msg.='</tbody><table>
+      $msg.='</tbody><table></div>
       <script>
-        $(document).ready(function() {
-          $("#regs").DataTable();
+       $(document).ready(function() {
+          $("#regs").DataTable({
+    responsive: true
+});
         });
       </script>
       ';
@@ -88,7 +106,7 @@ EOT;
       <h3>Alumnos</h3>
       <a href='#' onclick='getFormularioRegistro(3);' class='btn waves-effect waves-teal blue'>Nuevo usuario</a>
       <div id='componentes'></div>
-      <table id='regs' class='mdl-data-table responsive-table' cellspacing='0'>
+      <table id='regs' class='responsive-table' cellspacing='0'>
       <thead>
         <tr>
           <th>QR Identificador</th>
@@ -109,10 +127,12 @@ EOT;
                   <td>".$row['Vcorreo_usuario']."</td>
                   <td>".$row['Csexo_usuario']."</td>
                   <td>
-                  	<a href='#' id='tol".$menuSrtm."ss' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='qrData(".$row['id_usuario'].");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
-			<a href='#' id='tol".$menuSrtm."ssUpd' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='getformModUser(".$row['VidentiQR_usuario'].",3)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>Modificar</a>
-			<a href='#' id='tol".$menuSrtm."ss3' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='dataClassDocente.regNuevoUsuarioAlumn(".$row['VidentiQR_usuario'].");' data-position='left' data-delay='50' data-tooltip='Registrar al periodo actual activo'>Registrar al periodo activo</a>
-                    <script>
+                  	<a href='#' id='tol".$menuSrtm."ss' class='btn waves-effect waves-light indigo tooltipped' onclick='qrData(".$row['id_usuario'].");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
+			<a href='#' id='tol".$menuSrtm."ssUpd' class='btn waves-effect waves-light red tooltipped' onclick='getformModUser(".$row['VidentiQR_usuario'].",3)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>Modificar</a>
+			<a href='#' id='tol".$menuSrtm."ss3' class='btn waves-effect waves-light blue tooltipped' onclick='dataClassDocente.regNuevoUsuarioAlumn(".$row['VidentiQR_usuario'].");' data-position='left' data-delay='50' data-tooltip='Registrar al periodo actual activo'>Registrar al periodo activo</a>
+                    
+                  </td>
+		    <script>
                     	$(document).ready(function(){
                         	$('#tol".$menuSrtm."ss').tooltip({delay: 50});
 				$('#tol".$menuSrtm."ssUpd').tooltip({delay: 50});
@@ -120,7 +140,6 @@ EOT;
 				$('#select".$menuSrtm."').material_select();
                         });
                     </script>
-                  </td>
               </tr>";$menuSrtm = $menuSrtm + 1;
       }
       $msg.='</tbody><table>
@@ -136,12 +155,14 @@ EOT;
       $menuSrtm = 1;
       $msg = "
           <link rel='stylesheet' type='text/css' href='../js/datatable/aoi/datatables.min.css'/>
-          <script type='text/javascript' src='../js/datatable/aoi/datatables.min.js'></script>
+         <script type='text/javascript' src='../js/datatable/aoi/datatables.min.js'></script>
+         
           <script src='../js/jqueryqrcode.js'></script>
       <h3>Administradores</h3>
       <a href='#' onclick='getFormularioRegistro(1);' class='btn waves-effect waves-teal blue'>Nuevo usuario</a>
       <div id='componentes'></div>
-      <table id='regs' class='mdl-data-table responsive-table' cellspacing='0'>
+      <div class=''>
+      <table id='regs' class='responsive-table' cellspacing='0' width='100%'>
       <thead>
         <tr>
           <th>QR Identificador</th>
@@ -162,20 +183,20 @@ EOT;
                   <td>".$row['Vcorreo_usuario']."</td>
                   <td>".$row['Csexo_usuario']."</td>
                   <td>
-                  	<a href='#' id='tol".$menuSrtm."ss' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='qrData(".$row['id_usuario'].");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
-                    <a href='#' id='tol".$menuSrtm."ssUpd' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='getformModUser(".$row['VidentiQR_usuario'].",1)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>
+                  	<a href='#' id='tol".$menuSrtm."ss' class='btn waves-effect waves-light indigo tooltipped' onclick='qrData(".$row['id_usuario'].");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
+                    <!--<a href='#' id='tol".$menuSrtm."ssUpd' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='getformModUser(".$row['VidentiQR_usuario'].",1)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>
                     	Modificar
-                    </a>
+                    </a>-->
                     <script>
                     	$(document).ready(function(){
                         	$('#tol".$menuSrtm."ss').tooltip({delay: 50});
-                            $('#tol".$menuSrtm."ssUpd').tooltip({delay: 50});
+                            //$('#tol".$menuSrtm."ssUpd').tooltip({delay: 50});
                         });
                     </script>
                   </td>
               </tr>";$menuSrtm = $menuSrtm + 1;
       }
-      $msg.='</tbody><table>
+      $msg.='</tbody><table></div>
       <script>
         $(document).ready(function() {
           $("#regs").DataTable();

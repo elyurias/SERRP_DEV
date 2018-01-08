@@ -35,8 +35,21 @@
 							<h4>".$msg."</h4>
 							<p>".$comm."</p>
 						</div>
-						<div class='modal-footer'>
+						<div class='modal-footer' id='jamanajamanajamana'>
 							<a href='#' class='modal-action modal-close waves-effect waves-blue btn-flat'>OK</a>
+						</div>
+					</div>";
+		}
+		static function getModalMsg11DD($msg,$comm,$boton){
+			return "
+			
+			<div id='modal232' class='modal modal-fix-footer'>
+						<div class='modal-content'>
+							<h4>".$msg."</h4>
+							<p>".$comm."</p>
+						</div>
+						<div class='modal-footer' id='jamanajamanajamana'>
+							".$boton."
 						</div>
 					</div>";
 		}
