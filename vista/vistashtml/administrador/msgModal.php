@@ -28,6 +28,46 @@
 					</div>";
 		}
 		
+		static function getModalMsgStatusRegistro($msg,$comm){
+			return "
+			
+			<div id='modal1DosStatusRegistro' class='modal modal-fix-footer'>
+						<div class='modal-content'>
+							<h4>".$msg."</h4>
+							<p>".$comm."</p>
+						</div>
+						<div class='modal-footer'>
+							<a href='#' class='modal-action modal-close waves-effect waves-blue btn-flat'>OK</a>
+						</div>
+					</div>
+			<script>
+			    $(document).ready(function(){
+				$('#modal1DosStatusRegistro').modal();
+				$('#modal1DosStatusRegistro').modal('open');
+			    });
+			  </script>		
+			";
+		}
+		
+		static function getModalMsgActualiza($msg,$comm){
+			return "
+			
+			<div id='modal1ModalActualizaLimite' class='modal modal-fix-footer'>
+						<div class='modal-content'>
+							<h4>".$msg."</h4>
+							<p>".$comm."</p>
+						</div>
+						<div class='modal-footer'>
+							<a href='#' class='modal-action modal-close waves-effect waves-blue btn-flat'>OK</a>
+						</div>
+					</div>
+							    <script>
+		    $(document).ready(function(){
+		    $('#modal1ModalActualizaLimite').modal();
+		    $('#modal1ModalActualizaLimite').modal('open');
+		    });
+		    </script>";
+		}
 		static function getModalMsgUPD($msg,$comm){
 			return "
 			

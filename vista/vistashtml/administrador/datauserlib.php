@@ -18,7 +18,7 @@
       
       <div id='componentes'></div>
       <div class='nulds'>
-      <table id='regs' class='responsive-table'>
+      <table id='regs' class='display nowrap' width='100%'>
       <thead>
         <tr>
           <th>QR Identificador</th>
@@ -87,11 +87,16 @@ EOT;
         $menuSrtm = $menuSrtm + 1;
       }
       $msg.='</tbody><table></div>
-      <script>
-       $(document).ready(function() {
-          $("#regs").DataTable({
-    responsive: true
-});
+	<script>
+        $(document).ready(function() {
+          $("#regs").DataTable(
+	    {
+	      responsive: true,
+	      "language": {
+		    "url": "../js/datatable/lang.json"
+	      }
+	    }
+          );
         });
       </script>
       ';
@@ -106,7 +111,7 @@ EOT;
       <h3>Alumnos</h3>
       <a href='#' onclick='getFormularioRegistro(3);' class='btn waves-effect waves-teal blue'>Nuevo usuario</a>
       <div id='componentes'></div>
-      <table id='regs' class='responsive-table' cellspacing='0'>
+      <table id='regs'  class='display nowrap' width='100%'>
       <thead>
         <tr>
           <th>QR Identificador</th>
@@ -143,9 +148,16 @@ EOT;
               </tr>";$menuSrtm = $menuSrtm + 1;
       }
       $msg.='</tbody><table>
-      <script>
+	<script>
         $(document).ready(function() {
-          $("#regs").DataTable();
+          $("#regs").DataTable(
+	    {
+	      responsive: true,
+	      "language": {
+		    "url": "../js/datatable/lang.json"
+	      }
+	    }
+          );
         });
       </script>
       ';
@@ -162,7 +174,7 @@ EOT;
       <a href='#' onclick='getFormularioRegistro(1);' class='btn waves-effect waves-teal blue'>Nuevo usuario</a>
       <div id='componentes'></div>
       <div class=''>
-      <table id='regs' class='responsive-table' cellspacing='0' width='100%'>
+      <table id='regs'  class='display nowrap' width='100%'>
       <thead>
         <tr>
           <th>QR Identificador</th>
@@ -198,8 +210,15 @@ EOT;
       }
       $msg.='</tbody><table></div>
       <script>
-        $(document).ready(function() {
-          $("#regs").DataTable();
+      $(document).ready(function() {
+          $("#regs").DataTable(
+	    {
+	      responsive: true,
+	      "language": {
+		    "url": "../js/datatable/lang.json"
+	      }
+	    }
+          );
         });
       </script>
       ';
@@ -269,7 +288,8 @@ return $data;
       <p>
       Requisitos para realizar las Residencias Profesionales:
 <li>Haber aprobado el 80% de los cr&eacute;ditos de su carrera.</li>
-<li>Estar inscrito actualmente en el Instituto Haber seleccionado su tema de proyecto y que &eacute;ste debidamente avalado por la academia.</li>
+<li>Estar inscrito actualmente en el Instituto</li> 
+<li>Haber seleccionado su tema de proyecto y que &eacute;ste debidamente avalado por la academia.</li>
 <li>Disponer de constancia de su situaci&oacute;n acad&eacute;mica emitida por el Departamento de Control Escolar.</li>
 <legend>Nota: Es indispensable que la Academia autorice el Anteproyecto de lo contrario no podr&aacute;n iniciar las Residencias Profesionales.</legend>
       </p>
@@ -413,7 +433,7 @@ EOT;
           <link rel='stylesheet' type='text/css' href='../js/datatable/aoi/datatables.min.css'/>
           <script type='text/javascript' src='../js/datatable/aoi/datatables.min.js'></script>
       <h5>Logs</h5>
-      <table id='regs' class='mdl-data-table responsive-table' cellspacing='0'>
+         <table id='regs'  class='display nowrap' width='100%'>
       <thead>
         <tr>
           <th>Tiempo de ejecuci&oacute;n del evento</th>
@@ -438,14 +458,18 @@ EOT;
       }
       $msg.="
       </tbody><table>
-      <script>
-        $(document).ready(function() {
-          $('#regs').DataTable( {
-	      'order': [[ 0, 'desc' ]]
-	  });
+       <script>
+      $(document).ready(function() {
+          $('#regs').DataTable(
+	    {
+	      responsive: true,
+	      'language': {
+		    'url': '../js/datatable/lang.json'
+	      },'order': [[ 0, 'desc' ]]
+	    }
+          );
         });
-      </script>
-";
+      </script>";
       return $msg;
     }
   }

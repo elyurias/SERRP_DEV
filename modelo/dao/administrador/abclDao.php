@@ -86,5 +86,11 @@
         static function sqlSetAlumnoPeriodo(){
 	  return "SELECT reg_alumno_periodo_actual_existente(?) as statusActualiza;";
         }
+        static function sqlGetGeneracionOrden(){
+	  return "SELECT * FROM get_generacion_all_data;";
+        }
+        static function sqlSetPeriodo(){
+	  return 'CALL add_new_generacion(?,?,?)';
+        }
     }
 ?>

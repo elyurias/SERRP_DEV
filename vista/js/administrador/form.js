@@ -28,7 +28,7 @@ $(document).ready(function() {
                     '../../controlador/administrador/datacontroll.php',
                     $('#formMaxLimit').serialize(),
                     function(data){
-			$("#msgtos").html('<div></div>');
+			$("#msgtos").empty();
                         $("#msgtos").html(data);
 			$('#modal1ModLimit').modal('close');
 			getTablaDataJS(1,1);

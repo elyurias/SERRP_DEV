@@ -29,6 +29,18 @@ function getasesorados(id_asesor_data){
 		}
 	);
 }
+function ver_avances_alumno(id_alumno_data){
+  $.post(
+		'../../controlador/docente/docentecontroll.php',
+		{
+		  accion:'getdocentesasesordoc',
+		  id_alumno:id_alumno_data
+		},
+		function(data){
+		  rellenarTablaS(data)
+		}
+  );
+}
 function rellenarTablaS(data){
   $('#contenidoIntro').html('<div></div>');
   $('#tableS').html(data);

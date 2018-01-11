@@ -4,13 +4,17 @@
             $t = "";
             switch($datareg['statusreg']){
                 case 1:
-                    $t.="Asesor registrado<script>getTablaDataJS(1);</script>";
+                    $t.="Asesor registrado<script>
+                    
+                    getTablaDataJS(1);</script>";
                 break;
                 case 2:
-                    $t.="Alumno registrado<script>getTablaDataJS(2);</script>";
+                    $t.="Alumno registrado<script>
+                    
+getTablaDataJS(2);</script>";
                 break;
                 case 3:
-                    $t.="Este ID para QR esta registrado";
+                    $t.="Este ID para QR ya esta registrado";
                 break;
                 case 4:
                     $t.="Administrador registrado<script>getTablaDataJS(3);</script>";
@@ -269,7 +273,12 @@
 		    </form>
 		    <script src='../js/administrador/validform.js'></script>
 		    <script>
-		    $('#modal3".$nivel."').modal();
+		    var onModalHide = function() {
+			limpiarCamposHTML('#forms_d');
+		    };
+		    $('#modal3".$nivel."').modal({
+		      complete : onModalHide
+		    });
 		    $('#modal3".$nivel."').modal('open');
 		    </script>
 		    ";
@@ -323,5 +332,102 @@
 CADENA_CONSTRUCT;
 		return $msg;
 		}
+		public function getTablaGeneracion($regs){
+		$msg ="
+          <link rel='stylesheet' type='text/css' href='../js/datatable/aoi/datatables.min.css'/>
+          <script type='text/javascript' src='../js/datatable/aoi/datatables.min.js'></script>
+      <h5>Periodos de Residencias Profesionales</h5>
+      <button id='regnuevoperiodo' class='btn waves-effect waves-light' onclick='dataClassDocente.getnuevoperiodo();' name='action'>Registrar nuevo periodo</button>
+         <table id='regs'  class='display nowrap' width='100%'>
+      <thead>
+        <tr>
+          <th>Periodo</th>
+          <th>Fecha de inicio de registro</th>
+          <th>Fecha de fin de registro</th>
+          <th>Estado del periodo</th>
+        </tr>
+      </thead><tbody>
+";
+      foreach($regs as $row){
+	$statusreg = $row['Iestado_cg']==1?"blue white-text'>Activo":"green white-text'>Finalizado";
+        $msg.="
+	      <tr>
+                  <td>".$row['Vnombre_cg']."</td>
+                  <td>".$row['Dfecha_inicio']."</td>
+                  <td>".$row['Dfecha_fin']."</td>
+                  <td class='".$statusreg."</td>
+              </tr>";
+      }
+      $msg.="
+      </tbody><table>
+       <script>
+      $(document).ready(function() {
+          $('#regs').DataTable(
+	    {
+	      responsive: true,
+	      'language': {
+		    'url': '../js/datatable/lang.json'
+	      },'order': [[ 0, 'desc' ]]
+	    }
+          );
+        });
+      </script>";
+      return $msg;
+		}
+	public function getformregistrarperiodo(){
+	$msg = <<<CADENA_CONSTRUCT
+		<div id='modaldatalibgenreg' class='modal modal-fix-footer'>
+		  <div class='modal-content'>
+		    <h5>
+		      Registrar nuevo periodo de Residencias Profesionales
+		    </h5>
+		    <form id='formregperiodo' onsubmit='return false;'>
+		    <p>
+		      El registro del nuevo periodo de Residencias Profesionales, cerrara el periodo de residencias anterior y actualizara el sistema en funcion al nuevo periodo a registrar
+			<div>
+			 <div class='input-field'>
+			    <label for='nombre_periodo'>Nombre de periodo</label>
+			      <input id='nombre_periodo' name='nombre_periodo' type='text' data-error='.errorTxtLog1' required>
+			      <div class='errorTxtLog1'></div>
+			  </div>
+			  <div class=''>
+			    <label for='fechauno'>Inicio de registro</label>
+			      <input id='fechauno' name='fechauno' type='date' data-error='.errorTxtLog2' required>
+			      <div class='errorTxtLog2'></div>
+			  </div>
+			   <div class=''>
+			    <label for='fechados'>Fin de registro de periodo</label>
+			      <input id='fechados' name='fechados' type='date' data-error='.errorTxtLog3' required>
+			      <div class='errorTxtLog3'></div>
+			  </div>
+			</div>
+			<input type='hidden' name='accion' value='registrarnuevoperiododerepo' required>
+		       <button class="btn waves-effect waves-light" type="submit" name="action">Registrar<i class="material-icons right">send</i></button>
+		     </form>
+		    </p>
+		    </div>
+		    <script>
+                    $(document).ready(function() {
+			var d = new Date();
+			var n = d.toISOString();
+			var s = n.substring(0,5);
+			$('#nombre_periodo').val(s);
+		    });
+                    </script>
+		    <script>
+		    var onModalHide = function() {
+			limpiarCamposHTML('#msgtosTres');
+		    };
+		    $('#modaldatalibgenreg').modal({
+		      complete : onModalHide
+		    });
+		    $('#modaldatalibgenreg').modal('open');
+		    </script>
+		    <script src='../js/administrador/formvalid.js' charset='UTF-8'>
+		    </script>
+		</div>
+CADENA_CONSTRUCT;
+		return $msg;
 	}
+}
 ?>

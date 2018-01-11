@@ -55,6 +55,10 @@
 	    $pRE = conexion::getArraypP(adminABC::sqlGetFinProfesor($opciones),array());
 	    return $pRE;
 	 }
+	 function getDataGeneracionTable(){
+	    $pRE = conexion::getArraypP(adminABC::sqlGetGeneracionOrden(),array());
+	    return $pRE;
+	 }
 	 function getProfesoresAlumnosFinalGrap($opcion){
 	  $pRE = '';
 	    switch ($opcion) {
@@ -133,6 +137,10 @@
 	 function get_es_ta_re_gis_tra_do_a_lu_m_no_periodo($VidentiQR){
 	    $pRE = conexion::getArraypP(adminABC::sqlSetAlumnoPeriodo(),array($VidentiQR));
 	    return $pRE[0]['statusActualiza'];
+	 }
+	 function setPeriodoData($data){
+	    $pRE = conexion::getArraypP(adminABC::sqlSetPeriodo(),$data);
+	    return $pRE;
 	 }
 	}
 ?>

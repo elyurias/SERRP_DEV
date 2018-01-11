@@ -116,7 +116,7 @@
 								      </ul>
 								</li>
 								<li>
-								      <a href='#' id='modgeneracion'>Periodo de RP</a>
+								      <a href='#' id='modgeneracion' onclick='dataClassDocente.getgeneraciondata();'>Periodo de RP</a>
 								</li>
 								<li>
 									<a href='#' onclick='getformularioData();'>Estadística</a>

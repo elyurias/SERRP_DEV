@@ -19,5 +19,9 @@
 		    $pR = conexion::getArraypP(sqlPartDoc::SqlGetAlumnosGeneracion(), array($id_asesor));
 		    return $pR;
 		}
+		function getDocumentosDataAlumno($id_alumno){
+		    $pR = conexion::getArraypP(sqlPartDoc::SqlGetAlumnosDocumento(), array($id_alumno));
+		    return $pR;
+		}
 	}
 ?>

@@ -66,8 +66,13 @@
 			$vf = $this->vistaF->getRegistroUsuarioAdmn(1,$especialidad,1,array());
 			return $vf;
 		}
+		function getDataTableGeneracion(){
+			$datarow = $this->tablaA->getDataGeneracionTable();
+			$vf = $this->vistaF->getTablaGeneracion($datarow);
+			return $vf;
+		}
       	// Apartado de actualizacion (&actualiza)
-      	function getActualizaAsesorData($modulo){
+		function getActualizaAsesorData($modulo){
 			$especialidad = $this->tablaA->getEspecialidad();
           	$dataUsuario = $this->tablaA->getDataUsuario($modulo->DNI);
 			$vf = $this->vistaF->getRegistroUsuarioAdmn(2,$especialidad,2,$dataUsuario);
@@ -94,7 +99,6 @@
 		      return $this->mensajes->getModalMsgUPD('Usuario actualizado','El usuario no existe');
 		   }
 		}
-      	// Apartado de actualizacion (&actualiza)
 		function setUsuario($modulo){
 		    $regtst = $this->tablaA->setUsuario($modulo);
 		    $vf = $this->vistaF->getMsgEstadoRegistro($regtst[0]);
@@ -252,29 +256,14 @@
 		function actualizarLimiteAsesor($classData){
 		  if($classData->tipo_operacion == 1){
 		    $dataRes = $this->tablaA->getActualizaModLimitAsesorados($classData->limit_data,$classData->id_asesor_data);
-		    return $this->mensajes->getModalMsg('Control y Registro del l&iacute;mite de alumnos por asesor','
+		    return $this->mensajes->getModalMsgActualiza('Control y Registro del l&iacute;mite de alumnos por asesor','
 		    <br>
-		    '.$this->statusAsesor($dataRes).'UNO
-		    <script>
-		    $(document).ready(function(){
-		    $("#modal1").modal();
-		    $("#modal1").modal("open");
-		    });
-		    </script>
-		    ');
+		    '.$this->statusAsesor($dataRes).'');
 		  }else{
 		  $dataRes = $this->tablaA->getActualizaUpdLimitAsesorados($classData->limit_data,$classData->id_asesor_data);
-		    return $this->mensajes->getModalMsg('Control y Registro del l&iacute;mite de alumnos por asesor','
+		    return $this->mensajes->getModalMsgActualiza('Control y Registro del l&iacute;mite de alumnos por asesor','
 		    <br>
-		    '.$this->statusAsesor($dataRes).'DOS
-		    <script>
-		    $(document).ready(function(){
-		    $("#modal1").modal();
-		    $("#modal1").modal("open");
-		    });
-		    </script>
-		   
-		    ');
+		    '.$this->statusAsesor($dataRes).'');
 		  }
 		}
 		function mostrarLimiteAsesor($classData){
@@ -295,15 +284,8 @@
 			  "
 			);
 		      }else{
-		      $dataRes = $this->mensajes->getModalMsg('Estado de registro, el usuario ya esta registrado','
-			  El docente ya esta registrado en el periodo actual.
-			  <script>
-			    $(document).ready(function(){
-				$("#modal1").modal();
-				$("#modal1").modal("open");
-			    });
-			  </script>
-		    ');
+		      $dataRes = $this->mensajes->getModalMsgStatusRegistro('Estado de registro, el usuario ya esta registrado','
+			  El docente ya esta registrado en el periodo actual.');
 		      }
 		    }
 		    return $dataRes;
@@ -420,6 +402,13 @@
 			 </script>');
 		    }
 		    return $mensajeModuloDir;
+		}
+		function getformnuevogeneracion(){
+		    return $this->vistaF->getformregistrarperiodo();
+		}
+		function setPeriodoNuevo($classRow){
+		    $statusVal = $this->tablaA->setPeriodoData(array($classRow->nombre_periodo,$classRow->fecha_uno,$classRow->fecha_dos));
+		    return var_dump($statusVal);
 		}
 	}
 ?>

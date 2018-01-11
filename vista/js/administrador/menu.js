@@ -101,9 +101,9 @@ function getpiepaginaData(){
   });
 }
 function getdataintro(){
-  $('#fores').html('<div></div>');
-  $('#forms_d').html('<div></div>');
-  $('#tableS').html('<div></div>');
+  $('#fores').empty();
+  $('#forms_d').empty();
+  $('#tableS').empty();
     $.post('../../controlador/administrador/datacontroll.php',
 	 {accion:'contenidointro'},
     function(data){

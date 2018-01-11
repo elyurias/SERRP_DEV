@@ -147,7 +147,19 @@
 		break;
 		case 'mostrarLogs':
 		    $resal = $bo->mostrarLogsDB();
-		break;		
+		break;	
+		case 'generacionRegs':
+		    $resal = $bo->getDataTableGeneracion();
+		break;
+		case 'getformnuevoperiodo':
+		    $resal = $bo->getformnuevogeneracion();
+		break;
+		case 'registrarnuevoperiodoglobal':
+		    $obj->nombre_periodo = $_REQUEST['nombre_periodo'];
+		    $obj->fecha_uno = $_REQUEST['fechauno'];
+		    $obj->fecha_dos = $_REQUEST['fechados'];
+		    $resal = $bo->setPeriodoNuevo($obj);
+		break;
 	}
 	print($resal);
 ?>

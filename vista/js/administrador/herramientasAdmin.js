@@ -1,4 +1,4 @@
-var datav;//getgeneracion(1,1);
+var datav;
 function getformModUser(id_datab,tipo){
     limpiarCamposHTML('#updfores');
     var docTD = {accion:'noOperacion'}; 
@@ -19,6 +19,8 @@ function getformModUser(id_datab,tipo){
 }
 function getgeneracion(inicio,tipo){
      datav = tipo;
+     limpiarTodosLosCamposHTML();
+     $('#msgtosTres').empty();
      $.post(
             '../../controlador/administrador/datacontroll.php',
             {accion:'getgen'},
@@ -35,6 +37,7 @@ function getgeneracion(inicio,tipo){
     $('#contenidoIntro').html('<div></div>');
 }
 function getTablaDataJS(tipo,part){
+  limpiarCamposHTML('#fores_d');
   var cadenaLol = "<div class='indeterminate'></div>";
   $('.progress').html(cadenaLol);
   var docTD = {accion:'noOperacion'}; 
@@ -104,9 +107,9 @@ function getFormularioActualiza(tipo,idP){
 function qrData(id){
 	var link = document.location.href;
 	var reference = link.substring(0,link.indexOf('index.html'))+'index.html?accion=login&DNI='+id;
-    $('#msgData').html("<div id='modal1' class='modal modal-fixed-footer'><div class='modal-content'><h5><center>Mensaje del Sistema: Generacion de código QR</center></h5><p><center><div id='qr'></div><h6>El siguiente código QR permite el acceso al sistema de entrega y revisión de residencias profesionales al usuario con el ID: "+id+" </h6></center></p></div><div class='modal-footer'><a href='#' class='modal-action modal-close waves-effect waves-green btn-flat'>OK</a></div></div>");
-	$('#modal1').modal();
-	$('#qr').qrcode({
+    $('#msgData').html("<div id='qr' class='modal modal-fixed-footer'><div class='modal-content'><h5><center>Mensaje del Sistema: Generacion de código QR</center></h5><p><center><div id='qrt'></div><h6>El siguiente código QR permite el acceso al sistema de entrega y revisión de residencias profesionales al usuario con el ID: "+id+" </h6></center></p></div><div class='modal-footer'><a href='#' class='modal-action modal-close waves-effect waves-green btn-flat'>OK</a></div></div>");
+	$('#qr').modal();
+	$('#qrt').qrcode({
     // render method: 'canvas', 'image' or 'div'
     render: 'canvas',
     // version range somewhere in 1 .. 40
@@ -144,10 +147,10 @@ function qrData(id){
     fontcolor: '#755a05de',
     image: null
     });
-	$('#modal1').modal('open');
+    $('#qr').modal('open');
 }
 function limpiarCamposHTML(identificador){
-  $(identificador).html('<div></div>');
+  $(identificador).empty();
 }
 function rellenarCampoHTML(identificador,valor){
   $(identificador).html(valor);
@@ -159,7 +162,7 @@ function getformularioData(){
   $.post('../../controlador/administrador/datacontroll.php',
 	 {accion:'Festadistica'},
     function(data){
-      $('#contenidoIntro').html('<div></div>');
+      $('#contenidoIntro').empty();
       rellenarCampoHTML('#tableS',data);
   });
 }
@@ -167,7 +170,7 @@ function estadisticaData(nivelGenero,campoArea){
   $.post('../../controlador/administrador/datacontroll.php',
 	 {accion:'estadistica',genero:nivelGenero,area:campoArea},
     function(data){
-      $('#contenidoIntro').html('<div></div>');
+      $('#contenidoIntro').empty();
       rellenarCampoHTML('#tableS',data);
   });
 }
@@ -185,6 +188,9 @@ function limpiarTodosLosCamposHTML(){
   limpiarCamposHTML('#forms_d');
   limpiarCamposHTML('#tableS');
   limpiarCamposHTML('#contenidoIntro');
+  limpiarCamposHTML('#msgtosDos');
+  limpiarCamposHTML('#msgtosTres');
+  limpiarCamposHTML('#msgtos');
 }
 function get_data_base(tipo){
   limpiarTodosLosCamposHTML();
@@ -229,7 +235,7 @@ function optdatalogs(tipo){
     }
   );
 }
-class docente{
+class dataclass{
   formlimite(limit, id_asesor){
     this.limit = limit;
     this.id_asesor = id_asesor;
@@ -260,6 +266,25 @@ class docente{
       '#msgtosTres'
     );
   }
+  limpiarCamposHTML(identificador){
+      $(identificador).empty();
+  }
+  limpiarTodosLosCamposHTML(){
+    this.limpiarCamposHTML('#fores');
+    this.limpiarCamposHTML('#forms_d');
+    this.limpiarCamposHTML('#tableS');
+    this.limpiarCamposHTML('#contenidoIntro');
+  }
+  getgeneraciondata(){
+    this.limpiarTodosLosCamposHTML();
+    this.callControll(
+      {
+	accion:'generacionRegs'
+      },
+      '../../controlador/administrador/datacontroll.php',
+      '#tableS'
+    );
+  }
   regNuevoUsuarioAlumn(id_alumno){
     this.id_alumno = id_alumno;
     this.limpiarCampoHTMLDataID('msgtosTres');
@@ -284,6 +309,16 @@ class docente{
       '#msgtosTres'
     );
   }
+  getnuevoperiodo(){
+    this.limpiarCampoHTMLDataID('msgtosTres');
+    this.callControll(
+      {
+	accion:'getformnuevoperiodo'
+      },
+      '../../controlador/administrador/datacontroll.php',
+      '#msgtosTres'
+    );
+  }
   get_respaldo_db(){
     if(confirm('Desea crear un respaldo de la base de datos?')==1){
     this.callControll(
@@ -297,10 +332,13 @@ class docente{
     }
   }
   limpiarCampoHTMLDataID(id){
-    document.getElementById(id).innerHTML="<div></div>";
+    $('#'+id).empty();
   }
   callControll(json,url,estHTML){
+    this.limpiarCampoHTMLDataID('msgtosDos');
+    this.limpiarCampoHTMLDataID('msgtosTres');
+    this.limpiarCampoHTMLDataID('msgtos');
     $.post(url,json,function(data){$(estHTML).html(data);});
   }
 }
-var dataClassDocente = new docente();
+var dataClassDocente = new dataclass();

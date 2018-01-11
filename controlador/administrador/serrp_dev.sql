@@ -76,7 +76,7 @@ CREATE TABLE `asesor_alumno` (
   KEY `fk_asesor_alumno_1_idx` (`id_alumno`),
   CONSTRAINT `asesor_alumno_ibfk_2` FOREIGN KEY (`id_asesor`) REFERENCES `asesor_data` (`id_asesor`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_asesor_alumno_1` FOREIGN KEY (`id_alumno`) REFERENCES `alumno_data` (`id_alumno`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,7 +85,7 @@ CREATE TABLE `asesor_alumno` (
 
 LOCK TABLES `asesor_alumno` WRITE;
 /*!40000 ALTER TABLE `asesor_alumno` DISABLE KEYS */;
-INSERT INTO `asesor_alumno` VALUES (1,6,NULL,'2017-06-01','2017-08-01',100,1,1,6),(2,6,NULL,'2017-06-01','2017-08-01',100,1,2,6),(3,1,NULL,NULL,NULL,100,1,3,4),(4,6,NULL,'2017-06-01','2017-12-01',100,1,4,5),(5,1,NULL,NULL,NULL,100,1,5,6),(6,0,NULL,NULL,NULL,100,1,5,6),(10,6,NULL,'2017-06-01','2017-12-01',100,1,12,10),(11,3,NULL,'2017-06-01','2017-12-01',100,1,13,10),(12,3,NULL,'2017-06-01','2017-08-01',100,1,14,9),(16,6,'2018-01-02','2017-06-08','2018-01-01',0,1,62,27),(17,6,'2018-01-02','2017-01-01','2017-03-01',100,1,18,27),(18,9,'2017-06-01','2017-06-01','2017-10-01',12,1,90,29),(19,9,'2017-06-01','2017-06-01','2017-10-01',15,1,91,29),(20,9,'2017-06-01','2017-06-01','2017-10-01',18,1,92,29),(21,9,'2017-06-01','2017-06-01','2017-10-01',12,1,93,29),(22,9,'2017-06-01','2017-06-01','2017-10-01',66,1,94,29),(23,9,'2017-06-01','2017-06-01','2017-10-01',23,1,126,29);
+INSERT INTO `asesor_alumno` VALUES (1,6,NULL,'2017-06-01','2017-08-01',100,1,1,6),(2,6,NULL,'2017-06-01','2017-08-01',100,1,2,6),(3,1,NULL,NULL,NULL,100,1,3,4),(4,6,NULL,'2017-06-01','2017-12-01',100,1,4,5),(5,1,NULL,NULL,NULL,100,1,5,6),(6,0,NULL,NULL,NULL,100,1,5,6),(10,6,NULL,'2017-06-01','2017-12-01',100,1,12,10),(11,3,NULL,'2017-06-01','2017-12-01',100,1,13,10),(12,3,NULL,'2017-06-01','2017-08-01',100,1,14,9),(16,6,'2018-01-02','2017-06-08','2018-01-01',0,1,62,27),(17,6,'2018-01-02','2017-01-01','2017-03-01',100,1,18,27),(18,9,'2017-06-01','2017-06-01','2017-10-01',12,1,90,29),(19,9,'2017-06-01','2017-06-01','2017-10-01',15,1,91,29),(20,9,'2017-06-01','2017-06-01','2017-10-01',18,1,92,29),(21,9,'2017-06-01','2017-06-01','2017-10-01',12,1,93,29),(22,9,'2017-06-01','2017-06-01','2017-10-01',66,1,94,29),(23,9,'2017-06-01','2017-06-01','2017-10-01',23,1,126,29),(24,6,NULL,NULL,NULL,100,1,123,33);
 /*!40000 ALTER TABLE `asesor_alumno` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -137,7 +137,7 @@ CREATE TABLE `asesor_data` (
   KEY `id_cg` (`id_cg`),
   CONSTRAINT `asesor_data_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`VidentiQR_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `asesor_data_ibfk_2` FOREIGN KEY (`id_cg`) REFERENCES `cgeneracion` (`id_cg`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=303 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=304 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,7 +146,7 @@ CREATE TABLE `asesor_data` (
 
 LOCK TABLES `asesor_data` WRITE;
 /*!40000 ALTER TABLE `asesor_data` DISABLE KEYS */;
-INSERT INTO `asesor_data` VALUES (1,'152',3,2),(2,'152',100,1),(3,'1251',4,2),(4,'135251',10,2),(5,'12517',8,2),(6,'20072296005',2,2),(7,'201414049',5,2),(8,'32135423',10,2),(9,'2017048061',1,2),(10,'222',4,1),(11,'223',12,2),(12,'224',4,2),(13,'225',4,2),(14,'226',4,2),(15,'227',4,2),(16,'228',4,2),(17,'229',4,2),(18,'230',4,2),(19,'231',4,2),(20,'232',4,2),(21,'233',4,2),(22,'234',4,2),(23,'235',4,2),(24,'236',4,2),(25,'237',4,2),(26,'238',4,2),(27,'239',2,2),(28,'240',4,2),(29,'241',4,2),(30,'300',10,2),(32,'12578',1001,2),(33,'222',4,2),(300,'600',1,1),(301,'600',2,2),(302,'16515',213,2);
+INSERT INTO `asesor_data` VALUES (1,'152',3,2),(2,'152',100,1),(3,'1251',4,2),(4,'135251',10,2),(5,'12517',8,2),(6,'20072296005',2,2),(7,'201414049',5,2),(8,'32135423',10,2),(9,'2017048061',1,2),(10,'222',4,1),(11,'223',12,2),(12,'224',4,2),(13,'225',4,2),(14,'226',4,2),(15,'227',4,2),(16,'228',4,2),(17,'229',4,2),(18,'230',4,2),(19,'231',4,2),(20,'232',4,2),(21,'233',4,2),(22,'234',4,2),(23,'235',4,2),(24,'236',4,2),(25,'237',4,2),(26,'238',4,2),(27,'239',2,2),(28,'240',4,2),(29,'241',4,2),(30,'300',10,2),(32,'12578',1001,2),(33,'222',4,2),(300,'600',1,1),(302,'16515',213,2),(303,'600',10,2);
 /*!40000 ALTER TABLE `asesor_data` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +199,7 @@ CREATE TABLE `documento_avance` (
   PRIMARY KEY (`id_da`),
   KEY `id_asesor_alumno` (`id_asesor_alumno`),
   CONSTRAINT `documento_avance_ibfk_1` FOREIGN KEY (`id_asesor_alumno`) REFERENCES `asesor_alumno` (`id_pa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,6 +208,7 @@ CREATE TABLE `documento_avance` (
 
 LOCK TABLES `documento_avance` WRITE;
 /*!40000 ALTER TABLE `documento_avance` DISABLE KEYS */;
+INSERT INTO `documento_avance` VALUES (1,'Primer avance','http://www.google.com','NULL','NULL',1,1,'2017-08-01','2017-08-07','Aceptado',24),(2,'Segundo avance','http://www.google.com','NULL','NULL',1,1,'2017-08-08','2017-08-16','Aceptado',24),(3,'Tercer avance','http://www.google.com','NULL','NULL',1,1,'2017-08-24','2017-08-30','Aceptado',24),(4,'Cuarto avance','http://www.google.com','NULL','NULL',1,1,'2017-08-31','2017-09-07','Aceptado',24);
 /*!40000 ALTER TABLE `documento_avance` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -372,6 +373,38 @@ SET character_set_client = utf8;
 /*!50001 CREATE TABLE `get_alumnos_y_docentes_6_meses_finalizado_Masculino` (
   `Vnombre_cg` tinyint NOT NULL,
   `Contador` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `get_documentos_data`
+--
+
+DROP TABLE IF EXISTS `get_documentos_data`;
+/*!50001 DROP VIEW IF EXISTS `get_documentos_data`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `get_documentos_data` (
+  `id_da` tinyint NOT NULL,
+  `Vdescripcion_da` tinyint NOT NULL,
+  `Vlink_da` tinyint NOT NULL,
+  `VdocumentoDOC_DA` tinyint NOT NULL,
+  `VdocumentoPDF_DA` tinyint NOT NULL,
+  `Iestado_da` tinyint NOT NULL,
+  `Ivalidar_da` tinyint NOT NULL,
+  `Dfecha_inicio` tinyint NOT NULL,
+  `Dfecha_fin` tinyint NOT NULL,
+  `Vcomentar_da` tinyint NOT NULL,
+  `id_asesor_alumno` tinyint NOT NULL,
+  `id_pa` tinyint NOT NULL,
+  `Iestado_pa` tinyint NOT NULL,
+  `Dregistro_pa` tinyint NOT NULL,
+  `Dinicio_pa` tinyint NOT NULL,
+  `Dfin_pa` tinyint NOT NULL,
+  `Iprogreso_pa` tinyint NOT NULL,
+  `Irestriccion_pa` tinyint NOT NULL,
+  `id_alumno` tinyint NOT NULL,
+  `id_asesor` tinyint NOT NULL
 ) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
@@ -1309,6 +1342,25 @@ USE `serrp_dev`;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `get_documentos_data`
+--
+
+/*!50001 DROP TABLE IF EXISTS `get_documentos_data`*/;
+/*!50001 DROP VIEW IF EXISTS `get_documentos_data`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `get_documentos_data` AS select `da`.`id_da` AS `id_da`,`da`.`Vdescripcion_da` AS `Vdescripcion_da`,`da`.`Vlink_da` AS `Vlink_da`,`da`.`VdocumentoDOC_DA` AS `VdocumentoDOC_DA`,`da`.`VdocumentoPDF_DA` AS `VdocumentoPDF_DA`,`da`.`Iestado_da` AS `Iestado_da`,`da`.`Ivalidar_da` AS `Ivalidar_da`,`da`.`Dfecha_inicio` AS `Dfecha_inicio`,`da`.`Dfecha_fin` AS `Dfecha_fin`,`da`.`Vcomentar_da` AS `Vcomentar_da`,`da`.`id_asesor_alumno` AS `id_asesor_alumno`,`aa`.`id_pa` AS `id_pa`,`aa`.`Iestado_pa` AS `Iestado_pa`,`aa`.`Dregistro_pa` AS `Dregistro_pa`,`aa`.`Dinicio_pa` AS `Dinicio_pa`,`aa`.`Dfin_pa` AS `Dfin_pa`,`aa`.`Iprogreso_pa` AS `Iprogreso_pa`,`aa`.`Irestriccion_pa` AS `Irestriccion_pa`,`aa`.`id_alumno` AS `id_alumno`,`aa`.`id_asesor` AS `id_asesor` from (`documento_avance` `da` join `asesor_alumno` `aa` on((`da`.`id_asesor_alumno` = `aa`.`id_pa`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `get_no_finalizo_data`
 --
 
@@ -1583,4 +1635,4 @@ USE `serrp_dev`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-08 17:42:20
+-- Dump completed on 2018-01-09 14:22:20

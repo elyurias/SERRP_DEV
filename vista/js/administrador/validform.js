@@ -74,8 +74,8 @@
                     '../../controlador/administrador/datacontroll.php',
                     $('#formValidate').serialize(),
                     function(data){
-                        $("#msgtos").html(data);
-			$('#modal3').modal('close');
+                        $("#msgtos").empty();
+			$("#msgtos").html(data);
 			getTablaDataJS(datav,1);
                     }
             );

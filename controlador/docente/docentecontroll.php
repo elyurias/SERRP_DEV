@@ -18,6 +18,10 @@
 				$obj->id_asesor = $_REQUEST['id_asesor'];
 	 			$resul = $bo->getDataDoc($obj);
 	 		break;
+	 		case 'getdocentesasesordoc':
+				$obj->id_alumno = $_REQUEST['id_alumno'];
+	 			$resul = $bo->getDocumentosDocenteAlumno($obj);
+	 		break;
 	 		default:
 	 			$resul = $_REQUEST['accion'];
 	 		break;

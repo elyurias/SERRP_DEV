@@ -19,5 +19,10 @@
 			$vf = $this->vistadoc->getAsesoradosFinal($resP);
 			return $vf;
 		}
+		public function getDocumentosDocenteAlumno($classMod){
+			$resP = $this->daodoc->getDocumentosDataAlumno($classMod->id_alumno);
+			$vf = $this->vistadoc->getAsesoradosDocumentoFinal($resP);
+			return $vf;
+		}
 	}
 ?>
