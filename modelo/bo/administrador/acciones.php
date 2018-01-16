@@ -252,6 +252,15 @@
 		    $dataRes = $this->vistaT->getTablaLogsData($formData);
 		    return $dataRes;
 		}
+		function restoredatabase($rutaL){
+		    $formData = $this->tablaA->SETdatabase_resourse($rutaL);
+		    if($formData==0){
+		      $dataRes = $this->vistaT->getMensajesLogs('Base de datos restaurada');
+		    }else{
+		      $dataRes = $this->vistaT->getMensajesLogs('Error al restaurar la base de datos');
+		    }
+		    return $dataRes;
+		}
 		// limite asesor cambio
 		function actualizarLimiteAsesor($classData){
 		  if($classData->tipo_operacion == 1){

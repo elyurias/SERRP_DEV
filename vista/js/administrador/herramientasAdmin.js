@@ -331,6 +331,10 @@ class dataclass{
     $('#respaw_db').html("<br><a href='../../controlador/administrador/serrp_dev.sql' target='_blank' class='center-align tooltipped waves-effect waves-light btn' data-position='top' data-delay='50' data-tooltip='Descargar respaldo de base de datos'>Descargar respaldo</a>");
     }
   }
+  set_respaldo_db(){
+    $('#respaw_db').html('');
+    
+  }
   limpiarCampoHTMLDataID(id){
     $('#'+id).empty();
   }

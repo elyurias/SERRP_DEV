@@ -160,6 +160,25 @@
 		    $obj->fecha_dos = $_REQUEST['fechados'];
 		    $resal = $bo->setPeriodoNuevo($obj);
 		break;
+		case 'uploaddoc':
+		    //obtenemos el archivo a subir
+		    $file = $_FILES['archivo']['name']; 
+		    //comprobamos si existe un directorio para subir el archivo
+		    //si no es así, lo creamos
+		    if(!is_dir("files/")){ 
+			mkdir("files/", 0777);
+		    }
+		    //unlink("files/".$file);
+		      //comprobamos si el archivo ha subido
+		    move_uploaded_file($_FILES['archivo']['tmp_name'],"files/".$file);
+		    // recuperar DATABASE
+		    // recuperar DATABASE
+		    // Destruir base de datos
+		    $resal = $bo->restoredatabase("files/".$file);
+		break;
+		case 'pruebaresp':
+		    $resal = $bo->restoredatabase($_SERVER['DOCUMENT_ROOT'].ruta::ruta."/controlador/administrador/"."files/2017-01.sql");
+		break;
 	}
 	print($resal);
 ?>

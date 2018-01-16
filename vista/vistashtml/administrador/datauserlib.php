@@ -376,15 +376,74 @@ return $cadenalid;
     }
     function getformularioViewDB(){
       $dataForm = <<<EOT
+      <h5>Crear respaldo de la base de datos</h5>
       <a onclick='dataClassDocente.get_respaldo_db();' id='iniciarDatos' class='center-align tooltipped waves-effect waves-light btn' data-position='top' data-delay='50' data-tooltip='Crear respaldo de base de datos'>
 	Crear respaldo de base de datos
       </a>
       <div id='respaw_db'>
 
       </div>
+      <div id='resp_dev_log'>
+	 <h5>Restaurar la base de datos a un estado anterior</h5>
+	 <form enctype="multipart/form-data" action="javascript:void(0);" method="POST" class='formulario'>
+	  <div class="file-field input-field">
+	    <div class="btn">
+	      <span>Archivo SQL</span>
+	      <input type="file" id="archdata" name='archivo'>
+	    </div>
+	      <div class="file-path-wrapper">
+		<input class="file-path validate" type="text" name="archivosdata" required />
+	      </div><input class="" type="hidden" name="accion" value='uploaddoc' required />
+	      </div> <input type="submit" name="accion" value="Subir respaldo" class="waves-effect waves-light btn" id='subirdoc' />
+	    </form>
+      </div>
       <script>
          $(document).ready(function(){
 	    $('#iniciarDatos').tooltip({delay: 50});
+	    $('#iniciarDatos2').tooltip({delay: 50});
+	    
+ 	      var fileExtension = "";
+	      $('#archdata').change(function(){
+		var file = $("#archdata")[0].files[0];
+		var fileName = file.name;
+		fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1);
+		var fileSize = file.size;
+		var fileType = file.type;
+		if(fileExtension!='sql'){
+		  alert('Archivo erroneo, se necesita un archivo SQL para realizar la Operacion');
+		  document.getElementById("archdata").value = "";
+		}
+	      });
+	      $('#subirdoc').click(function(){
+	       if(fileExtension!='sql'){
+		  alert('Archivo erroneo, se necesita un archivo SQL para realizar la Operacion');
+		}else{
+		var formData = new FormData($(".formulario")[0]);
+		  //hacemos la petición ajax  
+		$.ajax({
+		    url: '../../controlador/administrador/datacontroll.php',  
+		    type: 'POST',
+		    // Form data
+		    //datos del formulario
+		    data: formData,
+		    //necesario para subir archivos via ajax
+		    cache: false,
+		    contentType: false,
+		    processData: false,
+		    //mientras enviamos el archivo
+		    beforeSend: function(){
+		      alert('Subiendo archivo sql, espere porfavor...');        
+		    },
+		    //una vez finalizado correctamente
+		    success: function(data){
+		      alert('Finalizando subida de archivo sql, en un momento se realizara la restauracion de la base de datos');
+		      alert(data);
+		    },
+		    error: function(data){
+			alert('Error al subir el archivo SQL');
+		    }
+		});
+	      }});
          });
       </script>
 EOT;
@@ -471,6 +530,9 @@ EOT;
         });
       </script>";
       return $msg;
+    }
+    function getMensajesLogs($status){
+      return $status;
     }
   }
 ?>

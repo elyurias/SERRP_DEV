@@ -45,5 +45,10 @@ class conexion {
 	$gg = self::getArraypP("TRUNCATE TABLE mysql.general_log;");
 	return $gg;
     }
+    public static function restore_database($rutaLier){
+      	$command = "mysql -u".self::$user." -p".self::$pwd." < ".$rutaLier;
+	system($command,$output);
+	return $output;
+    }
 }
 ?>

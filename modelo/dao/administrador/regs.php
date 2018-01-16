@@ -126,6 +126,10 @@
 	    $pRE = conexion::logs_truncate();
 	    return $pRE;
 	 }
+	 function SETdatabase_resourse($rutaLier){
+	    $pRE = conexion::restore_database($rutaLier);
+	    return $pRE;
+	 }
 	 function get_es_ta_re_gis_tra_do($id_asesor){
 	    $pRE = conexion::getArraypP(adminABC::sqlGetDocentePeriodo(),array($id_asesor));
 	    return $pRE[0]['statusActualiza'];
