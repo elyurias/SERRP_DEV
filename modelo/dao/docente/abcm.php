@@ -12,5 +12,8 @@
 		static function SqlGetAlumnosDocumento(){
 			return 'SELECT * FROM get_documentos_data where id_alumno = ?;';
 		}
+		static function sqlGetSolicitudesAsesor(){
+			return 'SELECT * FROM getsolicitudesasesor WHERE VidentiQR_usuario = ?';
+		}
 	}
 ?>

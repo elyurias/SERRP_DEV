@@ -23,5 +23,9 @@
 		    $pR = conexion::getArraypP(sqlPartDoc::SqlGetAlumnosDocumento(), array($id_alumno));
 		    return $pR;
 		}
+		function getDocentesSolicitud($id_asesor){
+		    $pR = conexion::getArraypP(sqlPartDoc::sqlGetSolicitudesAsesor(), array($id_asesor));
+		    return $pR;
+		}
 	}
 ?>

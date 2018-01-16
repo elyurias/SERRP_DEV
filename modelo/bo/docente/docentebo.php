@@ -24,5 +24,10 @@
 			$vf = $this->vistadoc->getAsesoradosDocumentoFinal($resP);
 			return $vf;
 		}
+		public function getsoldocente($classMod){
+			$resP = $this->daodoc->getDocentesSolicitud($classMod->id_asesor);
+			$vf = $this->vistadoc->getSolicitudes($resP);
+			return $vf;
+		}
 	}
 ?>

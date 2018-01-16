@@ -56,16 +56,16 @@ EOT;
                   <td>".$row['Csexo_usuario']."</td>
                   <td>".$row['Ilimite_asesor']."</td>
                   <td>
-		     <a href='#' id='tol".$menuSrtm."ss' class='btn waves-effect waves-light indigo tooltipped' onclick='qrData(".$row['id_usuario'].");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
+		     <a href='#' id='tol".$menuSrtm."ss' class='btn waves-effect waves-light indigo tooltipped' onclick='qrData(\"".$row['VidentiQR_usuario']."\");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
 		  </td>
 		  <td>
-		     <a href='#' id='tol".$menuSrtm."ssUpd' class='btn waves-effect waves-light blue tooltipped' onclick='getformModUser(".$row['VidentiQR_usuario'].",2)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>Modificar</a>
+		     <a href='#' id='tol".$menuSrtm."ssUpd' class='btn waves-effect waves-light blue tooltipped' onclick='getformModUser(\"".$row['VidentiQR_usuario']."\",2)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>Modificar</a>
 		  </td>
 		  <td>
 		    <a href='#' id='tol".$menuSrtm."ss2' class='btn waves-effect waves-light  deep-purple tooltipped' onclick='dataClassDocente.formlimite(".$row['Ilimite_asesor'].",".$row['id_asesor'].");' data-position='left' data-delay='50' data-tooltip='Cambiar limite del asesor en el periodo seleccionado'>Cambiar Limite</a>
 		  </td>
 		  <td>
-		     <a href='#' id='tol".$menuSrtm."ss3' class='btn waves-effect waves-light teal tooltipped' onclick='dataClassDocente.regNuevoUsuario(".$row['Ilimite_asesor'].",".$row['VidentiQR_usuario'].");' data-position='left' data-delay='50' data-tooltip='Registrar al periodo actual activo'>Registrar</a>
+		     <a href='#' id='tol".$menuSrtm."ss3' class='btn waves-effect waves-light teal tooltipped' onclick='dataClassDocente.regNuevoUsuario(".$row['Ilimite_asesor'].",\"".$row['VidentiQR_usuario']."\");' data-position='left' data-delay='50' data-tooltip='Registrar al periodo actual activo'>Registrar</a>
                   </td>
                  <script>
                     	$(document).ready(function(){
@@ -132,9 +132,9 @@ EOT;
                   <td>".$row['Vcorreo_usuario']."</td>
                   <td>".$row['Csexo_usuario']."</td>
                   <td>
-                  	<a href='#' id='tol".$menuSrtm."ss' class='btn waves-effect waves-light indigo tooltipped' onclick='qrData(".$row['id_usuario'].");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
-			<a href='#' id='tol".$menuSrtm."ssUpd' class='btn waves-effect waves-light red tooltipped' onclick='getformModUser(".$row['VidentiQR_usuario'].",3)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>Modificar</a>
-			<a href='#' id='tol".$menuSrtm."ss3' class='btn waves-effect waves-light blue tooltipped' onclick='dataClassDocente.regNuevoUsuarioAlumn(".$row['VidentiQR_usuario'].");' data-position='left' data-delay='50' data-tooltip='Registrar al periodo actual activo'>Registrar al periodo activo</a>
+                  	<a href='#' id='tol".$menuSrtm."ss' class='btn waves-effect waves-light indigo tooltipped' onclick='qrData(\"".$row['VidentiQR_usuario']."\");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
+			<a href='#' id='tol".$menuSrtm."ssUpd' class='btn waves-effect waves-light red tooltipped' onclick='getformModUser(\"".$row['VidentiQR_usuario']."\",3)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>Modificar</a>
+			<a href='#' id='tol".$menuSrtm."ss3' class='btn waves-effect waves-light blue tooltipped' onclick='dataClassDocente.regNuevoUsuarioAlumn(\"".$row['VidentiQR_usuario']."\");' data-position='left' data-delay='50' data-tooltip='Registrar al periodo actual activo'>Registrar al periodo activo</a>
                     
                   </td>
 		    <script>
@@ -195,8 +195,8 @@ EOT;
                   <td>".$row['Vcorreo_usuario']."</td>
                   <td>".$row['Csexo_usuario']."</td>
                   <td>
-                  	<a href='#' id='tol".$menuSrtm."ss' class='btn waves-effect waves-light indigo tooltipped' onclick='qrData(".$row['VidentiQR_usuario'].");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
-                    <!--<a href='#' id='tol".$menuSrtm."ssUpd' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='getformModUser(".$row['VidentiQR_usuario'].",1)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>
+                  	<a href='#' id='tol".$menuSrtm."ss' class='btn waves-effect waves-light indigo tooltipped' onclick='qrData(\"".$row['VidentiQR_usuario']."\");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
+                    <!--<a href='#' id='tol".$menuSrtm."ssUpd' class='btn-floating tooltipped btn-large waves-effect waves-light' onclick='getformModUser(\"".$row['VidentiQR_usuario']."\",1)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>
                     	Modificar
                     </a>-->
                     <script>

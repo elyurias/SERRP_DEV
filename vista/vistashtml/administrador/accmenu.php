@@ -158,6 +158,9 @@
            					 		</ul>
            					 	</li>
            					 	<li>
+           					 		<a href='#' onclick='getsoldata(\"".$data[0]['VidentiQR_usuario']."\")'>Solicitudes</a>
+           					 	</li>
+           					 	<li>
            					 		<a onclick='nowdata(123)'>Cosas cosas y mas cosas</a>
            					 	</li>
             <script>

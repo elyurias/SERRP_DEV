@@ -45,3 +45,15 @@ function rellenarTablaS(data){
   $('#contenidoIntro').html('<div></div>');
   $('#tableS').html(data);
 }
+function getsoldata(idVidenti){
+  $.post(
+		'../../controlador/docente/docentecontroll.php',
+		{
+		  accion:'getsolicitudesasesor',
+		  id_asesor:idVidenti
+		},
+		function(data){
+		  rellenarTablaS(data)
+		}
+  );
+}

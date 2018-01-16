@@ -245,14 +245,14 @@ getTablaDataJS(2);</script>";
 					<div class='col s12 m6 l3 xl3'>
 						<div class='input-field'>
 							<label for='telc'>Telefono celular</label>
-                            <input id='telc' name='telc' type='text' value='".$tel1F."' data-error='.errorTxt5' required>
+                            <input id='telc' name='telc' type='number' value='".$tel1F."' data-error='.errorTxt5' required>
                             <div class='errorTxt5'></div>
 						</div>
 					</div>
 					<div class='col s12 m6 l3 xl3'>
 						<div class='input-field'>
 							<label for='telh'>Telefono casa</label>
-                            <input id='telh' name='telh' type='text' value='".$tel2F."' data-error='.errorTxt6' required>
+                            <input id='telh' name='telh' type='number' value='".$tel2F."' data-error='.errorTxt6' required>
                             <div class='errorTxt6'></div>
 						</div>
 					</div>

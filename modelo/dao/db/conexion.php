@@ -13,11 +13,11 @@ class conexion {
 	}
     }
     public static function getArraypP($sql, $array){
-	  $pS = self::conectar()->prepare($sql);
-	  $pS->execute($array);
-	  $res = $pS->fetchAll(PDO::FETCH_ASSOC);
-	  return $res;
-	}
+	$pS = self::conectar()->prepare($sql);
+	$pS->execute($array);
+	$res = $pS->fetchAll(PDO::FETCH_ASSOC);
+	return $res;
+    }
     public static function respaldoDB(){
 	$archivoRec = self::$bd.".sql";
 	$command = "mysqldump --host=".self::$host." --user=".self::$user." --password=".self::$pwd." --add-drop-database --events --routines --triggers --databases ".self::$bd." > ".$archivoRec."";
@@ -30,7 +30,6 @@ class conexion {
     public static function logs_enableTable(){
 	$gl = self::getArraypP("SET GLOBAL log_output = 'TABLE';");
 	$gg = self::getArraypP("SET GLOBAL general_log = 'ON';");
-	//$sq = self::getArraypP("SET GLOBAL slow_query_log = 'ON';");
 	return $gg;
     }
     public static function logs_disableTable(){

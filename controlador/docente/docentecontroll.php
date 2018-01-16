@@ -22,6 +22,10 @@
 				$obj->id_alumno = $_REQUEST['id_alumno'];
 	 			$resul = $bo->getDocumentosDocenteAlumno($obj);
 	 		break;
+	 		case 'getsolicitudesasesor':
+				$obj->id_asesor = $_REQUEST['id_asesor'];
+	 			$resul = $bo->getsoldocente($obj);
+	 		break;
 	 		default:
 	 			$resul = $_REQUEST['accion'];
 	 		break;
