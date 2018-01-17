@@ -100,6 +100,26 @@ function getpiepaginaData(){
       $('#footerlier').html(data);
   });
 }
+function formMessage(){
+    $('#messageAdministrator').empty();
+    $('#messageAdministrator').html("<div id='qr_modal' onsubmit='enviarcorreo();return false;' class='modal modal-fixed-footer'><div class='modal-content'><h5><center><form id='serialDir'><input type='hidden' name='accion' value='enviarcorreo' /><h4>Enviar correo al administrador</h4><label>Asunto</label><input type='text' name='asunto' required /><label>Mensaje</label><input type='text' name='cuerpo' required /><button type='submit' class='waves-effect waves-light btn'>Enviar</button></form></center></h5><p></p></div></div>");
+    $('#qr_modal').modal();
+    $('#qr_modal').modal('open');
+}
+function enviarcorreo(){
+  if(confirm('Desea enviar el mensaje al administrador')==1){
+    $.post(
+      '../../controlador/administrador/datacontroll.php',
+      $('#serialDir').serialize(),
+      function(data){
+	alert('Mensaje enviado');
+	$('#qr_modal').modal('close');
+      }
+    );
+  }else{
+    alert('Mensaje no enviado')
+  }
+}
 function getdataintro(){
   $('#fores').empty();
   $('#forms_d').empty();

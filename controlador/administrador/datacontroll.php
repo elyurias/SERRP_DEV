@@ -179,6 +179,11 @@
 		case 'pruebaresp':
 		    $resal = $bo->restoredatabase($_SERVER['DOCUMENT_ROOT'].ruta::ruta."/controlador/administrador/"."files/2017-01.sql");
 		break;
+		case 'enviarcorreo':
+			$obj->ASUNTO = $_REQUEST['asunto'];
+			$obj->CUERPO = $_REQUEST['cuerpo'];
+			mail ('irvingk@tescha1.com', $obj->ASUNTO, $obj->CUERPO) || print_r(error_get_last());
+		break;
 	}
 	print($resal);
 ?>

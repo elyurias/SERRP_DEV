@@ -344,5 +344,8 @@ class dataclass{
     this.limpiarCampoHTMLDataID('msgtos');
     $.post(url,json,function(data){$(estHTML).html(data);});
   }
+  sendMessage(){
+    
+  }
 }
 var dataClassDocente = new dataclass();

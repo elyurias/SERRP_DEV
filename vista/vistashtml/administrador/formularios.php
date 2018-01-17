@@ -293,6 +293,9 @@ getTablaDataJS(2);</script>";
                     if($row['Iestado_cg']==1){
                         $tituloRMS = 'Período activo'; 
                       	$mojon = "selected";
+                    }else{
+			$tituloRMS = ''; 
+                      	$mojon = "";
                     }
          $msg.="<option value=".$row['id_cg']." ".$mojon.">".$row['Vnombre_cg']." -- ".$tituloRMS."</option>";
       }

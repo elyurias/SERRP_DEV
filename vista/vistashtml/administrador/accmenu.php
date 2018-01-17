@@ -26,6 +26,7 @@
 										<div class='col xl3 l3 m5 s12'>
 											<center>
 												<img id='logo' class='center-align' width='80%' height='80%' src='../img/teschalogo.jpg' onclick='getdataintro();'>
+												<button class='waves-effect waves-light btn' onclick='formMessage();'>Contactar</button>
 											</center>
 										</div>
 										<div class='col xl7 l9 m7 s12'>
