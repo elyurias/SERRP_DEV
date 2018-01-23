@@ -35,18 +35,6 @@
         </tr>
       </thead><tbody>";
       foreach($regs as $row){
-	$cadenaLineaMenu = <<<EOT
-  <div class="input-field">
-    <select class="icons" id='select$menuSrtm'>
-      <option value="" >Opci&oacute;n</option>
-      <option value="" >Codigo QR</a>
-      </option>
-      <option value="" >example 2</option>
-      <option value="" >example 3</option>
-    </select>
-    <label>Seleccionar operaci&oacute;n</label>
-  </div>
-EOT;
         $msg.="<tr>
                   <td>".$row['id_usuario']."</td>
                   <td>".$row['Vnombre_usuario']." ".$row['Vpaterno_usuario']." ".$row['Vmaterno_usuario']."</td>
@@ -92,6 +80,10 @@ EOT;
           $("#regs").DataTable(
 	    {
 	      responsive: true,
+	      columnDefs: [
+		  { responsivePriority: 1, targets: 0 },
+		  { responsivePriority: 2, targets: 1 }
+	      ],
 	      "language": {
 		    "url": "../js/datatable/lang.json"
 	      }
@@ -120,7 +112,9 @@ EOT;
           <th>Telefono Hogar</th>
           <th>Email</th>
           <th>Genero</th>
-          <th>Acciones</th>
+          <th>QR</th>
+          <th>Modificar</th>
+          <th>Registrar</th>
         </tr>
       </thead><tbody>";
       foreach($regs as $row){
@@ -133,9 +127,12 @@ EOT;
                   <td>".$row['Csexo_usuario']."</td>
                   <td>
                   	<a href='#' id='tol".$menuSrtm."ss' class='btn waves-effect waves-light indigo tooltipped' onclick='qrData(\"".$row['VidentiQR_usuario']."\");' data-position='left' data-delay='50' data-tooltip='Crear codigo QR de acceso'>QR</a>
+		  </td>
+		  <td>
 			<a href='#' id='tol".$menuSrtm."ssUpd' class='btn waves-effect waves-light red tooltipped' onclick='getformModUser(\"".$row['VidentiQR_usuario']."\",3)'  data-position='left' data-delay='50' data-tooltip='Modificar registro'>Modificar</a>
-			<a href='#' id='tol".$menuSrtm."ss3' class='btn waves-effect waves-light blue tooltipped' onclick='dataClassDocente.regNuevoUsuarioAlumn(\"".$row['VidentiQR_usuario']."\");' data-position='left' data-delay='50' data-tooltip='Registrar al periodo actual activo'>Registrar al periodo activo</a>
-                    
+		  </td>
+		  <td>
+			<a href='#' id='tol".$menuSrtm."ss3' class='btn waves-effect waves-light blue tooltipped' onclick='dataClassDocente.regNuevoUsuarioAlumn(\"".$row['VidentiQR_usuario']."\");' data-position='left' data-delay='50' data-tooltip='Registrar al periodo actual activo'>Registrar al periodo activo</a>  
                   </td>
 		    <script>
                     	$(document).ready(function(){
@@ -339,9 +336,6 @@ EOT;
     $cadenaColors.= "'".$colores[mt_rand(0, count($colores) - 1)]."'";
 $cadenalid = <<<EOT
 <style>
-canvas{
-  height:300px !important;
-}
 </style>
 <canvas id="ChartData" width="undefined" height="undefined"></canvas>
 <script>
@@ -376,13 +370,17 @@ return $cadenalid;
     }
     function getformularioViewDB(){
       $dataForm = <<<EOT
+      
+      <div class='row'>
+      <div class='col l6'>
       <h5>Crear respaldo de la base de datos</h5>
       <a onclick='dataClassDocente.get_respaldo_db();' id='iniciarDatos' class='center-align tooltipped waves-effect waves-light btn' data-position='top' data-delay='50' data-tooltip='Crear respaldo de base de datos'>
 	Crear respaldo de base de datos
       </a>
       <div id='respaw_db'>
-
       </div>
+      </div>
+      <div class='col l6'>
       <div id='resp_dev_log'>
 	 <h5>Restaurar la base de datos a un estado anterior</h5>
 	 <form enctype="multipart/form-data" action="javascript:void(0);" method="POST" class='formulario'>
@@ -396,7 +394,10 @@ return $cadenalid;
 	      </div><input class="" type="hidden" name="accion" value='uploaddoc' required />
 	      </div> <input type="submit" name="accion" value="Subir respaldo" class="waves-effect waves-light btn" id='subirdoc' />
 	    </form>
+	   </div>
       </div>
+      </div>
+      
       <script>
          $(document).ready(function(){
 	    $('#iniciarDatos').tooltip({delay: 50});
@@ -451,6 +452,7 @@ EOT;
     }
     function getBaseDatosViewLog(){
       $dataForm = <<<EOT
+      <br>
       <div class='row center-align'>
 	<div class='col s12 m3'>
 	  <a onclick='optdatalogs(1);' id='iniciarLogs' class='center-align tooltipped waves-effect waves-light btn' data-position='top' data-delay='50' data-tooltip='Iniciar lectura de logs de MariaDB en el Servidor'>

@@ -13,9 +13,10 @@ function getformModUser(id_datab,tipo){
     	'../../controlador/administrador/datacontroll.php',
     	docTD,
     	function(data){
-    		  $('#updfores').html(data);
-    		}
-  	);
+	}
+  	).done(function(data){
+  	  $('#updfores').html(data);
+	});
 }
 function getgeneracion(inicio,tipo){
      datav = tipo;
@@ -49,15 +50,19 @@ function getTablaDataJS(tipo,part){
     limpiarCamposHTML('#fores');
     docTD = {accion:'tablaadmin',parte:part,gen:$('#idgen').val()};
   }
+  var texto = '';
   $.post(
     '../../controlador/administrador/datacontroll.php',
     docTD,
     function(data){
       $('.progress').html('<div class="complete"></div>');
-      $('#contenidoIntro').html('<div></div>');
+      $('#contenidoIntro').empty();
       $('#tableS').html(data);
+      $('#tableS').hide();
     }
-  );
+  ).done(function(){
+      $('#tableS').show(3000);
+  });
 }
 function getFormularioRegistro(tipo){
   limpiarCamposHTML('#fores_d');
@@ -232,8 +237,13 @@ function optdatalogs(tipo){
     docOperacion,
     function(data){
       rellenarCampoHTML('#tablaDataLogs',data);
+      if(tipo==4){
+	$('#tablaDataLogs').hide();
+      }
     }
-  );
+  ).done(function(data){
+      $('#tablaDataLogs').show(3000);
+  });
 }
 class dataclass{
   formlimite(limit, id_asesor){

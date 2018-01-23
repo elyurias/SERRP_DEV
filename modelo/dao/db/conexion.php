@@ -13,9 +13,13 @@ class conexion {
 	}
     }
     public static function getArraypP($sql, $array){
-	$pS = self::conectar()->prepare($sql);
-	$pS->execute($array);
-	$res = $pS->fetchAll(PDO::FETCH_ASSOC);
+	try{
+	  $pS = self::conectar()->prepare($sql);
+	  $pS->execute($array);
+	  $res = $pS->fetchAll(PDO::FETCH_ASSOC);
+	}catch(PDOException $e){
+	  return null;
+	}
 	return $res;
     }
     public static function respaldoDB(){
@@ -34,7 +38,6 @@ class conexion {
     }
     public static function logs_disableTable(){
 	$gg = self::getArraypP("SET GLOBAL general_log = 'OFF';");
-	//$sq = self::getArraypP("SET GLOBAL slow_query_log = 'OFF';");
 	return $gg;
     }
     public static function logs_show(){

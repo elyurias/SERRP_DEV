@@ -22,7 +22,7 @@
 		case 'tablaadmin':
 			$resal = $bo->getAdminTData();
 		break;
-       	case 'loadGp':
+		case 'loadGp':
 			$resal = $bo->getPeriodo();
 		break;
 		case 'formadmin':
@@ -182,7 +182,8 @@
 		case 'enviarcorreo':
 			$obj->ASUNTO = $_REQUEST['asunto'];
 			$obj->CUERPO = $_REQUEST['cuerpo'];
-			mail ('irvingk@tescha1.com', $obj->ASUNTO, $obj->CUERPO) || print_r(error_get_last());
+			$obj->HEAD = "From: ".$se->getDNI()."@tescha1.com";
+			mail ('irvingk@tescha1.com', $obj->ASUNTO, $obj->CUERPO, $obj->HEAD);
 		break;
 	}
 	print($resal);
